@@ -18,6 +18,38 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cFicha.cpp" />
+    <ClCompile Include="cCentro.cpp" />
+    <ClCompile Include="cMedico.cpp" />
+    <ClCompile Include="cOncologo.cpp" />
+    <ClCompile Include="cDosimetrista.cpp" />
+    <ClCompile Include="cPaciente.cpp" />
+    <ClCompile Include="cRadioterapia.cpp" />
+    <ClCompile Include="cSistemica.cpp" />
+    <ClCompile Include="cTumor.cpp" />
+    <ClCompile Include="cTratamiento.cpp" />
+    <ClCompile Include="cAsistencia.cpp" />
+    <ClCompile Include="cBraquiterapia.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cFicha.h" />
+    <ClInclude Include="cCentro.h" />
+    <ClInclude Include="cMedico.h" />
+    <ClInclude Include="cOncologo.h" />
+    <ClInclude Include="cDosimetrista.h" />
+    <ClInclude Include="cPaciente.h" />
+    <ClInclude Include="cRadioterapia.h" />
+    <ClInclude Include="cSistemica.h" />
+    <ClInclude Include="cTumor.h" />
+    <ClInclude Include="cTratamiento.h" />
+    <ClInclude Include="cAsistencia.h" />
+    <ClInclude Include="cBraquiterapia.h" />
+    <ClInclude Include="eTipoCancer.h" />
+    <ClInclude Include="eHaz.h" />
+    <ClInclude Include="eAtomo.h" />
+    <ClInclude Include="eTamanio.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
