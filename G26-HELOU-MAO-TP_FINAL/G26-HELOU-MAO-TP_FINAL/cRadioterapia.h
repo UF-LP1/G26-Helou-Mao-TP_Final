@@ -1,1 +1,7 @@
 #pragma once
+#include "cTratamiento.h"
+#include "eHaz.h"
+class cRadioterapia : public cTratamiento {
+private:
+	eHaz aTipoHaz;
+};
