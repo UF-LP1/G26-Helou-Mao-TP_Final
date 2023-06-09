@@ -11,4 +11,7 @@ private:
 	bool aAlcanzoMax;
 	time_t aFechaIngreso;
 	cPaciente aPaciente;
+public:
+	cFicha(bool, bool, float, cOncologo, float, bool, time_t, cPaciente);
+	~cFicha();
 };

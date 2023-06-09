@@ -13,6 +13,9 @@ private:
 	float aDosisSemanal;
 	float aFrecuencia;
 public:
+	cTumor(eTipoCancer, eTamanio, cTratamiento, float, float, float, float);
+	cTumor();
+	~cTumor();
 	float calcularDosisSemanal();
 	cTratamiento GET_TRATAMIENTO();
 };

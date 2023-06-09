@@ -49,6 +49,7 @@
     <ClInclude Include="eHaz.h" />
     <ClInclude Include="eAtomo.h" />
     <ClInclude Include="eTamanio.h" />
+    <ClInclude Include="Header.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

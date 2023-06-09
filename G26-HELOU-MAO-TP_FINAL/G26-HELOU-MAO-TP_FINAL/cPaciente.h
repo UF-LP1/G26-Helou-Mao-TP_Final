@@ -1,10 +1,8 @@
 #pragma once
 
-#include <list>
-#include <string>
-#include <ctime>
-#include "iostream"
+
 #include "cTumor.h"
+#include "Header.h"
 using namespace std;
 class cPaciente {
 private:
@@ -17,4 +15,7 @@ private:
 	char aSexo;
 	string aTipoSangre;
 	float aSaludGral;
+public:
+	cPaciente(list<cTumor>, string, string, string, string, time_t, char, string, float);
+	~cPaciente();
 };
