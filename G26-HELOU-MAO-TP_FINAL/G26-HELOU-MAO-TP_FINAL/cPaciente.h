@@ -2,7 +2,7 @@
 
 
 #include "cTumor.h"
-#include "Header.h"
+
 using namespace std;
 class cPaciente {
 private:
@@ -11,12 +11,13 @@ private:
 	string aApellido;
 	string aDNI;
 	string aContacto;
-	time_t aFechaNac;
+	string aFechaNac;
 	char aSexo;
 	string aTipoSangre;
 	float aSaludGral;
 public:
-	cPaciente(string, string, string, string, time_t, char, string, float);
+	cPaciente(string, string, string, string, string, char, string, float);
+	bool operator==(cPaciente&pac);
 	~cPaciente();
 	cPaciente();
 };

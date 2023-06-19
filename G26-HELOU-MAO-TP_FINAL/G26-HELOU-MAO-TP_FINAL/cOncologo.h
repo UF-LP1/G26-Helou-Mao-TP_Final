@@ -1,15 +1,19 @@
 #pragma once
 #include "cMedico.h"
 class cOncologo : public cMedico {
+	 int numeroOncologo;
 public:
-	cOncologo(string, string, float);
+	static int cantOncologos;
+	cOncologo(string, string);
 	~cOncologo();
-	void evaluarPac();
-	void reevaluarTratamiento();
-	void actualizarFicha();
-	void asignarFrecSemanal();
-	void asignarDosisXSesion();
-	void darAlta();
-	int asignarTiempoEspera();
-	void atenderPaciente();
+	void evaluarPac(cFicha*);
+	void reevaluarTratamiento(cFicha*);
+	void actualizarFicha(cFicha*);
+	void asignarFrecSemanal(cFicha*);
+	void asignarDosisXSesion(cFicha*);
+	void darAlta(cFicha*);
+	int asignarTiempoEspera(cFicha*);
+	void atenderPaciente(cFicha*);
+	void diagnosticarTumores(cFicha*);
+
 };

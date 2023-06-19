@@ -2,11 +2,12 @@
 
 #include "cMedico.h"
 class cDosimetrista: public cMedico {
-
+	int numDosimetrista;
 public:
-	cDosimetrista(string, string, float);
+	static int cantDosimetrista;
+	cDosimetrista(string, string);
 	~cDosimetrista();
-	float calcularDosisTotal();
-	cTratamiento asignarTratamiento();
-	void atenderPaciente();
+	float calcularDosisTotal(cFicha*);
+	cTratamiento asignarTratamiento(cFicha*);
+	void atenderPaciente(cFicha*);
 };

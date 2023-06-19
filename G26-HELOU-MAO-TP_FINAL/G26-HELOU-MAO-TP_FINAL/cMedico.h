@@ -1,14 +1,18 @@
 #pragma once
-#include "cPaciente.h"
 
+#include "cFicha.h"
+using namespace std;
 class cMedico {
 private: 
 	string aNombre;
 	string aApellido;
-	int aNroEmplpeado;
+	const int aNroEmplpeado;
+
 public:
-	cMedico(string, string, int);
+	static int cantEmpleados;
+	cMedico(string, string);
 	~cMedico();
-	virtual void atenderPaciente() = 0;
+	virtual void atenderPaciente(cFicha*) = 0;
+	int GET_ID();
 
 };

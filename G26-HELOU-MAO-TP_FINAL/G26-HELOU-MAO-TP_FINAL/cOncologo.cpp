@@ -1,39 +1,55 @@
 #include "cOncologo.h"
 
-cOncologo::cOncologo(string miNombre, string miApellido, float miNumero) 
-:cMedico(miNombre, miApellido, miNumero)
+int cOncologo::cantOncologos = 0;
+cOncologo::cOncologo(string miNombre, string miApellido) 
+:cMedico(miNombre, miApellido) 
 {
-
+	this->numeroOncologo = ++cantOncologos;
 }
 cOncologo::~cOncologo() {
 
 }
 
 
-void cOncologo::evaluarPac()
+void cOncologo::evaluarPac(cFicha*)
 {
 
 }
-void cOncologo::reevaluarTratamiento() {
+void cOncologo::reevaluarTratamiento(cFicha*) {
 
 }
-void cOncologo::actualizarFicha()
+void cOncologo::actualizarFicha(cFicha*)
 {
 
 }
-void cOncologo::asignarFrecSemanal() {
+void cOncologo::asignarFrecSemanal(cFicha*) {
 
 }
-void cOncologo::asignarDosisXSesion() {
+void cOncologo::asignarDosisXSesion(cFicha*) {
 
 }
-void cOncologo::darAlta() {
+void cOncologo::darAlta(cFicha*) {
 
 }
-int cOncologo::asignarTiempoEspera() {
+int cOncologo::asignarTiempoEspera(cFicha*) {
 	return 0;
 }
 
-void cOncologo::atenderPaciente()
+void cOncologo::atenderPaciente(cFicha*)
 {
+}
+
+void cOncologo::diagnosticarTumores(cFicha* ficha)
+{
+	srand(time(NULL));
+	eTamanio auxTamanio;
+	eTipoCancer auxTipo;
+
+	int cantTumores = rand() % 10 + 1;
+	for (int i = 0; i < cantTumores; i++)
+	{
+		int numero = rand() % 10 + 1;
+
+	
+	}
 }

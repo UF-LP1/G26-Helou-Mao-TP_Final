@@ -1,23 +1,24 @@
 #include "cDosimetrista.h"
 
-cDosimetrista::cDosimetrista(string miNombre, string miApellido, float miNumero)
-	:cMedico(miNombre, miApellido, miNumero)
+int cDosimetrista::cantDosimetrista = 0;
+cDosimetrista::cDosimetrista(string miNombre, string miApellido)
+	:cMedico(miNombre, miApellido)
 {
-
+	this->numDosimetrista = ++cantDosimetrista;
 }
 cDosimetrista::~cDosimetrista()
 {
 
 }
-float cDosimetrista::calcularDosisTotal()
+float cDosimetrista::calcularDosisTotal(cFicha*)
 {
 	return 0.0;
 }
-cTratamiento cDosimetrista::asignarTratamiento()
+cTratamiento cDosimetrista::asignarTratamiento(cFicha*)
 {
 
 	return;
 }
-void cDosimetrista::atenderPaciente()
+void cDosimetrista::atenderPaciente(cFicha*)
 {
 }

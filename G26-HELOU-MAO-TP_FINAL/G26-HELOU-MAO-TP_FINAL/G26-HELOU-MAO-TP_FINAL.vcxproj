@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="cFicha.cpp" />
     <ClCompile Include="cCentro.cpp" />
+    <ClCompile Include="cListaFichas.cpp" />
     <ClCompile Include="cMedico.cpp" />
     <ClCompile Include="cOncologo.cpp" />
     <ClCompile Include="cDosimetrista.cpp" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="cFicha.h" />
     <ClInclude Include="cCentro.h" />
+    <ClInclude Include="cListaFichas.h" />
     <ClInclude Include="cMedico.h" />
     <ClInclude Include="cOncologo.h" />
     <ClInclude Include="cDosimetrista.h" />

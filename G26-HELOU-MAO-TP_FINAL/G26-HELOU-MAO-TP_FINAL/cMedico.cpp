@@ -1,12 +1,17 @@
 #include "cMedico.h"
 
-cMedico::cMedico(string miNombre, string miApellido, int miNumero)
+
+int cMedico::cantEmpleados = 0;
+cMedico::cMedico(string miNombre, string miApellido):aNroEmplpeado(++cantEmpleados)
 {
 	this->aNombre = miNombre;
 	this->aApellido = miApellido;
-	this->aNroEmplpeado = miNumero;
 }
 
 cMedico::~cMedico() {
 
+}
+int cMedico::GET_ID()
+{
+	return this->aNroEmplpeado;
 }

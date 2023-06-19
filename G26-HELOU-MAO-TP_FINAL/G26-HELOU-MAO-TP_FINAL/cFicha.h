@@ -1,19 +1,24 @@
 #pragma once
 
-#include "cOncologo.h"
+#include "cPaciente.h"
 class cFicha {
 private:
 	bool aAlta;
 	bool aListaEspera;
 	float aRadiacionAcum;
-	cOncologo aOncologoCargo;
+	int aID_OncologoCargo;
+	int aID_Dosimetrista;
 	float aDosisMax;
 	float aDosisXSesion;
 	bool aAlcanzoMax;
-	time_t aFechaIngreso;
 	cPaciente aPaciente;
 public:
-	cFicha(bool, bool, float, cOncologo, float, bool, time_t, cPaciente);
+	cFicha(bool, bool, float, int, int ,float, float, bool, cPaciente);
+	cFicha(cPaciente paciente, int oncologo, int dosimetrista);
+	cFicha();
 	~cFicha();
-	friend cMedico;
+	friend class cMedico;
+	cPaciente* GET_PAC();
+	int GET_ONC();
+	int GET_DOS();
 };

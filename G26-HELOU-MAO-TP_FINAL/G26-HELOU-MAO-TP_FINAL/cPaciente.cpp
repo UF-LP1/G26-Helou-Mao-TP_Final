@@ -1,6 +1,6 @@
 #include "cPaciente.h"
 
-cPaciente::cPaciente( string miNombre, string miApellido, string miDni, string miContacto, time_t miFechaNac, char miSexo, string miTipoSangre, float miSaludGral)
+cPaciente::cPaciente( string miNombre, string miApellido, string miDni, string miContacto, string miFechaNac, char miSexo, string miTipoSangre, float miSaludGral)
 {
 
 	this->aNombre = miNombre;
@@ -16,6 +16,15 @@ cPaciente::~cPaciente()
 {
 
 }
+bool cPaciente ::operator==(cPaciente& pac)
+{
+	bool retorno = false;
+	if (this->aDNI == pac.aDNI)
+	{
+		retorno = true;
+	}
+	return retorno;
+}
 
 cPaciente::cPaciente()
 {
@@ -23,7 +32,7 @@ cPaciente::cPaciente()
 	this->aApellido = "";
 	this->aDNI = "";
 	this->aContacto = "";
-	this->aFechaNac = 0;
+	this->aFechaNac = "";
 	this->aSexo = ' ';
 	this->aTipoSangre = "";
 	this->aSaludGral = 0.0;

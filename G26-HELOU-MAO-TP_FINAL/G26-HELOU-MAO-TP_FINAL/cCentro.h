@@ -1,10 +1,13 @@
 #pragma once
 
 #include "cMedico.h"
-#include "cFicha.h"
+#include "cListaFichas.h"
+#include "cOncologo.h"
+#include "cDosimetrista.h"
+
 class cCentro {
 private:
-	list<cFicha*> aFichas;
+	cListaFichas aFichas;
 	string aNombre;
 	string aDireccion;
 	list <cMedico*> aMedicos;
@@ -15,8 +18,9 @@ public:
 	void atenderPaciente(cPaciente*);
 	list <cPaciente* > buscar();
 	void imprimir();
-	cFicha* pasarFichaMedico(); //no se si es necesaria, al oncologo lo podemos buscar en la ficha
+	void pasarFichaOncologo(cFicha*); 
+	void pasarFichaDosimetrista(cFicha*);
 	cFicha* buscarFicha(cPaciente*);
 	void agregarFicha(cFicha*);
-	void crearFicha(cPaciente*);
+	cFicha* crearFicha(cPaciente*);
 };

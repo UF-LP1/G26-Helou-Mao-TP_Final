@@ -3,6 +3,7 @@
 #include "eTipoCancer.h"
 #include "cTratamiento.h"
 #include "eTamanio.h"
+
 class cTumor {
 private:
 	eTipoCancer aTipoCancer;
