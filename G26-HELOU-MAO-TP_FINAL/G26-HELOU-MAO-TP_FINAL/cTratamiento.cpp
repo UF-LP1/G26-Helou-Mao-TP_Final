@@ -9,11 +9,9 @@ cTratamiento::~cTratamiento()
 {
 
 }
-cTratamiento& cTratamiento::operator=(cTratamiento& otro)
+
+cTratamiento::cTratamiento(cTratamiento& copia)
 {
-	aDosisXSesion = otro.aDosisXSesion;
-	aDosisTotal= otro.aDosisTotal;
-	return *this;
+	aDosisXSesion = copia.aDosisXSesion;
+	aDosisTotal = copia.aDosisTotal;
 }
-float aDosisXSesion;
-float aDosisTotal;

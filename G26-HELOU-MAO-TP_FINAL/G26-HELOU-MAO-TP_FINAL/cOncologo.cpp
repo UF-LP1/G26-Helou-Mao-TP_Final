@@ -8,10 +8,8 @@ cOncologo::cOncologo(string miNombre, string miApellido, float miNumero)
 cOncologo::~cOncologo() {
 
 }
-cOncologo cOncologo ::operator=(cOncologo& otro)
-{
-	
-}
+
+
 void cOncologo::evaluarPac()
 {
 
@@ -33,5 +31,9 @@ void cOncologo::darAlta() {
 
 }
 int cOncologo::asignarTiempoEspera() {
+	return 0;
+}
 
+void cOncologo::atenderPaciente()
+{
 }

@@ -1,8 +1,8 @@
 #include "cPaciente.h"
 
-cPaciente::cPaciente(list<cTumor> misTumores, string miNombre, string miApellido, string miDni, string miContacto, time_t miFechaNac, char miSexo, string miTipoSangre, float miSaludGral)
+cPaciente::cPaciente( string miNombre, string miApellido, string miDni, string miContacto, time_t miFechaNac, char miSexo, string miTipoSangre, float miSaludGral)
 {
-	//this->aTumores = misTumores;
+
 	this->aNombre = miNombre;
 	this->aApellido = miApellido;
 	this->aDNI = miDni;
@@ -15,4 +15,16 @@ cPaciente::cPaciente(list<cTumor> misTumores, string miNombre, string miApellido
 cPaciente::~cPaciente()
 {
 
+}
+
+cPaciente::cPaciente()
+{
+	this->aNombre = "";
+	this->aApellido = "";
+	this->aDNI = "";
+	this->aContacto = "";
+	this->aFechaNac = 0;
+	this->aSexo = ' ';
+	this->aTipoSangre = "";
+	this->aSaludGral = 0.0;
 }

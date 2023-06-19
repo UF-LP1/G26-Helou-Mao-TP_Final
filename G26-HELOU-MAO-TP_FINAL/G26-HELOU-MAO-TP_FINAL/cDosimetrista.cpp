@@ -11,13 +11,13 @@ cDosimetrista::~cDosimetrista()
 }
 float cDosimetrista::calcularDosisTotal()
 {
-
+	return 0.0;
 }
 cTratamiento cDosimetrista::asignarTratamiento()
 {
 
+	return;
 }
-void cDosimetrista:: reevaluarTratamiento()
+void cDosimetrista::atenderPaciente()
 {
-
 }

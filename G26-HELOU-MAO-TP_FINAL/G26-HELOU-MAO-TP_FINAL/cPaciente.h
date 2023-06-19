@@ -6,7 +6,7 @@
 using namespace std;
 class cPaciente {
 private:
-	list <cTumor> aTumores;
+	list <cTumor*> aTumores;
 	string aNombre;
 	string aApellido;
 	string aDNI;
@@ -16,6 +16,7 @@ private:
 	string aTipoSangre;
 	float aSaludGral;
 public:
-	cPaciente(list<cTumor>, string, string, string, string, time_t, char, string, float);
+	cPaciente(string, string, string, string, time_t, char, string, float);
 	~cPaciente();
+	cPaciente();
 };

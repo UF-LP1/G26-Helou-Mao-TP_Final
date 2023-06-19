@@ -1,11 +1,16 @@
 #include "cCentro.h"
 #include "Header.h"
-cCentro::cCentro(list<cFicha> misFichas, string miNombre, string miDireccion, list <cMedico> misMedicos)
+cCentro::cCentro( string miNombre, string miDireccion, list <cMedico*> misMedicos)
 {
 	//this->aFichas = misFichas;
 	this->aNombre = miNombre;
 	this->aDireccion = miDireccion;
-	this->aMedicos = misMedicos;
+	list <cMedico*>  ::iterator it = misMedicos.begin();
+	for (it; it != misMedicos.end(); it++)
+	{
+		aMedicos.push_back(*it);
+	}
+	
 }
 cCentro::~cCentro()
 {
@@ -14,14 +19,30 @@ cCentro::~cCentro()
 void cCentro::contactar() {
 
 }
-list <cPaciente > cCentro::buscar() {
-
+void cCentro::atenderPaciente(cPaciente* paciente)
+{
 }
+
+list<cPaciente*> cCentro::buscar()
+{
+	return list<cPaciente*>();
+}
+
 void cCentro::imprimir()
 {
 
 }
-cFicha cCentro::pasarFichaOncologo()
+cFicha* cCentro::pasarFichaMedico()
 {
-
+	return nullptr;
+}
+cFicha* cCentro::buscarFicha(cPaciente* paciente)
+{
+	return nullptr;
+}
+void cCentro::agregarFicha(cFicha* ficha)
+{
+}
+void cCentro::crearFicha(cPaciente* paciente)
+{
 }

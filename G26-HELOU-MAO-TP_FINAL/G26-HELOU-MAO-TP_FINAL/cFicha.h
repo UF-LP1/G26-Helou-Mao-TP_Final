@@ -7,6 +7,7 @@ private:
 	bool aListaEspera;
 	float aRadiacionAcum;
 	cOncologo aOncologoCargo;
+	float aDosisMax;
 	float aDosisXSesion;
 	bool aAlcanzoMax;
 	time_t aFechaIngreso;
@@ -14,4 +15,5 @@ private:
 public:
 	cFicha(bool, bool, float, cOncologo, float, bool, time_t, cPaciente);
 	~cFicha();
+	friend cMedico;
 };

@@ -1,12 +1,14 @@
 #pragma once
 #include "cPaciente.h"
+
 class cMedico {
 private: 
 	string aNombre;
 	string aApellido;
-	float aNroEmplpeado;
+	int aNroEmplpeado;
 public:
-	cMedico(string, string, float);
+	cMedico(string, string, int);
 	~cMedico();
+	virtual void atenderPaciente() = 0;
 
 };

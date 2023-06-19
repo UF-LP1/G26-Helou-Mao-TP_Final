@@ -8,5 +8,5 @@ public:
 	~cDosimetrista();
 	float calcularDosisTotal();
 	cTratamiento asignarTratamiento();
-	void reevaluarTratamiento();
+	void atenderPaciente();
 };

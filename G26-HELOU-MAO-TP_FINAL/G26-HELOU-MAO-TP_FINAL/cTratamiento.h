@@ -5,6 +5,7 @@ private:
 	float aDosisTotal;
 public:
 	cTratamiento(float, float);
+	cTratamiento(cTratamiento&);
 	~cTratamiento();
-	cTratamiento& operator=(cTratamiento& otro);
+
 };
