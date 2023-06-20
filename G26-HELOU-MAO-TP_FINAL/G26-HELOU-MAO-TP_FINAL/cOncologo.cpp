@@ -11,13 +11,41 @@ cOncologo::~cOncologo() {
 }
 
 
-void cOncologo::evaluarPac(cFicha*)
+void cOncologo::evaluarPac(cFicha* ficha)
 {
+	list<cTumor*>* auxTumores = ficha->GET_PAC()->GET_TUMORES();
+	srand(time(NULL));
+	int Alta = rand() % 10;
+	if (Alta <3)
+	{
+		for (cTumor* tumor : *auxTumores)
+		{
+			tumor->SET_TAMANIO(noEsta);
+		}
+		darAlta(ficha);
+	}
+	else {
+	
+		int tumorCambiar = rand() % (auxTumores->size());
+		int tamanioNuevo = rand() % 4;
+		int contVueltas = 0;
 
-}
-void cOncologo::reevaluarTratamiento(cFicha*) {
+		for (cTumor* tumor : *auxTumores)
+		{
+			//aca se va a modificar los tumores
+			if (contVueltas == tumorCambiar)
+			{
+				tumor->SET_TAMANIO(eTamanio(tamanioNuevo));
+			}
 
+		}
+	}
 }
+void cOncologo::reevaluarPaciente(cFicha* ficha)
+{
+	ficha->SET_RAD_ACUM(0);
+}
+
 void cOncologo::actualizarFicha(cFicha*)
 {
 
@@ -28,9 +56,11 @@ void cOncologo::actualizarFicha(cFicha*)
 
 void cOncologo::asignarDosisXSesion(cFicha* ficha) {
 
+
+
 }
 void cOncologo::darAlta(cFicha* ficha) {
-	if (ficha->GET_PAC()->GET_TUMORES().size() == 0)
+	if (ficha->GET_PAC()->GET_TUMORES()->size() == 0)
 		ficha->SET_ALTA(true);
 }
 void cOncologo::asignarTiempoEspera(cFicha* ficha) {
@@ -40,8 +70,40 @@ void cOncologo::asignarTiempoEspera(cFicha* ficha) {
 	ficha->SET_ESPERADO(true);
 }
 
-void cOncologo::atenderPaciente(cFicha*)
+void cOncologo::atenderPaciente(cFicha* ficha)
 {
+	if (ficha->GET_MOTIVO() == diagnostico)
+	{
+		if (ficha->GET_PAC()->GET_TUMORES() == nullptr)
+			diagnosticarTumores(ficha);
+		else
+		{
+			asignarDosisXSesion(ficha);
+		}
+
+	}
+	else if (ficha->GET_MOTIVO() == evaluacion)
+	{
+		evaluarPac(ficha);//aca se va a chequear el estado de los tumores (se los va a achicar o agrandar aca tambien
+	}
+	else if (ficha->GET_MOTIVO() == finTratamiento)
+	{
+		int cont = 0;
+		list<cTumor*>* tumores = ficha->GET_PAC()->GET_TUMORES();
+		for (cTumor* tumorcito : *tumores)
+		{
+			if (tumorcito->GET_TAMANIO() != noEsta)
+				cont++;
+		}
+		if (cont == 0)
+			darAlta(ficha);
+		else
+			asignarTiempoEspera(ficha);
+	}
+	else
+	{
+		reevaluarPaciente(ficha);
+	}
 }
 
 void cOncologo::diagnosticarTumores(cFicha* ficha)
@@ -58,7 +120,7 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	{
 		auxTipoCancer = rand() % 11;
 		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
-		auxTamanio = rand() % 3;
+		auxTamanio = rand() % 3+1;
 		tumor->SET_TAMANIO(eTamanio(auxTamanio));
 		frecuencia = rand() % 6;
 		tumor->SET_FRECUENCIA(frecuencia);

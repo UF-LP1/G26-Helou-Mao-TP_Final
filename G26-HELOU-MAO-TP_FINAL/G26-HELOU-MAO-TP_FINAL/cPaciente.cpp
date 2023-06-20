@@ -57,7 +57,7 @@ void cPaciente::SET_TUMORES(list <cTumor*> tumores)
 	this->aTumores = tumores;
 }
 
-list <cTumor*> cPaciente::GET_TUMORES()
+list <cTumor*> *cPaciente::GET_TUMORES()
 {
-	return this->aTumores;
+	return &aTumores;
 }

@@ -1,6 +1,6 @@
 #include "cTumor.h"
 
-cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratamiento, float miRadAcum, float miDosisMax, float miDosisSemanal, unsigned int miFrec)
+cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratamiento, float miRadAcum, float miDosisMax, float miDosisXsesion, unsigned int miFrec)
 	:aTipoTratamiento(miTratamiento)
 {
 	this->aSesionesRealizadas = 0;
@@ -8,7 +8,7 @@ cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratami
 	this->aTamanio = miTamanio;
 	this->aRadAcum = miRadAcum;
 	this->aDosisMax = miDosisMax;
-	this->aDosisSemanal = miDosisSemanal;
+	this->aDosisXSesion = miDosisXsesion;
 	this->aFrecuencia = miFrec;
 }
 
@@ -28,7 +28,7 @@ cTratamiento* cTumor:: GET_TRATAMIENTO()
 cTumor::cTumor()
 {
 	this->aDosisMax = 0.0;
-	this->aDosisSemanal = 0.0;
+	this->aDosisXSesion = 0.0;
 	this->aFrecuencia = 0;
 	this->aRadAcum = 0.0;
 	this->aSesionesRealizadas = 0;
@@ -49,13 +49,26 @@ void cTumor::SET_TAMANIO(eTamanio tam)
 	this->aTamanio = tam;
 }
 
+unsigned int cTumor::GET_FRECUENCIA()
+{
+	return this->aFrecuencia;
+}
+
 void cTumor::SET_FRECUENCIA(unsigned int frec)
 {
 	this->aFrecuencia = frec;
 }
+float cTumor::GET_RAD_ACUM()
+{
+	return this->aRadAcum;
+}
 void cTumor::SET_RAD_ACUM(float radAcum)
 {
 	this->aRadAcum = radAcum;
+}
+unsigned int cTumor::GET_SESIONES_REALIZADAS()
+{
+	return this->aSesionesRealizadas;
 }
 void cTumor::SET_SESIONES_REALIZADAS(unsigned int sesiones)
 {
@@ -68,4 +81,24 @@ eTipoCancer cTumor::SET_TIPO_CANCER()
 eTipoCancer cTumor::GET_TIPO_CANCER()
 {
 	return this->aTipoCancer;
+}
+
+float cTumor::GET_DOSIS_MAX()
+{
+	return this->aDosisMax;
+}
+
+void cTumor::SET_DOSIS_MAX(float dosis)
+{
+	this->aDosisMax = dosis;
+}
+
+float cTumor::GET_DOSISXSESION()
+{
+	return this->aDosisXSesion;
+}
+
+eTamanio cTumor::GET_TAMANIO()
+{
+	return this->aTamanio;
 }

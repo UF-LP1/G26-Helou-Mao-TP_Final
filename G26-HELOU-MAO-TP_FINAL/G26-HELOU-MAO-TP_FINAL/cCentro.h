@@ -17,7 +17,7 @@ public:
 	~cCentro();
 	void contactar();
 	void atenderPaciente(cPaciente*);
-	list <cPaciente* > buscar();
+	//list <cPaciente* > buscar();
 	void imprimir();
 	void pasarFichaOncologo(cFicha*); 
 	void pasarFichaDosimetrista(cFicha*);

@@ -3,7 +3,7 @@
 #include "cFicha.h"
 using namespace std;
 class cMedico {
-private: 
+protected: 
 	string aNombre;
 	string aApellido;
 	const int aNroEmplpeado;

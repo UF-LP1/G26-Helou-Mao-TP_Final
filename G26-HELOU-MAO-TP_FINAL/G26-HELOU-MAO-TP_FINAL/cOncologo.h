@@ -7,7 +7,7 @@ public:
 	cOncologo(string, string);
 	~cOncologo();
 	void evaluarPac(cFicha*);
-	void reevaluarTratamiento(cFicha*);
+	void reevaluarPaciente(cFicha*);
 	void actualizarFicha(cFicha*);
 	//void asignarFrecSemanal(cFicha*);
 	void asignarDosisXSesion(cFicha*);

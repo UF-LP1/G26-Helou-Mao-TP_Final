@@ -1,7 +1,7 @@
 #pragma once
 #include "Header.h"
 class cTratamiento {
-private:
+protected:
 	float aDosisXSesion;
 	float aDosisTotal;
 public:

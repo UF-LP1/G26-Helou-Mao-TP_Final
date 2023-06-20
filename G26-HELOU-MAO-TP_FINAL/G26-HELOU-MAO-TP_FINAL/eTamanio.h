@@ -1,3 +1,3 @@
 #pragma once
 
-enum eTamanio{pequenio, mediano, grande};
+enum eTamanio{noEsta, pequenio, mediano, grande};

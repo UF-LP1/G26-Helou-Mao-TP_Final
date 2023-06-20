@@ -1,7 +1,9 @@
 #pragma once
 
 #include "eTipoCancer.h"
-#include "cTratamiento.h"
+#include "cBraquiterapia.h"
+#include "cRadioterapia.h"
+#include "cSistemica.h"
 #include "eTamanio.h"
 
 class cTumor {
@@ -11,7 +13,7 @@ private:
 	cTratamiento *aTipoTratamiento;
 	float aRadAcum;
 	float aDosisMax;
-	float aDosisSemanal;
+	float aDosisXSesion;
 	unsigned int aFrecuencia;
 	unsigned int aSesionesRealizadas;
 public:
@@ -23,9 +25,16 @@ public:
 	void SET_TRATAMIENTO(cTratamiento *tratamiento);
 	void SET_TIPO_CANCER(eTipoCancer auxTipoCancer);
 	void SET_TAMANIO(eTamanio tam);
+	unsigned int GET_FRECUENCIA();
 	void SET_FRECUENCIA(unsigned int frec);
+	float GET_RAD_ACUM();
 	void SET_RAD_ACUM(float radAcum);
+	unsigned int GET_SESIONES_REALIZADAS();
 	void SET_SESIONES_REALIZADAS(unsigned int sesiones);
 	eTipoCancer SET_TIPO_CANCER();
 	eTipoCancer GET_TIPO_CANCER();
+	float GET_DOSIS_MAX();
+	void SET_DOSIS_MAX(float);
+	float GET_DOSISXSESION();
+	eTamanio GET_TAMANIO();
 };

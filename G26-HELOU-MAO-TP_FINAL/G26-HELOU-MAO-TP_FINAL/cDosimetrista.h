@@ -10,4 +10,5 @@ public:
 	void calcularDosisTotal(cFicha*);
 	void asignarTratamiento(cFicha*);
 	void atenderPaciente(cFicha*);
+	
 };

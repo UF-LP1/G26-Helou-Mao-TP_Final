@@ -32,6 +32,7 @@
     <ClCompile Include="cTratamiento.cpp" />
     <ClCompile Include="cAsistencia.cpp" />
     <ClCompile Include="cBraquiterapia.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cFicha.h" />
@@ -47,6 +48,7 @@
     <ClInclude Include="cTratamiento.h" />
     <ClInclude Include="cAsistencia.h" />
     <ClInclude Include="cBraquiterapia.h" />
+    <ClInclude Include="eMotivo.h" />
     <ClInclude Include="eTipoCancer.h" />
     <ClInclude Include="eHaz.h" />
     <ClInclude Include="eAtomo.h" />

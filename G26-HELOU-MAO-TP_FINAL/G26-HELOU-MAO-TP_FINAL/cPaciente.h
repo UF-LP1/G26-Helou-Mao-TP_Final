@@ -2,7 +2,7 @@
 
 
 #include "cTumor.h"
-
+#include "eMotivo.h"
 using namespace std;
 class cPaciente {
 private:
@@ -22,7 +22,7 @@ public:
 	cPaciente();
 	void operator=(cPaciente* pac);
 	void SET_TUMORES(list <cTumor*> tumores);
-	list <cTumor*> GET_TUMORES();
+	list <cTumor*> *GET_TUMORES();
 };
 
 
