@@ -9,3 +9,10 @@ cSistemica::~cSistemica()
 {
 
 }
+cSistemica::cSistemica()
+	:cTratamiento()
+{
+}
+float cSistemica::DOSIS_X_TUMOR() {
+	return 0.0;
+}

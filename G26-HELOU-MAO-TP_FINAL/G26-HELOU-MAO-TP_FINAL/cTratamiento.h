@@ -8,5 +8,7 @@ public:
 	cTratamiento(float, float);
 	cTratamiento(cTratamiento&);
 	~cTratamiento();
+	cTratamiento();
+	virtual float DOSIS_X_TUMOR() = 0;
 
 };

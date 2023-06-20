@@ -45,3 +45,12 @@ cPaciente* cFicha::GET_PAC()
 {
 	return  &aPaciente;
 }
+
+void cFicha::SET_PACIENTE(cPaciente* pac)
+{
+	this->aPaciente = pac;
+}
+void cFicha::SET_DOSIS_MAX(float dosisMax)
+{
+	this->aDosisMax = dosisMax;
+}

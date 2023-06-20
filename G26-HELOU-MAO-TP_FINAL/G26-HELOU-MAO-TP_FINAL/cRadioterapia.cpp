@@ -9,3 +9,11 @@ cRadioterapia::~cRadioterapia()
 {
 
 }
+cRadioterapia::cRadioterapia() :
+	cTratamiento()
+{
+	this->aTipoHaz = fotones;
+}
+float cRadioterapia::DOSIS_X_TUMOR() {
+	return 0.0;
+}

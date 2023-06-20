@@ -8,4 +8,6 @@ public:
 	cBraquiterapia(float, float, eAtomo);
 	~cBraquiterapia();
 	eAtomo GET_ATOMO();
+	cBraquiterapia();
+	float DOSIS_X_TUMOR();
 };

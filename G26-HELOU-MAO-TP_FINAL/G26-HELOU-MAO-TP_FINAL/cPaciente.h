@@ -20,4 +20,9 @@ public:
 	bool operator==(cPaciente&pac);
 	~cPaciente();
 	cPaciente();
+	void operator=(cPaciente* pac);
+	void SET_TUMORES(list <cTumor*> tumores);
+	list <cTumor*> GET_TUMORES();
 };
+
+

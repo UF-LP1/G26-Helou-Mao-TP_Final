@@ -8,4 +8,6 @@ private:
 public:
 	cRadioterapia(float miDosisTotal, float miDosisxSesion, eHaz);
 	~cRadioterapia();
+	cRadioterapia();
+	float DOSIS_X_TUMOR();
 };

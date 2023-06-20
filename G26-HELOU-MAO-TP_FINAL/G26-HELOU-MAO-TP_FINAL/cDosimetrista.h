@@ -7,7 +7,7 @@ public:
 	static int cantDosimetrista;
 	cDosimetrista(string, string);
 	~cDosimetrista();
-	float calcularDosisTotal(cFicha*);
-	cTratamiento asignarTratamiento(cFicha*);
+	void calcularDosisTotal(cFicha*);
+	void asignarTratamiento(cFicha*);
 	void atenderPaciente(cFicha*);
 };

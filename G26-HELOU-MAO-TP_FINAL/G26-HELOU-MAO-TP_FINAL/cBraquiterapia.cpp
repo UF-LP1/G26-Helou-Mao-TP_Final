@@ -12,3 +12,10 @@ eAtomo cBraquiterapia::GET_ATOMO()
 {
 	return this->aAtomoRadioactivo;
 }
+cBraquiterapia::cBraquiterapia() :cTratamiento()
+{
+	this->aAtomoRadioactivo = yodoRadioactivo;
+}
+float cBraquiterapia::DOSIS_X_TUMOR() {
+	return 0.0;
+}

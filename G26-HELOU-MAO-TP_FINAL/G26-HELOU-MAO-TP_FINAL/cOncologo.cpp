@@ -42,14 +42,26 @@ void cOncologo::atenderPaciente(cFicha*)
 void cOncologo::diagnosticarTumores(cFicha* ficha)
 {
 	srand(time(NULL));
-	eTamanio auxTamanio;
-	eTipoCancer auxTipo;
-
-	int cantTumores = rand() % 10 + 1;
+	unsigned int cantTumores = rand() % 10 + 1;
+	unsigned int auxTamanio = 0;
+	unsigned int auxTipoCancer = 0;
+	unsigned int frecuencia = 0;
+	cPaciente* pac=ficha->GET_PAC();
+	list<cTumor*> tumoresAux;
+	cTumor *tumor=new cTumor(); 
 	for (int i = 0; i < cantTumores; i++)
 	{
-		int numero = rand() % 10 + 1;
+		auxTipoCancer = rand() % 11;
+		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
+		auxTamanio = rand() % 3;
+		tumor->SET_TAMANIO(eTamanio(auxTamanio));
+		frecuencia = rand() % 6;
+		tumor->SET_FRECUENCIA(frecuencia);
 
-	
+		tumoresAux.push_back(tumor);
 	}
+	pac->SET_TUMORES(tumoresAux);
+	delete tumor;
+	ficha->SET_PACIENTE(pac);
+	return;
 }

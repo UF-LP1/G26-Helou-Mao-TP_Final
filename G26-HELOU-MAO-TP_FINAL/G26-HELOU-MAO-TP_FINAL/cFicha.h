@@ -21,4 +21,6 @@ public:
 	cPaciente* GET_PAC();
 	int GET_ONC();
 	int GET_DOS();
+	void SET_PACIENTE(cPaciente* pac);
+	void SET_DOSIS_MAX(float dosisMax);
 };

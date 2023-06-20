@@ -8,15 +8,24 @@ class cTumor {
 private:
 	eTipoCancer aTipoCancer;
 	eTamanio aTamanio;
-	cTratamiento aTipoTratamiento;
+	cTratamiento *aTipoTratamiento;
 	float aRadAcum;
 	float aDosisMax;
 	float aDosisSemanal;
-	float aFrecuencia;
-	int aSesionesRealizadas;
+	unsigned int aFrecuencia;
+	unsigned int aSesionesRealizadas;
 public:
-	cTumor(eTipoCancer, eTamanio, cTratamiento, float, float, float, float);
+	cTumor(eTipoCancer, eTamanio, cTratamiento*, float, float, float, unsigned int);
+	cTumor();
 	~cTumor();
 	float calcularDosisSemanal();
-	cTratamiento GET_TRATAMIENTO();
+	cTratamiento* GET_TRATAMIENTO();
+	void SET_TRATAMIENTO(cTratamiento *tratamiento);
+	void SET_TIPO_CANCER(eTipoCancer auxTipoCancer);
+	void SET_TAMANIO(eTamanio tam);
+	void SET_FRECUENCIA(unsigned int frec);
+	void SET_RAD_ACUM(float radAcum);
+	void SET_SESIONES_REALIZADAS(unsigned int sesiones);
+	eTipoCancer SET_TIPO_CANCER();
+	eTipoCancer GET_TIPO_CANCER();
 };

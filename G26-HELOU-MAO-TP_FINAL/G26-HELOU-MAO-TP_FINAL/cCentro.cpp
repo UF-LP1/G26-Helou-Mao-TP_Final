@@ -73,7 +73,8 @@ cFicha* cCentro::buscarFicha(cPaciente* paciente)
 {
 	cFicha* retorno = new cFicha;
 	retorno=aFichas[paciente];//busco en mi lista de fichas a mi paciente
-	return retorno;
+	return aFichas[paciente];
+	delete retorno;
 }
 void cCentro::agregarFicha(cFicha* ficha)
 {
