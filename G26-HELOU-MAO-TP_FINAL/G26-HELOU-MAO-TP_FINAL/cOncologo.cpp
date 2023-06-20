@@ -1,6 +1,6 @@
 #include "cOncologo.h"
 
-int cOncologo::cantOncologos = 0;
+unsigned int cOncologo::cantOncologos = 0;
 cOncologo::cOncologo(string miNombre, string miApellido) 
 :cMedico(miNombre, miApellido) 
 {
@@ -22,17 +22,22 @@ void cOncologo::actualizarFicha(cFicha*)
 {
 
 }
-void cOncologo::asignarFrecSemanal(cFicha*) {
+//void cOncologo::asignarFrecSemanal(cFicha*) {
+//
+//} está hecho en diagnosticar tumores
+
+void cOncologo::asignarDosisXSesion(cFicha* ficha) {
 
 }
-void cOncologo::asignarDosisXSesion(cFicha*) {
-
+void cOncologo::darAlta(cFicha* ficha) {
+	if (ficha->GET_PAC()->GET_TUMORES().size() == 0)
+		ficha->SET_ALTA(true);
 }
-void cOncologo::darAlta(cFicha*) {
-
-}
-int cOncologo::asignarTiempoEspera(cFicha*) {
-	return 0;
+void cOncologo::asignarTiempoEspera(cFicha* ficha) {
+	srand(time(NULL));
+	unsigned int tiempoEspera = rand() % 4 + 1; //tiempo de espera es la cantidad de meses que va a tener que esperar para volver a irradiarse. Como minimo tendra que esperar un mes y como maximo 4
+	ficha->SET_TIEMPO_ESPERA(tiempoEspera);
+	ficha->SET_ESPERADO(true);
 }
 
 void cOncologo::atenderPaciente(cFicha*)

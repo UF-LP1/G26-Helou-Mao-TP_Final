@@ -16,7 +16,10 @@ cCentro::~cCentro()
 
 }
 void cCentro::contactar() {
-
+	for (cFicha* it : this->aFichas)
+	{
+		if(it->GET_PAC().GET)
+	}
 }
 void cCentro::atenderPaciente(cPaciente* paciente)
 {
@@ -39,9 +42,31 @@ list<cPaciente*> cCentro::buscar()
 	return list<cPaciente*>();
 }
 
+string cCentro::to_string()
+{
+	stringstream ss;
+	ss << this->aNombre << endl << this -> aDireccion << endl;
+	for (cFicha *it : this->aFichas)
+	{
+		ss << it << endl;
+	}
+	for (cMedico* it : this->aMedicos)
+	{
+		ss << it << endl;
+	}
+	return ss.str();
+}
+ostream& operator<<(ostream& out,cCentro& centro)
+{
+	if (&centro == nullptr)
+		throw new exception("No se encontro");
+	out << centro.to_string();;
+	return out;
+
+}
 void cCentro::imprimir()
 {
-
+	cout << this;
 }
 void cCentro::pasarFichaOncologo(cFicha* ficha)
 {
@@ -78,7 +103,7 @@ cFicha* cCentro::buscarFicha(cPaciente* paciente)
 }
 void cCentro::agregarFicha(cFicha* ficha)
 {
-	aFichas + ficha;//agrego mi nueva ficha con la sobrecarga de loista de fichas
+	aFichas + ficha;//agrego mi nueva ficha con la sobrecarga de lista de fichas
 	return;
 }
 cFicha* cCentro::crearFicha(cPaciente* paciente)

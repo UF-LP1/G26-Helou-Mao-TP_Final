@@ -4,6 +4,7 @@
 #include "cListaFichas.h"
 #include "cOncologo.h"
 #include "cDosimetrista.h"
+#include <sstream>
 
 class cCentro {
 private:
@@ -23,4 +24,6 @@ public:
 	cFicha* buscarFicha(cPaciente*);
 	void agregarFicha(cFicha*);
 	cFicha* crearFicha(cPaciente*);
+	friend ostream& operator<<(ostream& out, const cCentro& centro);
+	string to_string();
 };

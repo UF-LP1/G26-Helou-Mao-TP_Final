@@ -7,6 +7,7 @@ private:
 public:
 	cAsistencia(time_t, bool);
 	~cAsistencia();
+	cAsistencia();
 	time_t GET_TURNO();
 	bool GET_ASISTENCIA();
 
