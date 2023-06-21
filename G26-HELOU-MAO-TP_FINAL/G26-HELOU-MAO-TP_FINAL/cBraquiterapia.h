@@ -5,9 +5,10 @@ class cBraquiterapia : public cTratamiento{
 private:
 	eAtomo aAtomoRadioactivo;
 public:
-	cBraquiterapia(float, float, eAtomo);
+	cBraquiterapia( float, eAtomo);
 	~cBraquiterapia();
 	eAtomo GET_ATOMO();
 	cBraquiterapia();
-	float DOSIS_X_TUMOR();
+	void aumentar_dosis();
+	void DOSIS_X_TUMOR();
 };

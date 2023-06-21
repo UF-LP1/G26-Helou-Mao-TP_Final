@@ -6,8 +6,9 @@ private:
 	eHaz aTipoHaz;
 
 public:
-	cRadioterapia(float miDosisTotal, float miDosisxSesion, eHaz);
+	cRadioterapia( float miDosisxSesion, eHaz);
 	~cRadioterapia();
 	cRadioterapia();
-	float DOSIS_X_TUMOR();
+	void DOSIS_X_TUMOR();
+	void aumentar_dosis();
 };

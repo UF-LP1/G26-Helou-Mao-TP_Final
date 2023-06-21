@@ -1,6 +1,6 @@
 #include "cBraquiterapia.h"
-cBraquiterapia::cBraquiterapia(float miDosisTotal, float miDosisxSesion, eAtomo miAtomo)
-	:cTratamiento(miDosisTotal, miDosisxSesion)
+cBraquiterapia::cBraquiterapia( float miDosisxSesion, eAtomo miAtomo)
+	:cTratamiento( miDosisxSesion)
 {
 	this->aAtomoRadioactivo = miAtomo;
 }
@@ -16,6 +16,11 @@ cBraquiterapia::cBraquiterapia() :cTratamiento()
 {
 	this->aAtomoRadioactivo = yodoRadioactivo;
 }
-float cBraquiterapia::DOSIS_X_TUMOR() {
-	return 0.0;
+void cBraquiterapia::aumentar_dosis()
+{
+}
+void cBraquiterapia::DOSIS_X_TUMOR() {
+	srand(time(NULL));
+	float dosis = rand() % 3 + 6;
+	this->aDosisXSesion = dosis;
 }

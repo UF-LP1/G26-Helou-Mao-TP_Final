@@ -8,7 +8,7 @@ public:
 	~cOncologo();
 	void evaluarPac(cFicha*);
 	void reevaluarPaciente(cFicha*);
-	void actualizarFicha(cFicha*);
+
 	//void asignarFrecSemanal(cFicha*);
 	void asignarDosisXSesion(cFicha*);
 	void darAlta(cFicha*);

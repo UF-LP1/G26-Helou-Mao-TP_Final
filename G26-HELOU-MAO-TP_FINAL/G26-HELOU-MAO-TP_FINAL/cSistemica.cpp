@@ -1,7 +1,7 @@
 #include "cSistemica.h"
 
-cSistemica ::cSistemica(float miDosisTotal, float miDosisxSesion)
-	:cTratamiento(miDosisTotal,miDosisxSesion)
+cSistemica ::cSistemica( float miDosisxSesion)
+	:cTratamiento(miDosisxSesion)
 {
 
 }
@@ -13,6 +13,12 @@ cSistemica::cSistemica()
 	:cTratamiento()
 {
 }
-float cSistemica::DOSIS_X_TUMOR() {
-	return 0.0;
+void cSistemica::DOSIS_X_TUMOR() {
+	srand(time(NULL));
+	float dosis = rand() % 3 + 2;
+	this->aDosisXSesion = dosis;
+}
+
+void cSistemica::aumentar_dosis()
+{
 }

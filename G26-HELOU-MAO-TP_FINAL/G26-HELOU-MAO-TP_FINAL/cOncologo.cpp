@@ -46,17 +46,19 @@ void cOncologo::reevaluarPaciente(cFicha* ficha)
 	ficha->SET_RAD_ACUM(0);
 }
 
-void cOncologo::actualizarFicha(cFicha*)
-{
 
-}
 //void cOncologo::asignarFrecSemanal(cFicha*) {
 //
 //} está hecho en diagnosticar tumores
 
 void cOncologo::asignarDosisXSesion(cFicha* ficha) {
 
-
+	list<cTumor*>* auxTumores = ficha->GET_PAC()->GET_TUMORES();
+	for (cTumor* tumorcito : *auxTumores)
+	{
+		tumorcito->GET_TRATAMIENTO()->DOSIS_X_TUMOR();
+		tumorcito->SET_DOSISXSESION(tumorcito->GET_TRATAMIENTO()->GET_DOSISXSESION());
+	}
 
 }
 void cOncologo::darAlta(cFicha* ficha) {

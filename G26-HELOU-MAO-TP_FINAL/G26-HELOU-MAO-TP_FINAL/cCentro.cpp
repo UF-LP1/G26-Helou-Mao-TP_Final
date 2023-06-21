@@ -1,6 +1,6 @@
 #include "cCentro.h"
 #include "Header.h"
-cCentro::cCentro( string miNombre, string miDireccion, list <cMedico*> misMedicos)
+cCentro::cCentro(string miNombre, string miDireccion, list <cMedico*> misMedicos)
 {
 	this->aNombre = miNombre;
 	this->aDireccion = miDireccion;
@@ -9,7 +9,7 @@ cCentro::cCentro( string miNombre, string miDireccion, list <cMedico*> misMedico
 	{
 		aMedicos.push_back(*it);
 	}
-	
+
 }
 cCentro::~cCentro()
 {
@@ -18,7 +18,7 @@ cCentro::~cCentro()
 void cCentro::contactar() {
 	for (cFicha* it : this->aFichas)
 	{
-		int cont = 0;
+		
 		//if(it->GET_PAC().GET)
 	}
 }
@@ -36,6 +36,7 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 	}
 	else if (busqueda->GET_DOSIS_MAX() == busqueda->GET_RAD_ACUM())//el paciente termino el tratamiento
 	{
+		busqueda->SET_ALCANZO_MAX(true);
 		busqueda->SET_MOTIVO(finTratamiento);
 		pasarFichaOncologo(busqueda);
 	}
@@ -51,18 +52,21 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 	{
 		list<cTumor*>* auxTumores = paciente->GET_TUMORES();
 		int contSesiones = 0;
-		
-		for (cTumor* tumor : *auxTumores)
-		{ 
-			//antes de hacer esto habria que chequear en cada vuelta que la radiacion que tengo mas la nueva no se pase del maximo
-			 if (tumor->GET_FRECUENCIA() < tumor->GET_SESIONES_REALIZADAS()&&(tumor->GET_RAD_ACUM()+tumor->GET_DOSISXSESION())<tumor->GET_DOSIS_MAX()) //si a algun tumor le faltan sesiones, le agrego una
-			{//al final del if estoy chequeando que cuando vaya a hacer las sesion el tipo no se pase
 
-				tumor->SET_SESIONES_REALIZADAS(tumor->GET_SESIONES_REALIZADAS()+1);
-				float nuevaRad = busqueda->GET_RAD_ACUM() + tumor->GET_DOSISXSESION();
-				busqueda->SET_RAD_ACUM(nuevaRad);
-				contSesiones++;
-			 }
+		for (cTumor* tumor : *auxTumores)
+		{
+			if (busqueda->GET_DOSIS_MAX() > (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
+			{//antes de hacer esto habria que chequear en cada vuelta que la radiacion que tengo mas la nueva no se pase del maximo
+				if (tumor->GET_FRECUENCIA() < tumor->GET_SESIONES_REALIZADAS() && (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()) < tumor->GET_DOSIS_MAX()) //si a algun tumor le faltan sesiones, le agrego una
+				{//al final del if estoy chequeando que cuando vaya a hacer las sesion el tipo no se pase
+
+					tumor->SET_SESIONES_REALIZADAS(tumor->GET_SESIONES_REALIZADAS() + 1);
+					float nuevaRad = busqueda->GET_RAD_ACUM() + tumor->GET_DOSISXSESION();
+					busqueda->SET_RAD_ACUM(nuevaRad);
+					contSesiones++;
+				}
+			}
+			
 		}
 		//a este if tambien va a entrar si no llego al maximo pero no le puedon hacer otra sesion porque se pasaria del max
 		if (contSesiones == 0)//si no tuve que agregar ninguna sesion, hago que el oncologo atienda al paciente

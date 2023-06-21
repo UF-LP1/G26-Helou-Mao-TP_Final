@@ -118,3 +118,8 @@ void cFicha::SET_RAD_ACUM(float radiacion)
 {
 	this->aRadiacionAcum = radiacion;
 }
+
+void cFicha::SET_ALCANZO_MAX(bool nuevo)
+{
+	this->aAlcanzoMax = nuevo;
+}

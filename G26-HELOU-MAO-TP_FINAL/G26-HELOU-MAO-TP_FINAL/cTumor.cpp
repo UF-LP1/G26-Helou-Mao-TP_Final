@@ -98,6 +98,11 @@ float cTumor::GET_DOSISXSESION()
 	return this->aDosisXSesion;
 }
 
+void cTumor::SET_DOSISXSESION(float dosis)
+{
+	this->aDosisXSesion = dosis;
+}
+
 eTamanio cTumor::GET_TAMANIO()
 {
 	return this->aTamanio;

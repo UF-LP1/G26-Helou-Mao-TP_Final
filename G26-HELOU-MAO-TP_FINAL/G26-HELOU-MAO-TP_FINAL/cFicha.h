@@ -40,6 +40,6 @@ public:
 	void SET_MOTIVO(eMotivo);
 	float GET_RAD_ACUM();
 	void SET_RAD_ACUM(float);
-
+	void SET_ALCANZO_MAX(bool);
 };
 

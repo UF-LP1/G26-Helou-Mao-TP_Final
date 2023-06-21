@@ -3,12 +3,13 @@
 class cTratamiento {
 protected:
 	float aDosisXSesion;
-	float aDosisTotal;
+
 public:
-	cTratamiento(float, float);
+	cTratamiento(float);
 	cTratamiento(cTratamiento&);
 	~cTratamiento();
 	cTratamiento();
-	virtual float DOSIS_X_TUMOR() = 0;
-
+	float GET_DOSISXSESION();
+	virtual void DOSIS_X_TUMOR() = 0;
+	virtual void aumentar_dosis() = 0;
 };

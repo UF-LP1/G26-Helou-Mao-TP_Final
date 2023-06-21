@@ -36,5 +36,6 @@ public:
 	float GET_DOSIS_MAX();
 	void SET_DOSIS_MAX(float);
 	float GET_DOSISXSESION();
+	void SET_DOSISXSESION(float);
 	eTamanio GET_TAMANIO();
 };

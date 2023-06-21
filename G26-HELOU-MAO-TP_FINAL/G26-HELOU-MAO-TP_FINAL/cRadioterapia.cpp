@@ -1,7 +1,7 @@
 #include "cRadioterapia.h"
 
-cRadioterapia:: cRadioterapia(float miDosisTotal, float miDosisxSesion, eHaz miHaz)
-	:cTratamiento(miDosisTotal, miDosisxSesion)
+cRadioterapia:: cRadioterapia( float miDosisxSesion, eHaz miHaz)
+	:cTratamiento( miDosisxSesion)
 {
 	this->aTipoHaz = miHaz;
 }
@@ -14,6 +14,12 @@ cRadioterapia::cRadioterapia() :
 {
 	this->aTipoHaz = fotones;
 }
-float cRadioterapia::DOSIS_X_TUMOR() {
-	return 0.0;
+void cRadioterapia::DOSIS_X_TUMOR() {
+	srand(time(NULL));
+	float dosis = rand() % 2 + 1;
+	this->aDosisXSesion = dosis;
+}
+
+void cRadioterapia::aumentar_dosis()
+{
 }
