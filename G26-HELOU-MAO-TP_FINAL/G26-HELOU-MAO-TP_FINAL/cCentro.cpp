@@ -11,6 +11,11 @@ cCentro::cCentro(string miNombre, string miDireccion, list <cMedico*> misMedicos
 	}
 
 }
+cCentro::cCentro(string miNombre, string miDireccion)
+{
+	this->aNombre = miNombre;
+	this->aDireccion = miDireccion;
+}
 cCentro::~cCentro()
 {
 
@@ -25,7 +30,7 @@ void cCentro::contactar() {
 void cCentro::atenderPaciente(cPaciente* paciente)
 {
 	srand(time(NULL));
-	cFicha* busqueda = new cFicha;//creo variable para guardar
+	cFicha* busqueda;//creo variable para guardar
 	busqueda = buscarFicha(paciente);//busco paciente en mi lista de fichas
 	if (busqueda == nullptr)//el paciente aun no tiene ficha
 	{
@@ -52,12 +57,14 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 	{
 		list<cTumor*>* auxTumores = paciente->GET_TUMORES();
 		int contSesiones = 0;
-
+		int contTratamiento = 0;//si este cont aumenta significa que al tumor no le pde realizar sesiones pq me pasaria de radiacion max
+		//si cont tratamiento es igual a mi cantidad de tumores, significa que temine el tratamiento
 		for (cTumor* tumor : *auxTumores)
 		{
-			if (busqueda->GET_DOSIS_MAX() > (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
-			{//antes de hacer esto habria que chequear en cada vuelta que la radiacion que tengo mas la nueva no se pase del maximo
-				if (tumor->GET_FRECUENCIA() < tumor->GET_SESIONES_REALIZADAS() && (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()) < tumor->GET_DOSIS_MAX()) //si a algun tumor le faltan sesiones, le agrego una
+			if (busqueda->GET_DOSIS_MAX() > (busqueda->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
+			{
+				if (tumor->GET_FRECUENCIA() < tumor->GET_SESIONES_REALIZADAS() && (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()) < tumor->GET_DOSIS_MAX()) 
+				//si a algun tumor le faltan sesiones, le agrego una
 				{//al final del if estoy chequeando que cuando vaya a hacer las sesion el tipo no se pase
 
 					tumor->SET_SESIONES_REALIZADAS(tumor->GET_SESIONES_REALIZADAS() + 1);
@@ -66,13 +73,24 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 					contSesiones++;
 				}
 			}
+			else
+				contTratamiento++;//va a aumentar cada vez que no haya podido hacer una sesion para no pasarme de la rad max
 			
 		}
+
 		//a este if tambien va a entrar si no llego al maximo pero no le puedon hacer otra sesion porque se pasaria del max
 		if (contSesiones == 0)//si no tuve que agregar ninguna sesion, hago que el oncologo atienda al paciente
 		{
-			busqueda->SET_MOTIVO(evaluacion);
-			pasarFichaOncologo(busqueda);
+			if (contTratamiento < auxTumores->size())
+			{
+				busqueda->SET_MOTIVO(evaluacion);
+				pasarFichaOncologo(busqueda);
+			}
+			else
+			{
+				busqueda->SET_MOTIVO(finTratamiento);
+				pasarFichaOncologo(busqueda);
+			}
 		}
 
 	}
@@ -99,6 +117,10 @@ string cCentro::to_string()
 		ss << it << endl;
 	}
 	return ss.str();
+}
+void cCentro::operator+(cMedico* medico)
+{
+	aMedicos.push_back(medico);
 }
 ostream& operator<<(ostream& out,cCentro& centro)
 {
@@ -140,7 +162,7 @@ void cCentro::pasarFichaDosimetrista(cFicha* ficha)
 }
 cFicha* cCentro::buscarFicha(cPaciente* paciente)
 {
-	cFicha* retorno = new cFicha;
+	cFicha* retorno;
 	retorno=aFichas[paciente];//busco en mi lista de fichas a mi paciente
 	return aFichas[paciente];
 	delete retorno;

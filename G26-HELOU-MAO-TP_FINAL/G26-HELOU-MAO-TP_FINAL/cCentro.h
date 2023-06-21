@@ -14,6 +14,7 @@ private:
 	list <cMedico*> aMedicos;
 public:
 	cCentro( string aNombre, string aDireccion, list <cMedico*> aMedicos);
+	cCentro(string miNombre, string miDireccion);
 	~cCentro();
 	void contactar();
 	void atenderPaciente(cPaciente*);
@@ -26,4 +27,5 @@ public:
 	cFicha* crearFicha(cPaciente*);
 	friend ostream& operator<<(ostream& out, const cCentro& centro);
 	string to_string();
+	void operator+(cMedico* medico);
 };

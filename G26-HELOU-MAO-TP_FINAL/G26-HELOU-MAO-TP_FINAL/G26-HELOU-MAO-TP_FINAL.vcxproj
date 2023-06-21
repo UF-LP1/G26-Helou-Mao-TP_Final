@@ -33,6 +33,7 @@
     <ClCompile Include="cAsistencia.cpp" />
     <ClCompile Include="cBraquiterapia.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="funciones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cFicha.h" />
@@ -53,6 +54,7 @@
     <ClInclude Include="eHaz.h" />
     <ClInclude Include="eAtomo.h" />
     <ClInclude Include="eTamanio.h" />
+    <ClInclude Include="funciones.h" />
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -15,31 +15,32 @@ void cOncologo::evaluarPac(cFicha* ficha)
 {
 	list<cTumor*>* auxTumores = ficha->GET_PAC()->GET_TUMORES();
 	srand(time(NULL));
-	int Alta = rand() % 10;
-	if (Alta <3)
+	int Alta = rand() % 10; //por random defino que se le fueron los tumores al paciente o no
+	for (cTumor* tumor : *auxTumores)
 	{
-		for (cTumor* tumor : *auxTumores)
+		tumor->SET_SESIONES_REALIZADAS(0);
+		if (Alta < 3)
 		{
 			tumor->SET_TAMANIO(noEsta);
 		}
-		darAlta(ficha);
-	}
-	else {
-	
-		int tumorCambiar = rand() % (auxTumores->size());
-		int tamanioNuevo = rand() % 4;
-		int contVueltas = 0;
-
-		for (cTumor* tumor : *auxTumores)
+		else 
 		{
-			//aca se va a modificar los tumores
+
+			int tumorCambiar = rand() % (auxTumores->size());
+			int tamanioNuevo = rand() % 4;
+			int contVueltas = 0;
+				//aca se va a modificar los tumores
 			if (contVueltas == tumorCambiar)
 			{
 				tumor->SET_TAMANIO(eTamanio(tamanioNuevo));
-			}
-
+			}	
 		}
 	}
+	if (Alta <3)
+	{
+		darAlta(ficha);
+	}
+	
 }
 void cOncologo::reevaluarPaciente(cFicha* ficha)
 {
@@ -122,9 +123,11 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	{
 		auxTipoCancer = rand() % 11;
 		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
-		auxTamanio = rand() % 3+1;
+
+		auxTamanio = rand() % 3;
 		tumor->SET_TAMANIO(eTamanio(auxTamanio));
-		frecuencia = rand() % 6;
+
+		frecuencia = rand() % 6+1;
 		tumor->SET_FRECUENCIA(frecuencia);
 
 		tumoresAux.push_back(tumor);

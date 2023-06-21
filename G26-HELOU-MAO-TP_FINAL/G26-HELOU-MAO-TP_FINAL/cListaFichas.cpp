@@ -1,7 +1,7 @@
 #include "cListaFichas.h"
 cFicha* cListaFichas::operator[](cPaciente* pac)
 {
-	cFicha* retorno = new cFicha;
+	cFicha* retorno = nullptr;
 	for (cFicha *ficha : *this)
 	{
 		if (ficha->GET_PAC() == pac)
@@ -10,7 +10,7 @@ cFicha* cListaFichas::operator[](cPaciente* pac)
 		}
 	}
 	return retorno;
-	delete retorno;
+
 
 }
 cFicha* cListaFichas::operator[](unsigned int pos)
