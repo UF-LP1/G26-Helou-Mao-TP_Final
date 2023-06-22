@@ -12,13 +12,13 @@ private:
 	float aDosisMax;
 	float aDosisXSesion;
 	bool aAlcanzoMax;
-	cPaciente aPaciente;
+	cPaciente* aPaciente;
 	unsigned int aTiempoEspera;
 	cAsistencia aAsistencia;
 	eMotivo aMotivo;
 public:
-	cFicha(bool, bool, float, int, int ,float, float, bool, cPaciente, cAsistencia, eMotivo motivo=diagnostico);
-	cFicha(cPaciente paciente, int oncologo, int dosimetrista, eMotivo motivo = diagnostico);
+	cFicha(bool, bool, float, int, int ,float, float, bool, cPaciente*, cAsistencia, eMotivo motivo=diagnostico);
+	cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo motivo = diagnostico);
 	cFicha(eMotivo motivo = diagnostico);
 	~cFicha();
 	friend class cMedico;

@@ -30,7 +30,7 @@ void cCentro::contactar() {
 void cCentro::atenderPaciente(cPaciente* paciente)
 {
 	srand(time(NULL));
-	cFicha* busqueda;//creo variable para guardar
+	cFicha* busqueda=new cFicha;//creo variable para guardar
 	busqueda = buscarFicha(paciente);//busco paciente en mi lista de fichas
 	if (busqueda == nullptr)//el paciente aun no tiene ficha
 	{
@@ -55,11 +55,11 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 	}
 	else //chequeo si a algun tumor le faltan sesiones
 	{
-		list<cTumor*>* auxTumores = paciente->GET_TUMORES();
+		list<cTumor*> auxTumores = paciente->GET_TUMORES();
 		int contSesiones = 0;
 		int contTratamiento = 0;//si este cont aumenta significa que al tumor no le pde realizar sesiones pq me pasaria de radiacion max
 		//si cont tratamiento es igual a mi cantidad de tumores, significa que temine el tratamiento
-		for (cTumor* tumor : *auxTumores)
+		for (cTumor* tumor : auxTumores)
 		{
 			if (busqueda->GET_DOSIS_MAX() > (busqueda->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
 			{
@@ -81,7 +81,7 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		//a este if tambien va a entrar si no llego al maximo pero no le puedon hacer otra sesion porque se pasaria del max
 		if (contSesiones == 0)//si no tuve que agregar ninguna sesion, hago que el oncologo atienda al paciente
 		{
-			if (contTratamiento < auxTumores->size())
+			if (contTratamiento < auxTumores.size())
 			{
 				busqueda->SET_MOTIVO(evaluacion);
 				pasarFichaOncologo(busqueda);
@@ -140,7 +140,7 @@ void cCentro::pasarFichaOncologo(cFicha* ficha)
 	for (cMedico* med : this->aMedicos)
 	{
 		cOncologo* oncologo = dynamic_cast<cOncologo*>(med);//busco en mi lista de medicos a los oncologos
-		if (med != nullptr && med->GET_ID() == ficha->GET_ONC())
+		if (oncologo != nullptr && oncologo->GET_ID_ONC() == ficha->GET_ONC())
 		{
 			med->atenderPaciente(ficha);//el paciente lo va a antender su oncologo
 		}
@@ -153,7 +153,7 @@ void cCentro::pasarFichaDosimetrista(cFicha* ficha)
 	for (cMedico* med : this->aMedicos)
 	{
 		cDosimetrista* dosimetrista = dynamic_cast<cDosimetrista*>(med);//busco en mi lista de medicos al dosimetrista
-		if (med != nullptr && med->GET_ID() == ficha->GET_DOS())
+		if (dosimetrista != nullptr && dosimetrista->GET_ID_DOS() == ficha->GET_DOS())
 		{
 			med->atenderPaciente(ficha);//el paciente lo va a atender su dosimetrista
 		}
@@ -164,8 +164,8 @@ cFicha* cCentro::buscarFicha(cPaciente* paciente)
 {
 	cFicha* retorno;
 	retorno=aFichas[paciente];//busco en mi lista de fichas a mi paciente
-	return aFichas[paciente];
-	delete retorno;
+	return retorno;
+
 }
 void cCentro::agregarFicha(cFicha* ficha)
 {
@@ -180,7 +180,7 @@ cFicha* cCentro::crearFicha(cPaciente* paciente)
 	int totalDosimetristas = cDosimetrista::cantDosimetrista;
 	int numDosimetrista = rand() % totalDosimetristas + 1;
 	int numOncologo = rand() % totalOncologos + 1;
-	cFicha* nuevaFicha = new cFicha(*paciente, numOncologo, numDosimetrista);//con randoms le asigne un oncologo y un dosimetrista
+	cFicha* nuevaFicha = new cFicha(paciente, numOncologo, numDosimetrista);//con randoms le asigne un oncologo y un dosimetrista
 	agregarFicha(nuevaFicha);//agrego la ficha a mi lista
 	return nuevaFicha;
 }

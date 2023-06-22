@@ -52,12 +52,12 @@ void cPaciente::operator=(cPaciente* pac)
 	return;
 }
 
-void cPaciente::SET_TUMORES(list <cTumor*> tumores)
+void cPaciente::SET_TUMORES(cListaTumores tumores)
 {
 	this->aTumores = tumores;
 }
 
-list <cTumor*> *cPaciente::GET_TUMORES()
+cListaTumores cPaciente::GET_TUMORES()
 {
-	return &aTumores;
+	return aTumores;
 }

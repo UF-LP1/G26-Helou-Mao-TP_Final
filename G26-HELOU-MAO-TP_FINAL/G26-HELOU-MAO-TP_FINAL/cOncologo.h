@@ -8,7 +8,7 @@ public:
 	~cOncologo();
 	void evaluarPac(cFicha*);
 	void reevaluarPaciente(cFicha*);
-
+	int GET_ID_ONC();
 	//void asignarFrecSemanal(cFicha*);
 	void asignarDosisXSesion(cFicha*);
 	void darAlta(cFicha*);

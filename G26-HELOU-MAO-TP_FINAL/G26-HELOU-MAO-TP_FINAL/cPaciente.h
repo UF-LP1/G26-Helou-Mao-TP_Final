@@ -1,12 +1,13 @@
 #pragma once
 
 
-#include "cTumor.h"
+
 #include "eMotivo.h"
+#include "cListaTumores.h"
 using namespace std;
 class cPaciente {
 private:
-	list <cTumor*> aTumores;
+	cListaTumores aTumores;
 	string aNombre;
 	string aApellido;
 	string aDNI;
@@ -21,8 +22,8 @@ public:
 	~cPaciente();
 	cPaciente();
 	void operator=(cPaciente* pac);
-	void SET_TUMORES(list <cTumor*> tumores);
-	list <cTumor*> *GET_TUMORES();
+	void SET_TUMORES(cListaTumores tumores);
+	cListaTumores GET_TUMORES();
 };
 
 

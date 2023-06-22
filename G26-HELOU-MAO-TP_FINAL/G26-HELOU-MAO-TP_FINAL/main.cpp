@@ -12,7 +12,7 @@ int main()
 	ptrMed = &dos;
 	miCentro + ptrMed;
 
-	cPaciente pac("Saul", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0);
-	miCentro.atenderPaciente(&pac);
+	cPaciente* pac=new cPaciente("Saul", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0);
+	miCentro.atenderPaciente(pac);
 	return 0;
 }

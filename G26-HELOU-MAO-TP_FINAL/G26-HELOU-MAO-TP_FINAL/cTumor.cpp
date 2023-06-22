@@ -36,7 +36,7 @@ cTumor::cTumor()
 	this->aTipoCancer = cabezayCuello;
 
 }
-void cTumor::SET_TRATAMIENTO(cTratamiento* tratamiento)
+void cTumor::SET_TRATAMIENTO(cTratamiento *tratamiento)
 {
 	this->aTipoTratamiento = tratamiento;
 }
