@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cPaciente.h"
+#include "cListaPacientes.h"
 #include "cAsistencia.h"
 class cFicha {
 private:
@@ -12,7 +12,7 @@ private:
 	float aDosisMax;
 	float aDosisXSesion;
 	bool aAlcanzoMax;
-	cPaciente* aPaciente;
+	cPaciente aPaciente;
 	unsigned int aTiempoEspera;
 	cAsistencia aAsistencia;
 	eMotivo aMotivo;

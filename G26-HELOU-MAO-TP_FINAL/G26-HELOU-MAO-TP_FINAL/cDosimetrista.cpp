@@ -55,24 +55,24 @@ void cDosimetrista::asignarTratamiento(cFicha* ficha)
 		{
 			
 			 trata = new cBraquiterapia;
-			(tumor)->SET_TRATAMIENTO(trata);
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(trata);
 		}
 		else if ((tumor)->GET_TIPO_CANCER() == tiroides || (tumor)->GET_TIPO_CANCER() == prostatanariz)
 		{
 			
 			 trata = new cSistemica;
-			(tumor)->SET_TRATAMIENTO(trata);
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(trata);
 		}
 		else
 		{
 			
 			 trata = new cRadioterapia;
-			(tumor)->SET_TRATAMIENTO(trata);
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(trata);
 		}
-		(tumores)+tumor;
+		//(tumores)+tumor;
 			//borro it viejo
 	}	
-	ficha->GET_PAC()->SET_TUMORES(tumores);	//le paso al paciente el listado de tumores con el trtamiento setteado
+	//pac->SET_TUMORES(tumores);	//le paso al paciente el listado de tumores con el tratamiento setteado
 	//ficha->SET_PACIENTE(pac);	//le paso a la ficha el paciente modificado
 	return;
 }

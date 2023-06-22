@@ -129,6 +129,7 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	tumor = &auxtumor;
 	for (int i = 0; i < cantTumores; i++)
 	{
+		srand(time(NULL));
 		auxTipoCancer = rand() % 11;
 		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
 

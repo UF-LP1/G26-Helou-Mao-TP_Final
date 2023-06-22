@@ -22,6 +22,7 @@
     <ClCompile Include="cFicha.cpp" />
     <ClCompile Include="cCentro.cpp" />
     <ClCompile Include="cListaFichas.cpp" />
+    <ClCompile Include="cListaPacientes.cpp" />
     <ClCompile Include="cListaTumores.cpp" />
     <ClCompile Include="cMedico.cpp" />
     <ClCompile Include="cOncologo.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="cFicha.h" />
     <ClInclude Include="cCentro.h" />
     <ClInclude Include="cListaFichas.h" />
+    <ClInclude Include="cListaPacientes.h" />
     <ClInclude Include="cListaTumores.h" />
     <ClInclude Include="cMedico.h" />
     <ClInclude Include="cOncologo.h" />
@@ -58,6 +60,7 @@
     <ClInclude Include="eTamanio.h" />
     <ClInclude Include="funciones.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="eTratamiento.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

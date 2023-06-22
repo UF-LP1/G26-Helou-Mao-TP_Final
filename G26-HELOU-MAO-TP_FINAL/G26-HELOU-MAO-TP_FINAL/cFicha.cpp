@@ -50,7 +50,7 @@ int cFicha::GET_DOS()
 }
 cPaciente* cFicha::GET_PAC()
 {
-	return  this->aPaciente;
+	return  &aPaciente;
 }
 
 void cFicha::SET_PACIENTE(cPaciente* pac)

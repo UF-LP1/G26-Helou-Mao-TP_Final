@@ -122,6 +122,30 @@ void cCentro::operator+(cMedico* medico)
 {
 	aMedicos.push_back(medico);
 }
+cListaPacientes cCentro::buscar_cincoporciento_terminar(eTipoCancer cancer)
+{
+	cListaPacientes auxLista;
+	float cincoPorciento = 0.0;
+
+	for (cFicha* ficha : this->aFichas)
+	{
+		cincoPorciento = ficha->GET_DOSIS_MAX() * 5 / 100;
+		if ((ficha->GET_DOSIS_MAX()) - cincoPorciento < ficha->GET_RAD_ACUM())
+		{
+			//no entiendo mucho como piden esta funcion
+		}
+
+	}
+	return auxLista;
+}
+void cCentro::imprimirPacientes()
+{
+	//hay que imprimir el nombre de oncologo o alguno de sus datos y el tipo de terapia
+	for (cFicha* ficha : this->aFichas)
+	{
+		cout << ficha;
+	}
+}
 ostream& operator<<(ostream& out,cCentro& centro)
 {
 	if (&centro == nullptr)
@@ -166,6 +190,35 @@ cFicha* cCentro::buscarFicha(cPaciente* paciente)
 	retorno=aFichas[paciente];//busco en mi lista de fichas a mi paciente
 	return retorno;
 
+}
+cListaPacientes cCentro::buscarTerapiaTumor(eTipoCancer cancer, eTratamiento trat)
+{
+	cTratamiento* tratamiento=nullptr;
+	cListaPacientes auxLista;
+	for (cFicha* ficha : this->aFichas)
+	{
+		for (int i = 0; i < ficha->GET_PAC()->GET_TUMORES().size(); i++)
+		{ 
+			if (trat == braquiterapia)
+			{
+				cBraquiterapia* terap = dynamic_cast<cBraquiterapia*>(ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO());
+				tratamiento = terap;
+			}
+			else if (trat == sistemica)
+			{
+				cSistemica* terap = dynamic_cast<cSistemica*>(ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO());
+				tratamiento = terap;
+			}
+			else
+				cRadioterapia* terap = dynamic_cast<cRadioterapia*>(ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO());
+			
+			if (ficha->GET_PAC()->GET_TUMORES()[i]->GET_TIPO_CANCER() == cancer && tratamiento != nullptr)
+			{
+				auxLista.push_back(ficha->GET_PAC());
+			}
+		}
+	}
+	return auxLista;
 }
 void cCentro::agregarFicha(cFicha* ficha)
 {

@@ -24,6 +24,7 @@ public:
 	void operator=(cPaciente* pac);
 	void SET_TUMORES(cListaTumores tumores);
 	cListaTumores GET_TUMORES();
+	friend ostream& operator<<(ostream& out, cPaciente&pac);
 };
 
 

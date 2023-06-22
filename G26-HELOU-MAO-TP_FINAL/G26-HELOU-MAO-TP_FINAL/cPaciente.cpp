@@ -61,3 +61,13 @@ cListaTumores cPaciente::GET_TUMORES()
 {
 	return aTumores;
 }
+
+ostream& operator<<(ostream& out, cPaciente& pac)
+{
+	out << "Nombre: " << pac.aNombre << endl << "Apellido: " << pac.aApellido << endl;
+	for (int i=0; i < pac.aTumores.size(); i++)
+	{
+		out << "Zona cancer: " << pac.aTumores[i]->GET_TIPO_CANCER() << endl;
+	}
+	return out;
+}

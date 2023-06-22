@@ -6,5 +6,6 @@
 #include <fstream>
 #include <ctime>
 #include <exception>
-
+#include <random>
+#include "eTratamiento.h"
 using namespace std;
