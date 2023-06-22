@@ -29,47 +29,47 @@ void cCentro::contactar() {
 }
 void cCentro::atenderPaciente(cPaciente* paciente)
 {
-	srand(time(NULL));
-	cFicha* busqueda=new cFicha;//creo variable para guardar
-	busqueda = buscarFicha(paciente);//busco paciente en mi lista de fichas
-	if (busqueda == nullptr)//el paciente aun no tiene ficha
+
+	cFicha* ficha=new cFicha;//creo variable para guardar
+	ficha = buscarFicha(paciente);//busco paciente en mi lista de fichas
+	if (ficha == nullptr)//el paciente aun no tiene ficha
 	{
-		busqueda = crearFicha(paciente);//creo una ficha para el paciente
-		pasarFichaOncologo(busqueda);
-		pasarFichaDosimetrista(busqueda);
-		pasarFichaOncologo(busqueda);
+		ficha = crearFicha(paciente);//creo una ficha para el paciente
+		pasarFichaOncologo(ficha);
+		pasarFichaDosimetrista(ficha);
+		pasarFichaOncologo(ficha);
 	}
-	else if (busqueda->GET_DOSIS_MAX() == busqueda->GET_RAD_ACUM())//el paciente termino el tratamiento
+	else if (ficha->GET_DOSIS_MAX() == ficha->GET_RAD_ACUM())//el paciente termino el tratamiento
 	{
-		busqueda->SET_ALCANZO_MAX(true);
-		busqueda->SET_MOTIVO(finTratamiento);
-		pasarFichaOncologo(busqueda);
+		ficha->SET_ALCANZO_MAX(true);
+		ficha->SET_MOTIVO(finTratamiento);
+		pasarFichaOncologo(ficha);
 	}
-	else if (busqueda->GET_ESPERADO() == true)	//podriamos chequear si esta dado de alta que se haga una reevaluacion
+	else if (ficha->GET_ESPERADO() == true)	//podriamos chequear si esta dado de alta que se haga una reevaluacion
 	{
 		//habria que chequear que termino su tiempo de espera
-		busqueda->SET_MOTIVO(reevaluacion);
-		pasarFichaOncologo(busqueda);
-		pasarFichaDosimetrista(busqueda);
-		pasarFichaOncologo(busqueda);
+		ficha->SET_MOTIVO(reevaluacion);	//de rediagnostica y te evalua
+		pasarFichaOncologo(ficha);
+		pasarFichaDosimetrista(ficha);
+		pasarFichaOncologo(ficha);
 	}
 	else //chequeo si a algun tumor le faltan sesiones
 	{
-		list<cTumor*> auxTumores = paciente->GET_TUMORES();
+		cListaTumores auxTumores = paciente->GET_TUMORES();
 		int contSesiones = 0;
 		int contTratamiento = 0;//si este cont aumenta significa que al tumor no le pde realizar sesiones pq me pasaria de radiacion max
 		//si cont tratamiento es igual a mi cantidad de tumores, significa que temine el tratamiento
 		for (cTumor* tumor : auxTumores)
 		{
-			if (busqueda->GET_DOSIS_MAX() > (busqueda->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
+			if (ficha->GET_DOSIS_MAX() > (ficha->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
 			{
-				if (tumor->GET_FRECUENCIA() < tumor->GET_SESIONES_REALIZADAS() && (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()) < tumor->GET_DOSIS_MAX()) 
+				if (tumor->GET_FRECUENCIA() > tumor->GET_SESIONES_REALIZADAS() && (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()) < tumor->GET_DOSIS_MAX()) 
 				//si a algun tumor le faltan sesiones, le agrego una
 				{//al final del if estoy chequeando que cuando vaya a hacer las sesion el tipo no se pase
 
 					tumor->SET_SESIONES_REALIZADAS(tumor->GET_SESIONES_REALIZADAS() + 1);
-					float nuevaRad = busqueda->GET_RAD_ACUM() + tumor->GET_DOSISXSESION();
-					busqueda->SET_RAD_ACUM(nuevaRad);
+					float nuevaRad = ficha->GET_RAD_ACUM() + tumor->GET_DOSISXSESION();
+					ficha->SET_RAD_ACUM(nuevaRad);
 					contSesiones++;
 				}
 			}
@@ -83,13 +83,13 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		{
 			if (contTratamiento < auxTumores.size())
 			{
-				busqueda->SET_MOTIVO(evaluacion);
-				pasarFichaOncologo(busqueda);
+				ficha->SET_MOTIVO(evaluacion);
+				pasarFichaOncologo(ficha);
 			}
 			else
 			{
-				busqueda->SET_MOTIVO(finTratamiento);
-				pasarFichaOncologo(busqueda);
+				ficha->SET_MOTIVO(finTratamiento);
+				pasarFichaOncologo(ficha);
 			}
 		}
 
@@ -161,12 +161,12 @@ void cCentro::imprimir()
 void cCentro::pasarFichaOncologo(cFicha* ficha)
 {
 
-	for (cMedico* med : this->aMedicos)
+	for (cMedico* med : this->aMedicos)	//recorro el listado de medicos que tiene el centro
 	{
 		cOncologo* oncologo = dynamic_cast<cOncologo*>(med);//busco en mi lista de medicos a los oncologos
 		if (oncologo != nullptr && oncologo->GET_ID_ONC() == ficha->GET_ONC())
 		{
-			med->atenderPaciente(ficha);//el paciente lo va a antender su oncologo
+			oncologo->atenderPaciente(ficha);//el paciente lo va a antender su oncologo
 		}
 	}
 	return ;
@@ -179,7 +179,7 @@ void cCentro::pasarFichaDosimetrista(cFicha* ficha)
 		cDosimetrista* dosimetrista = dynamic_cast<cDosimetrista*>(med);//busco en mi lista de medicos al dosimetrista
 		if (dosimetrista != nullptr && dosimetrista->GET_ID_DOS() == ficha->GET_DOS())
 		{
-			med->atenderPaciente(ficha);//el paciente lo va a atender su dosimetrista
+			dosimetrista->atenderPaciente(ficha);//el paciente lo va a atender su dosimetrista
 		}
 	}
 	return;
@@ -227,10 +227,9 @@ void cCentro::agregarFicha(cFicha* ficha)
 }
 cFicha* cCentro::crearFicha(cPaciente* paciente)
 {
-	srand(time(NULL));
 	
-	int totalOncologos = cOncologo::cantOncologos;
-	int totalDosimetristas = cDosimetrista::cantDosimetrista;
+	int totalOncologos = cOncologo::cantOncologos;	//guardo la cantidad de oncologos que hay en el cntro
+	int totalDosimetristas = cDosimetrista::cantDosimetrista;	//guardo la cantidad de dosimetristas que hay en el centro
 	int numDosimetrista = rand() % totalDosimetristas + 1;
 	int numOncologo = rand() % totalOncologos + 1;
 	cFicha* nuevaFicha = new cFicha(paciente, numOncologo, numDosimetrista);//con randoms le asigne un oncologo y un dosimetrista

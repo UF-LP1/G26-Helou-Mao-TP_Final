@@ -20,6 +20,8 @@ public:
 	cTumor(eTipoCancer, eTamanio, cTratamiento*, float, float, float, unsigned int);
 	cTumor();
 	~cTumor();
+	friend class cOncologo;
+	friend class cDosimetrista;
 	float calcularDosisSemanal();
 	cTratamiento* GET_TRATAMIENTO();
 	void SET_TRATAMIENTO(cTratamiento *tratamiento);

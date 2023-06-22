@@ -15,23 +15,29 @@ int cDosimetrista::GET_ID_DOS()
 	return this->numDosimetrista;
 }
 
-void cDosimetrista::calcularDosisTotal(cFicha* ficha)	//pedir ayuda valen
+void cDosimetrista::calcularDosisTotal(cFicha* ficha)	
 {
 	cPaciente* pac = ficha->GET_PAC();
 	cTumor* tumorcito;
+	cListaTumores lista= ficha->GET_PAC()->GET_TUMORES();
 	cTratamiento *terapia = nullptr;
 	bool dosisMin = false;
+	cSistemica* sist = new cSistemica;
+	cBraquiterapia* braqui = new cBraquiterapia;
+	cRadioterapia* radio = new cRadioterapia;
+	cTratamiento* trata= nullptr;
 	for (int i=0; i<pac->GET_TUMORES().size(); i++)
 	{
-		tumorcito = pac->GET_TUMORES()[i];
-		terapia = tumorcito->GET_TRATAMIENTO();
-		if (dynamic_cast<cRadioterapia*>(terapia) != nullptr || dynamic_cast<cSistemica*>(terapia) != nullptr)
+		 trata = lista[i]->GET_TRATAMIENTO();
+
+		if (dynamic_cast<cRadioterapia*>(trata) != nullptr || dynamic_cast<cSistemica*>(trata) != nullptr)
 		{
-			tumorcito->SET_DOSIS_MAX(60);
+			ficha->GET_PAC()->GET_TUMORES()[i]->SET_DOSIS_MAX(60);
 			dosisMin = true;
 		}
 		else
-			tumorcito->SET_DOSIS_MAX(150);
+			ficha->GET_PAC()->GET_TUMORES()[i]->SET_DOSIS_MAX(150);
+		//list + tumorcito;
 	}
 	if (dosisMin)
 	{
@@ -39,47 +45,51 @@ void cDosimetrista::calcularDosisTotal(cFicha* ficha)	//pedir ayuda valen
 	}
 	else
 		ficha->SET_DOSIS_MAX(180);
-	ficha->SET_PACIENTE(pac);
+	delete braqui;
+	delete sist;
+	delete braqui;
+	return;
 	
 }
 void cDosimetrista::asignarTratamiento(cFicha* ficha)
 {
 	cTumor* tumor = nullptr;
 	cPaciente* pac = ficha->GET_PAC();
-	cTratamiento * trata= nullptr;
-	cListaTumores tumores;
+	//cTratamiento * trata= nullptr;
+	cSistemica* sist = new cSistemica;
+	cBraquiterapia* braqui = new cBraquiterapia;
+	cRadioterapia* radio = new cRadioterapia;
 	for (int i=0; i< ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
+		//trata = ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO();
 		tumor = ficha->GET_PAC()->GET_TUMORES()[i];
 		if ((tumor)->GET_TIPO_CANCER() == cabezayCuello || (tumor)->GET_TIPO_CANCER() == cuelloUtero || (tumor)->GET_TIPO_CANCER() == mama || (tumor)->GET_TIPO_CANCER() == ojo)
 		{
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(braqui);	//settea el tratamiento en el tumor
+			ficha->SET_DOSIS_MAX(150);	//setteodosis maxima por paciente
 			
-			 trata = new cBraquiterapia;
-			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(trata);
 		}
 		else if ((tumor)->GET_TIPO_CANCER() == tiroides || (tumor)->GET_TIPO_CANCER() == prostatanariz)
 		{
-			
-			 trata = new cSistemica;
-			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(trata);
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(sist);	
+			ficha->SET_DOSIS_MAX(60);
 		}
 		else
-		{
-			
-			 trata = new cRadioterapia;
-			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(trata);
+		{	
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(radio);
+			ficha->SET_DOSIS_MAX(60);
 		}
-		//(tumores)+tumor;
-			//borro it viejo
-	}	
-	//pac->SET_TUMORES(tumores);	//le paso al paciente el listado de tumores con el tratamiento setteado
-	//ficha->SET_PACIENTE(pac);	//le paso a la ficha el paciente modificado
+	
+	}
+	delete radio;
+	delete sist;
+	delete braqui;
 	return;
 }
 void cDosimetrista::atenderPaciente(cFicha* ficha)
 {
 		asignarTratamiento(ficha);
-		calcularDosisTotal(ficha);
+	//	calcularDosisTotal(ficha);
 }
 
 

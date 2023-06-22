@@ -1,7 +1,7 @@
 #include "cFicha.h"
 
 cFicha::cFicha(bool miAlta, bool miListaEspera, float miRadiacion, int oncologo, int dosimetrista,float  miDosisMax,
-	float miDosisPorSesion, bool miAlcanzoMax,  cPaciente* miPaciente, cAsistencia asist, eMotivo motivo)
+	float miDosisPorSesion, bool miAlcanzoMax,  cPaciente* miPaciente, cAsistencia* asist, eMotivo motivo)
 {
 	this->aID_Dosimetrista = dosimetrista;
 	this->aID_OncologoCargo = oncologo;
@@ -50,7 +50,7 @@ int cFicha::GET_DOS()
 }
 cPaciente* cFicha::GET_PAC()
 {
-	return  &aPaciente;
+	return  this->aPaciente;
 }
 
 void cFicha::SET_PACIENTE(cPaciente* pac)
@@ -90,11 +90,11 @@ void cFicha::SET_ESPERADO(bool enEspera)
 {
 	this->aListaEspera = enEspera;
 }
-cAsistencia cFicha::GET_ASISTENCIA()
+cAsistencia* cFicha::GET_ASISTENCIA()
 {
 	return this->aAsistencia;
 }
-void cFicha::SET_ASISTENCIA(cAsistencia asist)
+void cFicha::SET_ASISTENCIA(cAsistencia *asist)
 {
 	this->aAsistencia = asist;
 }

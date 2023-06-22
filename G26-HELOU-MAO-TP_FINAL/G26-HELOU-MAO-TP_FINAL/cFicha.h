@@ -12,12 +12,12 @@ private:
 	float aDosisMax;
 	float aDosisXSesion;
 	bool aAlcanzoMax;
-	cPaciente aPaciente;
+	cPaciente *aPaciente;
 	unsigned int aTiempoEspera;
-	cAsistencia aAsistencia;
+	cAsistencia *aAsistencia;
 	eMotivo aMotivo;
 public:
-	cFicha(bool, bool, float, int, int ,float, float, bool, cPaciente*, cAsistencia, eMotivo motivo=diagnostico);
+	cFicha(bool, bool, float, int, int ,float, float, bool, cPaciente*, cAsistencia*, eMotivo motivo=diagnostico);
 	cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo motivo = diagnostico);
 	cFicha(eMotivo motivo = diagnostico);
 	~cFicha();
@@ -34,8 +34,8 @@ public:
 	void SET_TIEMPO_ESPERA(unsigned int tiempoEspera);
 	bool GET_ESPERADO();
 	void SET_ESPERADO(bool enEspera);
-	cAsistencia GET_ASISTENCIA();
-	void SET_ASISTENCIA(cAsistencia asist);
+	cAsistencia* GET_ASISTENCIA();
+	void SET_ASISTENCIA(cAsistencia *asist);
 	eMotivo GET_MOTIVO();
 	void SET_MOTIVO(eMotivo);
 	float GET_RAD_ACUM();

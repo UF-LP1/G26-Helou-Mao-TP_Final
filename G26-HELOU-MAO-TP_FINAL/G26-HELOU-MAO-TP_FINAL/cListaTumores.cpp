@@ -5,13 +5,14 @@ cTumor* cListaTumores::operator[](unsigned int pos)
 		throw new exception("Error tamanyo");
 
 	int cont = 0;
-	auto it = this->begin();
-	while (cont < pos) {
+	cTumor* retorno = nullptr;
+	for (cTumor* tumor : *this)
+	{
+		if (cont == pos)
+			retorno = tumor;
 		cont++;
-		it++;
 	}
-
-	return *it;
+	return retorno;
 }
 
 void cListaTumores::operator+(cTumor* tumor)

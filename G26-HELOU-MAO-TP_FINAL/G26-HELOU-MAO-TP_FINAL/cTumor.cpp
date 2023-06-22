@@ -1,8 +1,8 @@
 #include "cTumor.h"
 
 cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratamiento, float miRadAcum, float miDosisMax, float miDosisXsesion, unsigned int miFrec)
-	:aTipoTratamiento(miTratamiento)
 {
+	this->aTipoTratamiento = nullptr;
 	this->aSesionesRealizadas = 0;
 	this->aTipoCancer = miCancer;
 	this->aTamanio = miTamanio;
@@ -23,10 +23,12 @@ float cTumor:: calcularDosisSemanal()
 }
 cTratamiento* cTumor:: GET_TRATAMIENTO()
 {
-	return this->aTipoTratamiento;
+	return (this->aTipoTratamiento);
 }
+
 cTumor::cTumor()
 {
+	this->aTipoTratamiento = nullptr;
 	this->aDosisMax = 0.0;
 	this->aDosisXSesion = 0.0;
 	this->aFrecuencia = 0;

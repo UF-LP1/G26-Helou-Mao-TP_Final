@@ -13,24 +13,22 @@ cOncologo::~cOncologo() {
 
 void cOncologo::evaluarPac(cFicha* ficha)
 {
-	list<cTumor*> auxTumores = ficha->GET_PAC()->GET_TUMORES();
-	srand(time(NULL));
+	cListaTumores auxTumores = ficha->GET_PAC()->GET_TUMORES();
 	int Alta = rand() % 10; //por random defino que se le fueron los tumores al paciente o no
 	for (cTumor* tumor : auxTumores)
 	{
 		tumor->SET_SESIONES_REALIZADAS(0);
 		if (Alta < 3)
 		{
-			tumor->SET_TAMANIO(noEsta);
+			tumor->SET_TAMANIO(noEsta);	//te curaste
 		}
 		else 
 		{
-
-			int tumorCambiar = rand() % (auxTumores.size());
+			int cambiarCant = rand() % (auxTumores.size());
 			int tamanioNuevo = rand() % 4;
 			int contVueltas = 0;
 				//aca se va a modificar los tumores
-			if (contVueltas == tumorCambiar)
+			if (contVueltas == cambiarCant)
 			{
 				tumor->SET_TAMANIO(eTamanio(tamanioNuevo));
 			}	
@@ -60,10 +58,10 @@ int cOncologo::GET_ID_ONC()
 void cOncologo::asignarDosisXSesion(cFicha* ficha) {
 
 	list<cTumor*> auxTumores = (ficha->GET_PAC()->GET_TUMORES());
-	for (cTumor* tumorcito : auxTumores)
+	for (int i=0; i< ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
-		tumorcito->GET_TRATAMIENTO()->DOSIS_X_TUMOR();
-		tumorcito->SET_DOSISXSESION(tumorcito->GET_TRATAMIENTO()->GET_DOSISXSESION());
+		ficha->GET_PAC()->GET_TUMORES()[i]->aTipoTratamiento->DOSIS_X_TUMOR();
+		//tumorcito->SET_DOSISXSESION(tumorcito->GET_TRATAMIENTO()->GET_DOSISXSESION());
 	}
 
 }
@@ -72,7 +70,6 @@ void cOncologo::darAlta(cFicha* ficha) {
 		ficha->SET_ALTA(true);
 }
 void cOncologo::asignarTiempoEspera(cFicha* ficha) {
-	srand(time(NULL));
 	unsigned int tiempoEspera = rand() % 4 + 1; //tiempo de espera es la cantidad de meses que va a tener que esperar para volver a irradiarse. Como minimo tendra que esperar un mes y como maximo 4
 	ficha->SET_TIEMPO_ESPERA(tiempoEspera);
 	ficha->SET_ESPERADO(true);
@@ -80,7 +77,7 @@ void cOncologo::asignarTiempoEspera(cFicha* ficha) {
 
 void cOncologo::atenderPaciente(cFicha* ficha)
 {
-	if (ficha->GET_MOTIVO() == diagnostico)
+	if (ficha->GET_MOTIVO() == diagnostico)	//la primera vez
 	{
 		if (ficha->GET_PAC()->GET_TUMORES().size() == 0)
 			diagnosticarTumores(ficha);
@@ -90,33 +87,32 @@ void cOncologo::atenderPaciente(cFicha* ficha)
 		}
 
 	}
-	else if (ficha->GET_MOTIVO() == evaluacion)
+	else if (ficha->GET_MOTIVO() == evaluacion)	//sigo en tratamiento, entra cada semana
 	{
 		evaluarPac(ficha);//aca se va a chequear el estado de los tumores (se los va a achicar o agrandar aca tambien
 	}
-	else if (ficha->GET_MOTIVO() == finTratamiento)
+	else if (ficha->GET_MOTIVO() == finTratamiento)	//se alcanzo la radiacion maxima
 	{
 		int cont = 0;
-		list<cTumor*> tumores = ficha->GET_PAC()->GET_TUMORES();
+		cListaTumores tumores = ficha->GET_PAC()->GET_TUMORES();
 		for (cTumor* tumorcito : tumores)
 		{
 			if (tumorcito->GET_TAMANIO() != noEsta)
-				cont++;
+				cont++;	//cada vez que tengo tumor
 		}
 		if (cont == 0)
-			darAlta(ficha);
+			darAlta(ficha);	//no tengo ningun tumor
 		else
 			asignarTiempoEspera(ficha);
 	}
 	else
 	{
-		reevaluarPaciente(ficha);
+		reevaluarPaciente(ficha);	//aca entro cuando termino el tiempo en espera
 	}
 }
 
 void cOncologo::diagnosticarTumores(cFicha* ficha)
 {
-	srand(time(NULL));
 	unsigned int cantTumores = rand() % 10 + 1;
 	unsigned int auxTamanio = 0;
 	eTamanio tamanio;
@@ -129,19 +125,11 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	tumor = &auxtumor;
 	for (int i = 0; i < cantTumores; i++)
 	{
-		srand(time(NULL));
 		auxTipoCancer = rand() % 11;
 		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
 
 		auxTamanio = rand() % 3+1;
-
-		if (auxTamanio == 1)
-			tamanio = pequenio;
-		else if (auxTamanio == 2)
-			tamanio = mediano;
-		else
-			tamanio = grande;
-		tumor->SET_TAMANIO(tamanio);
+		tumor->SET_TAMANIO(eTamanio(auxTamanio));
 
 		frecuencia =(int )rand() % 6+1;
 		tumor->SET_FRECUENCIA(frecuencia);
@@ -150,7 +138,7 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	}
 	pac->SET_TUMORES(tumoresAux);
 
-	//ficha->SET_PACIENTE(pac);
+	ficha->SET_PACIENTE(pac);
 	return;
 	
 

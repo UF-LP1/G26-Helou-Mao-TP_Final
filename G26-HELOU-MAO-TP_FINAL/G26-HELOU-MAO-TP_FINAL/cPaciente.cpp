@@ -62,6 +62,8 @@ cListaTumores cPaciente::GET_TUMORES()
 	return aTumores;
 }
 
+
+
 ostream& operator<<(ostream& out, cPaciente& pac)
 {
 	out << "Nombre: " << pac.aNombre << endl << "Apellido: " << pac.aApellido << endl;
