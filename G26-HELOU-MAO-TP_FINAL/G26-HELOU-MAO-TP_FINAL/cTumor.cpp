@@ -1,6 +1,6 @@
 #include "cTumor.h"
 
-cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratamiento, float miRadAcum, float miDosisMax, float miDosisXsesion, unsigned int miFrec)
+cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratamiento, float miRadAcum, float miDosisMax, float miDosisXsesion, unsigned int miFrec, unsigned int sesiones)
 {
 	this->aTipoTratamiento = nullptr;
 	this->aSesionesRealizadas = 0;
@@ -10,11 +10,19 @@ cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratami
 	this->aDosisMax = miDosisMax;
 	this->aDosisXSesion = miDosisXsesion;
 	this->aFrecuencia = miFrec;
+	this->aSesionesRealizadas = sesiones;
 }
 
 cTumor::~cTumor()
 {
 
+}
+string cTumor::to_string()
+{
+	stringstream ss;
+	ss << "Tipo cancer: " << aTipoCancer << endl << "Tamanio: " << aTamanio << endl << "Tipo de terapia";
+
+	return ss.str();
 }
 float cTumor:: calcularDosisSemanal()
 {
@@ -108,4 +116,16 @@ void cTumor::SET_DOSISXSESION(float dosis)
 eTamanio cTumor::GET_TAMANIO()
 {
 	return this->aTamanio;
+}
+
+ostream& operator<<(ostream& out, cTumor& tumor)
+{
+	out << tumor.to_string();
+	if (dynamic_cast<cBraquiterapia*>(tumor.aTipoTratamiento) != nullptr)
+		out << "El tipo de tratamiento es braquiterapia" << endl;
+	else if(dynamic_cast<cSistemica*>(tumor.aTipoTratamiento) != nullptr)
+		out << "El tipo de tratamiento es sistemica" << endl;
+	else if(dynamic_cast<cRadioterapia*>(tumor.aTipoTratamiento) != nullptr)
+		out << "El tipo de tratamiento es radioterapia" << endl;
+	return out;
 }

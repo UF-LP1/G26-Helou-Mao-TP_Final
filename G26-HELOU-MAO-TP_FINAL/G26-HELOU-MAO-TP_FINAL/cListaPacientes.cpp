@@ -8,3 +8,8 @@ ostream& operator<<(ostream& out, cListaPacientes lista)
     }
     return out;
 }
+
+void cListaPacientes::operator+(cPaciente* pac)
+{
+    this->push_back(pac);
+}

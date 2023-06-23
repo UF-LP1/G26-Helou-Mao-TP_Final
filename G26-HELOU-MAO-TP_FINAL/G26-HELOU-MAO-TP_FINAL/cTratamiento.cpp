@@ -25,3 +25,13 @@ float cTratamiento::GET_DOSISXSESION()
 {
 	return this->aDosisXSesion;
 }
+
+void cTratamiento::DOSIS_X_TUMOR()
+{
+	this->aDosisXSesion = 1;
+}
+
+void cTratamiento::aumentar_dosis()
+{
+	this->aDosisXSesion =aDosisXSesion+ 1;
+}

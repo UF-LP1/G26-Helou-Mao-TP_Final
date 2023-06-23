@@ -8,4 +8,5 @@
 #include <exception>
 #include <random>
 #include "eTratamiento.h"
+#include <sstream>
 using namespace std;

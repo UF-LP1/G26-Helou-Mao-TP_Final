@@ -5,6 +5,6 @@ class cListaPacientes :
 {
 public:
     friend ostream& operator<<(ostream& out, cListaPacientes lista);
-
+    void operator+(cPaciente* pac);
 };
 

@@ -14,35 +14,45 @@ cOncologo::~cOncologo() {
 void cOncologo::evaluarPac(cFicha* ficha)
 {
 	cListaTumores auxTumores = ficha->GET_PAC()->GET_TUMORES();
+	int cambiarCant = rand() % (ficha->GET_PAC()->GET_TUMORES().size());
+	int tamanioNuevo = rand() % 4;
+	int contVueltas = 0;
 	int Alta = rand() % 10; //por random defino que se le fueron los tumores al paciente o no
-	for (cTumor* tumor : auxTumores)
+
+	for (int i=0; i < ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
-		tumor->SET_SESIONES_REALIZADAS(0);
+		ficha->GET_PAC()->GET_TUMORES()[i]->SET_SESIONES_REALIZADAS(0);
 		if (Alta < 3)
 		{
-			tumor->SET_TAMANIO(noEsta);	//te curaste
+			//te curaste
+			auxTumores - ficha->GET_PAC()->GET_TUMORES()[i];
 		}
 		else 
 		{
-			int cambiarCant = rand() % (auxTumores.size());
-			int tamanioNuevo = rand() % 4;
-			int contVueltas = 0;
 				//aca se va a modificar los tumores
-			if (contVueltas == cambiarCant)
+			if (contVueltas == cambiarCant)//busco el tumor qu equiero modificar
 			{
-				tumor->SET_TAMANIO(eTamanio(tamanioNuevo));
+				ficha->GET_PAC()->GET_TUMORES()[i]->SET_TAMANIO(eTamanio(tamanioNuevo));
 			}	
 		}
+		contVueltas++;
 	}
 	if (Alta <3)
 	{
+		ficha->GET_PAC()->SET_TUMORES(auxTumores);//le pongo la que fui haciendo cuando elimine
 		darAlta(ficha);
 	}
+	ficha->GET_PAC()->SET_TUMORES(auxTumores);
 	
 }
-void cOncologo::reevaluarPaciente(cFicha* ficha)
+
+string cOncologo::to_string()
 {
-	ficha->SET_RAD_ACUM(0);
+	stringstream ss;
+	ss << "Nombre oncologo : " << this->aNombre << endl;
+	ss << "Apellido oncologo: " << this->aApellido << endl;
+	ss << "ID: " << this->aNroEmplpeado << endl;
+	return ss.str();
 }
 
 int cOncologo::GET_ID_ONC()
@@ -57,11 +67,10 @@ int cOncologo::GET_ID_ONC()
 
 void cOncologo::asignarDosisXSesion(cFicha* ficha) {
 
-	list<cTumor*> auxTumores = (ficha->GET_PAC()->GET_TUMORES());
 	for (int i=0; i< ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
-		ficha->GET_PAC()->GET_TUMORES()[i]->aTipoTratamiento->DOSIS_X_TUMOR();
-		//tumorcito->SET_DOSISXSESION(tumorcito->GET_TRATAMIENTO()->GET_DOSISXSESION());
+		ficha->GET_PAC()->GET_TUMORES()[i]->aTipoTratamiento->DOSIS_X_TUMOR();//esta funcion, de acuerdo al tipo de tratamiento hace un random para designar canridad de rad
+		ficha->GET_PAC()->GET_TUMORES()[i]->SET_DOSISXSESION(ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO()->GET_DOSISXSESION());//seteo la radiacio 
 	}
 
 }
@@ -93,21 +102,9 @@ void cOncologo::atenderPaciente(cFicha* ficha)
 	}
 	else if (ficha->GET_MOTIVO() == finTratamiento)	//se alcanzo la radiacion maxima
 	{
-		int cont = 0;
-		cListaTumores tumores = ficha->GET_PAC()->GET_TUMORES();
-		for (cTumor* tumorcito : tumores)
-		{
-			if (tumorcito->GET_TAMANIO() != noEsta)
-				cont++;	//cada vez que tengo tumor
-		}
-		if (cont == 0)
-			darAlta(ficha);	//no tengo ningun tumor
-		else
+		evaluarPac(ficha);
+		if(ficha->GET_ALTA()!=true)
 			asignarTiempoEspera(ficha);
-	}
-	else
-	{
-		reevaluarPaciente(ficha);	//aca entro cuando termino el tiempo en espera
 	}
 }
 
@@ -128,7 +125,7 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 		auxTipoCancer = rand() % 11;
 		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
 
-		auxTamanio = rand() % 3+1;
+		auxTamanio = rand() % 3;
 		tumor->SET_TAMANIO(eTamanio(auxTamanio));
 
 		frecuencia =(int )rand() % 6+1;
@@ -142,4 +139,11 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	return;
 	
 
+}
+
+ostream& operator<<(ostream& out, cOncologo& oncologo)
+{
+	out << oncologo.to_string();
+	return out;
+	
 }

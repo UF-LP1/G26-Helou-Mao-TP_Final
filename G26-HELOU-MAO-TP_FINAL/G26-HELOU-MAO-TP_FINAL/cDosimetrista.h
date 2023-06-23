@@ -11,5 +11,7 @@ public:
 	void calcularDosisTotal(cFicha*);
 	void asignarTratamiento(cFicha*);
 	void atenderPaciente(cFicha*);
+	string to_string();
+	friend ostream& operator<<(ostream& out, cDosimetrista& imprimir);
 	
 };

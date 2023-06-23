@@ -1,4 +1,6 @@
 #pragma once
 #include "cCentro.h"
 
-void readpatient(string name, list<cMedico*> listaMed);
+cListaPacientes crearPacs();
+cListaFichas crarFichas();
+cListaTumores crearTumores();

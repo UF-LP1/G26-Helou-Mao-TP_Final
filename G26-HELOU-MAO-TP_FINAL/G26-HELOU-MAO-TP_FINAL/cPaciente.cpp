@@ -12,6 +12,22 @@ cPaciente::cPaciente( string miNombre, string miApellido, string miDni, string m
 	this->aTipoSangre = miTipoSangre;
 	this->aSaludGral = miSaludGral;
 }
+cPaciente::cPaciente(string miNombre, string miApellido, string miDni, string miContacto, string miFechaNac, char miSexo, string miTipoSangre, float miSaludGral, cListaTumores listaTumores)
+{
+	this->aNombre = miNombre;
+	this->aApellido = miApellido;
+	this->aDNI = miDni;
+	this->aContacto = miContacto;
+	this->aFechaNac = miFechaNac;
+	this->aSexo = miSexo;
+	this->aTipoSangre = miTipoSangre;
+	this->aSaludGral = miSaludGral;
+
+	for (int i = 0; i < listaTumores.size(); i++)
+	{
+		aTumores + listaTumores[i];
+	}
+}
 cPaciente::~cPaciente()
 {
 
@@ -62,14 +78,18 @@ cListaTumores cPaciente::GET_TUMORES()
 	return aTumores;
 }
 
+string cPaciente::to_string()
+{
+	stringstream ss;
+	ss << "Nombre paciente: " << aNombre << endl << "Apellido paciente: " << aApellido << endl;
+	return string();
+}
+
 
 
 ostream& operator<<(ostream& out, cPaciente& pac)
 {
-	out << "Nombre: " << pac.aNombre << endl << "Apellido: " << pac.aApellido << endl;
-	for (int i=0; i < pac.aTumores.size(); i++)
-	{
-		out << "Zona cancer: " << pac.aTumores[i]->GET_TIPO_CANCER() << endl;
-	}
+	out << pac.to_string();
+	out<<pac.aTumores;
 	return out;
 }

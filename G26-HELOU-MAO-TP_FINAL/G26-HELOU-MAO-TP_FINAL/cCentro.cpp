@@ -11,6 +11,18 @@ cCentro::cCentro(string miNombre, string miDireccion, list <cMedico*> misMedicos
 	}
 
 }
+cCentro::cCentro(string miNombre, string miDireccion,  cListaFichas fichas)
+{
+	this->aNombre = miNombre;
+	this->aDireccion = miDireccion;
+
+	for (int i = 0; i < fichas.size(); i++)
+	{
+		aFichas + fichas[i];
+	}
+
+
+}
 cCentro::cCentro(string miNombre, string miDireccion)
 {
 	this->aNombre = miNombre;
@@ -20,13 +32,24 @@ cCentro::~cCentro()
 {
 
 }
-void cCentro::contactar() {
-	for (cFicha* it : this->aFichas)
+cListaFichas cCentro::pacientesaContactar()
+{
+	cListaFichas lista;
+	float segundosPorSemana = 604800;
+	for (int i = 0; i < aFichas.size(); i++)
 	{
-		
-		//if(it->GET_PAC().GET)
+		time_t ahora;//creo varable
+		time(&ahora);//la inicializo con el tiempo de ahora
+
+		float segundos = difftime(aFichas[i]->aAsistencia->GET_TURNO(), ahora);
+		if (aFichas[i]->aAsistencia->GET_ASISTENCIA() == false && segundos > 604800.0)
+		{
+			lista + (aFichas[i]);
+		}
 	}
+	return lista;
 }
+
 void cCentro::atenderPaciente(cPaciente* paciente)
 {
 
@@ -39,49 +62,53 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		pasarFichaDosimetrista(ficha);
 		pasarFichaOncologo(ficha);
 	}
-	else if (ficha->GET_DOSIS_MAX() == ficha->GET_RAD_ACUM())//el paciente termino el tratamiento
+	else if (ficha->aDosisMax == ficha->aRadiacionAcum)//el paciente termino el tratamiento
 	{
-		ficha->SET_ALCANZO_MAX(true);
-		ficha->SET_MOTIVO(finTratamiento);
+		ficha->aAlcanzoMax=true;
+		ficha->aMotivo=(finTratamiento);
 		pasarFichaOncologo(ficha);
 	}
-	else if (ficha->GET_ESPERADO() == true)	//podriamos chequear si esta dado de alta que se haga una reevaluacion
+	else if (ficha->aListaEspera == true)	//podriamos chequear si esta dado de alta que se haga una reevaluacion
 	{
 		//habria que chequear que termino su tiempo de espera
-		ficha->SET_MOTIVO(reevaluacion);	//de rediagnostica y te evalua
+		ficha->aMotivo=(diagnostico);	//de rediagnostica y te evalua
+		ficha->aRadiacionAcum=(0);
 		pasarFichaOncologo(ficha);
 		pasarFichaDosimetrista(ficha);
 		pasarFichaOncologo(ficha);
 	}
 	else //chequeo si a algun tumor le faltan sesiones
 	{
-		cListaTumores auxTumores = paciente->GET_TUMORES();
+		
 		int contSesiones = 0;
+		cTumor* tumor = nullptr;
 		int contTratamiento = 0;//si este cont aumenta significa que al tumor no le pde realizar sesiones pq me pasaria de radiacion max
 		//si cont tratamiento es igual a mi cantidad de tumores, significa que temine el tratamiento
-		for (cTumor* tumor : auxTumores)
+		for (int i=0; i< paciente->GET_TUMORES().size();i++)
 		{
-			if (ficha->GET_DOSIS_MAX() > (ficha->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
+			tumor = paciente->GET_TUMORES()[i];
+			if (ficha->aDosisMax > (ficha->aRadiacionAcum + tumor->GET_DOSISXSESION()))//cheque de no pasarme de mi rad max ucando agregue la sesion
 			{
 				if (tumor->GET_FRECUENCIA() > tumor->GET_SESIONES_REALIZADAS() && (tumor->GET_RAD_ACUM() + tumor->GET_DOSISXSESION()) < tumor->GET_DOSIS_MAX()) 
 				//si a algun tumor le faltan sesiones, le agrego una
 				{//al final del if estoy chequeando que cuando vaya a hacer las sesion el tipo no se pase
 
-					tumor->SET_SESIONES_REALIZADAS(tumor->GET_SESIONES_REALIZADAS() + 1);
-					float nuevaRad = ficha->GET_RAD_ACUM() + tumor->GET_DOSISXSESION();
-					ficha->SET_RAD_ACUM(nuevaRad);
+					paciente->GET_TUMORES()[i]->SET_SESIONES_REALIZADAS(tumor->GET_SESIONES_REALIZADAS() + 1);
+					float nuevaRad = ficha->aRadiacionAcum + tumor->GET_DOSISXSESION();
+
+					ficha->aRadiacionAcum=(nuevaRad);
 					contSesiones++;
 				}
 			}
 			else
 				contTratamiento++;//va a aumentar cada vez que no haya podido hacer una sesion para no pasarme de la rad max
-			
+
 		}
 
 		//a este if tambien va a entrar si no llego al maximo pero no le puedon hacer otra sesion porque se pasaria del max
 		if (contSesiones == 0)//si no tuve que agregar ninguna sesion, hago que el oncologo atienda al paciente
 		{
-			if (contTratamiento < auxTumores.size())
+			if (contTratamiento < paciente->GET_TUMORES().size())
 			{
 				ficha->SET_MOTIVO(evaluacion);
 				pasarFichaOncologo(ficha);
@@ -95,6 +122,22 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 
 	}
 
+	delete ficha;
+
+}
+
+cOncologo* cCentro::buscarOncologo(int id)
+{
+	cOncologo* oncologoR=nullptr;
+	for (cMedico* med : this->aMedicos)	//recorro el listado de medicos que tiene el centro
+	{
+		cOncologo* oncologo = dynamic_cast<cOncologo*>(med);//busco en mi lista de medicos a los oncologos
+		if (oncologo != nullptr && oncologo->GET_ID_ONC() == id)
+		{
+			oncologoR=oncologo;//guardo el oncologo que necesito
+		}
+	}
+	return oncologoR;
 }
 
 
@@ -110,11 +153,11 @@ string cCentro::to_string()
 	ss <<"Nombre centro: "<< this->aNombre << endl <<"Direccion centro: " << this->aDireccion << endl;
 	for (cFicha *it : this->aFichas)
 	{
-		ss << it << endl;
+		ss << it->to_string() << endl;
 	}
 	for (cMedico* it : this->aMedicos)
 	{
-		ss << it << endl;
+		ss << it->to_string() << endl;
 	}
 	return ss.str();
 }
@@ -129,10 +172,18 @@ cListaPacientes cCentro::buscar_cincoporciento_terminar(eTipoCancer cancer)
 
 	for (cFicha* ficha : this->aFichas)
 	{
-		cincoPorciento = ficha->GET_DOSIS_MAX() * 5 / 100;
-		if ((ficha->GET_DOSIS_MAX()) - cincoPorciento < ficha->GET_RAD_ACUM())
+		cincoPorciento = (ficha->aDosisMax * 5 )/ 100;
+
+		if ((ficha->aDosisMax) - cincoPorciento < ficha->aRadiacionAcum)
 		{
-			//no entiendo mucho como piden esta funcion
+
+			for (int i = 0; i < ficha->GET_PAC()->GET_TUMORES().size(); i++)//recorro los tumores de cada pac
+			{
+				if (ficha->aPaciente->GET_TUMORES()[i]->GET_TIPO_CANCER() == cancer)
+				{
+					auxLista + (ficha->GET_PAC());
+				}
+			}
 		}
 
 	}
@@ -140,17 +191,17 @@ cListaPacientes cCentro::buscar_cincoporciento_terminar(eTipoCancer cancer)
 }
 void cCentro::imprimirPacientes()
 {
-	//hay que imprimir el nombre de oncologo o alguno de sus datos y el tipo de terapia
-	for (cFicha* ficha : this->aFichas)
+	for (cFicha* ficha : aFichas)
 	{
 		cout << ficha;
+		cout << buscarOncologo(ficha->aID_OncologoCargo);
 	}
 }
 ostream& operator<<(ostream& out,cCentro& centro)
 {
 	if (&centro == nullptr)
 		throw new exception("No se encontro");
-	out << centro.to_string();;
+	out << centro.to_string();
 	return out;
 
 }
@@ -195,10 +246,11 @@ cListaPacientes cCentro::buscarTerapiaTumor(eTipoCancer cancer, eTratamiento tra
 {
 	cTratamiento* tratamiento=nullptr;
 	cListaPacientes auxLista;
-	for (cFicha* ficha : this->aFichas)
+	for (cFicha* ficha : this->aFichas)//recorro la lista de fichas
 	{
-		for (int i = 0; i < ficha->GET_PAC()->GET_TUMORES().size(); i++)
-		{ 
+		for (int i = 0; i < ficha->GET_PAC()->GET_TUMORES().size(); i++)//recorro los tumores de cada pac
+		{
+			tratamiento = nullptr;//rehinicio tratamiento
 			if (trat == braquiterapia)
 			{
 				cBraquiterapia* terap = dynamic_cast<cBraquiterapia*>(ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO());
@@ -214,7 +266,7 @@ cListaPacientes cCentro::buscarTerapiaTumor(eTipoCancer cancer, eTratamiento tra
 			
 			if (ficha->GET_PAC()->GET_TUMORES()[i]->GET_TIPO_CANCER() == cancer && tratamiento != nullptr)
 			{
-				auxLista.push_back(ficha->GET_PAC());
+				auxLista +(ficha->GET_PAC());
 			}
 		}
 	}

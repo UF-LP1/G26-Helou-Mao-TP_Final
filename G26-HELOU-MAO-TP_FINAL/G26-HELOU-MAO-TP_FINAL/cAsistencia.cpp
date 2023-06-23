@@ -20,5 +20,5 @@ bool cAsistencia::GET_ASISTENCIA()
 cAsistencia::cAsistencia()
 {
 	this->aAsistencia = false;
-	this->aUltTurno = 23 / 02 / 2023;	//VAL POR FAVOR MIRA ESTO QUE NO LLEGUÉ A APRENDERLO<3
+	this->aUltTurno = 23 / 02 / 2023;
 }

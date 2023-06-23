@@ -1,4 +1,5 @@
 #include "cListaFichas.h"
+
 cFicha* cListaFichas::operator[](cPaciente* pac)
 {
 	cFicha* retorno = nullptr;
@@ -31,4 +32,13 @@ cFicha* cListaFichas::operator[](unsigned int pos)
 void cListaFichas::operator+(cFicha* ficha)
 {
 	this->push_back(ficha);
+}
+
+ostream& operator<<(ostream& out, cListaFichas lista)
+{
+	for (cFicha* ficha : lista)
+	{
+		out << ficha;
+	}
+	return out;
 }

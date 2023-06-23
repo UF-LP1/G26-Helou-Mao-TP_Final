@@ -17,11 +17,13 @@ private:
 	unsigned int aFrecuencia;
 	unsigned int aSesionesRealizadas;
 public:
-	cTumor(eTipoCancer, eTamanio, cTratamiento*, float, float, float, unsigned int);
+	cTumor(eTipoCancer, eTamanio, cTratamiento*, float, float, float, unsigned int, unsigned int=0);
 	cTumor();
 	~cTumor();
 	friend class cOncologo;
+	string to_string();
 	friend class cDosimetrista;
+	friend ostream& operator<<(ostream& out, cTumor& tumor);
 	float calcularDosisSemanal();
 	cTratamiento* GET_TRATAMIENTO();
 	void SET_TRATAMIENTO(cTratamiento *tratamiento);

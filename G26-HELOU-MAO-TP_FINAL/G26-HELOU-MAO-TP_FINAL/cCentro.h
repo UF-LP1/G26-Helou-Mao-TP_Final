@@ -4,7 +4,7 @@
 #include "cListaFichas.h"
 #include "cOncologo.h"
 #include "cDosimetrista.h"
-#include <sstream>
+
 
 
 //HAY QUE HACER LA FUNCION PARA IMPRIMIR TODOS LOS PACIENTES
@@ -19,9 +19,11 @@ public:
 	cCentro( string aNombre, string aDireccion, list <cMedico*> aMedicos);
 	cCentro(string miNombre, string miDireccion);
 	~cCentro();
-	void contactar();
+
 	void atenderPaciente(cPaciente*);
-	//list <cPaciente* > buscar();
+	cListaFichas pacientesaContactar();
+	cCentro(string miNombre, string miDireccion,  cListaFichas fichas);
+	cOncologo* buscarOncologo(int id);
 	void imprimir();
 	void pasarFichaOncologo(cFicha*); 
 	void pasarFichaDosimetrista(cFicha*);

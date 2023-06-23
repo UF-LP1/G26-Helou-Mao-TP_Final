@@ -53,6 +53,14 @@ cPaciente* cFicha::GET_PAC()
 	return  this->aPaciente;
 }
 
+string cFicha::to_string()
+{
+	stringstream ss;
+	ss << aPaciente->to_string() << endl;
+	
+	return ss.str();
+}
+
 void cFicha::SET_PACIENTE(cPaciente* pac)
 {
 	this->aPaciente = pac;
@@ -123,3 +131,18 @@ void cFicha::SET_ALCANZO_MAX(bool nuevo)
 {
 	this->aAlcanzoMax = nuevo;
 }
+
+ostream& operator<<(ostream& out, cFicha& ficha)
+{
+	out << "FICHA: " << endl;
+	out << ficha.aPaciente;
+	if (ficha.aListaEspera)
+		out << "Se encuentra en lista de espera" << endl;
+	else if (!(ficha.aAlta))
+		out << "El paciente fue dado de alta" << endl;
+	else
+		out << "El paciente continua en tratamiento" << endl;
+	return out;
+	
+}
+

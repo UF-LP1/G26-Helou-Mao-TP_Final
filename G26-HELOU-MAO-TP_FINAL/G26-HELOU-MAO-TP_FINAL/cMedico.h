@@ -14,5 +14,6 @@ public:
 	~cMedico();
 	virtual void atenderPaciente(cFicha*) = 0;
 	int GET_ID();
+	virtual string to_string()=0;
 
 };

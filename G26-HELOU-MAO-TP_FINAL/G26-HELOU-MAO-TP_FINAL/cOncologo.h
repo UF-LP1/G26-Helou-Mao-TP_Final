@@ -7,7 +7,8 @@ public:
 	cOncologo(string, string);
 	~cOncologo();
 	void evaluarPac(cFicha*);
-	void reevaluarPaciente(cFicha*);
+	string to_string();
+	friend ostream& operator<<(ostream& out, cOncologo& imprimir);
 	int GET_ID_ONC();
 	//void asignarFrecSemanal(cFicha*);
 	void asignarDosisXSesion(cFicha*);

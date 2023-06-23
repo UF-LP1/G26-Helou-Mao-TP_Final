@@ -21,10 +21,12 @@ public:
 	cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo motivo = diagnostico);
 	cFicha(eMotivo motivo = diagnostico);
 	~cFicha();
-	friend class cMedico;
+	friend class cCentro;
 	int GET_ONC();
 	int GET_DOS();
 	cPaciente* GET_PAC();
+	friend ostream& operator<<(ostream& out, cFicha& ficha);
+	string to_string();
 	void SET_PACIENTE(cPaciente* pac);
 	float GET_DOSIS_MAX();
 	void SET_DOSIS_MAX(float dosisMax);

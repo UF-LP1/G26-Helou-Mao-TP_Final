@@ -17,8 +17,6 @@ int cDosimetrista::GET_ID_DOS()
 
 void cDosimetrista::calcularDosisTotal(cFicha* ficha)	
 {
-	cPaciente* pac = ficha->GET_PAC();
-	cTumor* tumorcito;
 	cListaTumores lista= ficha->GET_PAC()->GET_TUMORES();
 	cTratamiento *terapia = nullptr;
 	bool dosisMin = false;
@@ -26,7 +24,7 @@ void cDosimetrista::calcularDosisTotal(cFicha* ficha)
 	cBraquiterapia* braqui = new cBraquiterapia;
 	cRadioterapia* radio = new cRadioterapia;
 	cTratamiento* trata= nullptr;
-	for (int i=0; i<pac->GET_TUMORES().size(); i++)
+	for (int i=0; i<ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
 		 trata = lista[i]->GET_TRATAMIENTO();
 
@@ -92,5 +90,17 @@ void cDosimetrista::atenderPaciente(cFicha* ficha)
 	//	calcularDosisTotal(ficha);
 }
 
+string cDosimetrista::to_string()
+{
+	stringstream ss;
+	ss << "Nombre oncologo : " << this->aNombre << endl;
+	ss << "Apellido oncologo: " << this->aApellido << endl;
+	ss << "ID: " << this->aNroEmplpeado << endl;
+	return ss.str();
+}
 
-
+ostream& operator<<(ostream& out, cDosimetrista& imprimir)
+{
+	out << imprimir.to_string();
+	return out;
+}

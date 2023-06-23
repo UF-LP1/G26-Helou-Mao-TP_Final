@@ -18,6 +18,7 @@ private:
 	float aSaludGral;
 public:
 	cPaciente(string, string, string, string, string, char, string, float);
+	cPaciente(string, string, string, string, string, char, string, float, cListaTumores);
 	bool operator==(cPaciente&pac);
 	~cPaciente();
 	cPaciente();
@@ -25,7 +26,7 @@ public:
 	void SET_TUMORES(cListaTumores tumores);
 	cListaTumores GET_TUMORES();
 	friend ostream& operator<<(ostream& out, cPaciente&pac);
-
+	string to_string();
 };
 
 
