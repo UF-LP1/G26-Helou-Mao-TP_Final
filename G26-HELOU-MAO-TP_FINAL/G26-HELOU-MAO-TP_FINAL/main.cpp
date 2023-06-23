@@ -11,7 +11,7 @@ int main()
 	miCentro + ptrMed;
 	
 	cPaciente* pac = new cPaciente("Saul", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0);
-	//miCentro.atenderPaciente(pac);
+	miCentro.atenderPaciente(pac);
 	cListaPacientes pacientesAux = crearPacs();
 	
 	cListaFichas fichasAux = crarFichas();
@@ -23,7 +23,12 @@ int main()
 
 	cListaPacientes pacsImprimir=miCentro2.buscarTerapiaTumor(cabezayCuello, braquiterapia);
 	cout << pacsImprimir;
+	pacsImprimir = miCentro2.buscar_cincoporciento_terminar(ojo);
+	cout << pacsImprimir;
+	 miCentro2.imprimirPacientes();
 
+	 fichasAux= miCentro.pacientesaContactar();
+	 cout << fichasAux;
 	delete ptrMed;
 	delete pac;
 	return 0;

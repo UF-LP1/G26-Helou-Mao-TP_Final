@@ -87,7 +87,7 @@ void cDosimetrista::asignarTratamiento(cFicha* ficha)
 void cDosimetrista::atenderPaciente(cFicha* ficha)
 {
 		asignarTratamiento(ficha);
-	//	calcularDosisTotal(ficha);
+		calcularDosisTotal(ficha);
 }
 
 string cDosimetrista::to_string()
