@@ -1,6 +1,6 @@
 #include "cDosimetrista.h"
 
-int cDosimetrista::cantDosimetrista = 0;
+unsigned int cDosimetrista::cantDosimetrista = 0;
 cDosimetrista::cDosimetrista(string miNombre, string miApellido)
 	:cMedico(miNombre, miApellido)
 {

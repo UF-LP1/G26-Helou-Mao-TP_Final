@@ -4,7 +4,7 @@
 class cDosimetrista: public cMedico {
 	int numDosimetrista;
 public:
-	static int cantDosimetrista;
+	static unsigned int cantDosimetrista;
 	cDosimetrista(string, string);
 	~cDosimetrista();
 	int GET_ID_DOS();

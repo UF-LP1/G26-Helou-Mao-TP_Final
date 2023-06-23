@@ -19,6 +19,8 @@ bool cAsistencia::GET_ASISTENCIA()
 }
 cAsistencia::cAsistencia()
 {
+	time_t ahora;//creo varable
+	time(&ahora);//la inicializo con el tiempo de ahora
 	this->aAsistencia = false;
-	this->aUltTurno = 23 / 02 / 2023;
+	this->aUltTurno = ahora;
 }
