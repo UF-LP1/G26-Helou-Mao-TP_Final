@@ -32,10 +32,10 @@ cPaciente::~cPaciente()
 {
 
 }
-bool cPaciente ::operator==(cPaciente& pac)
+bool cPaciente ::operator==(cPaciente* pac)
 {
 	bool retorno = false;
-	if (this->aDNI == pac.aDNI)
+	if (this->aDNI == pac->aDNI)
 	{
 		retorno = true;
 	}

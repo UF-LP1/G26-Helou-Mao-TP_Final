@@ -31,6 +31,8 @@ float cTumor:: calcularDosisSemanal()
 }
 cTratamiento* cTumor:: GET_TRATAMIENTO()
 {
+	if (this->aTipoTratamiento == nullptr)
+		throw new exception("nulo");
 	return (this->aTipoTratamiento);
 }
 
@@ -46,9 +48,9 @@ cTumor::cTumor()
 	this->aTipoCancer = cabezayCuello;
 
 }
-void cTumor::SET_TRATAMIENTO(cTratamiento *tratamiento)
+void cTumor::SET_TRATAMIENTO(cTratamiento &tratamiento)
 {
-	this->aTipoTratamiento = tratamiento;
+	this->aTipoTratamiento = &tratamiento;
 }
 void cTumor::SET_TIPO_CANCER(eTipoCancer auxTipoCancer)
 {

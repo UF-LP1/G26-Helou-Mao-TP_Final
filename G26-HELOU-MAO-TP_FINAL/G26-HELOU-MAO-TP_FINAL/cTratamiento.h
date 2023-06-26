@@ -10,6 +10,6 @@ public:
 	~cTratamiento();
 	cTratamiento();
 	float GET_DOSISXSESION();
-	virtual void DOSIS_X_TUMOR();
-	virtual void aumentar_dosis();
+	virtual void DOSIS_X_TUMOR()=0;
+	virtual void aumentar_dosis()=0;
 };

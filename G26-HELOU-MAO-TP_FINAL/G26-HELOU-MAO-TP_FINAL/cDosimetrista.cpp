@@ -1,10 +1,10 @@
 #include "cDosimetrista.h"
 
-unsigned int cDosimetrista::cantDosimetrista = 0;
+unsigned int cDosimetrista::cantDosimetrista = 1;
 cDosimetrista::cDosimetrista(string miNombre, string miApellido)
 	:cMedico(miNombre, miApellido)
 {
-	this->numDosimetrista = ++cantDosimetrista;
+	this->numDosimetrista = cantDosimetrista++;
 }
 cDosimetrista::~cDosimetrista()
 {
@@ -45,7 +45,7 @@ void cDosimetrista::calcularDosisTotal(cFicha* ficha)
 		ficha->SET_DOSIS_MAX(180);
 	delete braqui;
 	delete sist;
-	delete braqui;
+	delete radio;
 	return;
 	
 }
@@ -63,26 +63,27 @@ void cDosimetrista::asignarTratamiento(cFicha* ficha)
 		tumor = ficha->GET_PAC()->GET_TUMORES()[i];
 		if ((tumor)->GET_TIPO_CANCER() == cabezayCuello || (tumor)->GET_TIPO_CANCER() == cuelloUtero || (tumor)->GET_TIPO_CANCER() == mama || (tumor)->GET_TIPO_CANCER() == ojo)
 		{
-			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(braqui);	//settea el tratamiento en el tumor
+
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(*braqui);	//settea el tratamiento en el tumor
 			ficha->SET_DOSIS_MAX(150);	//setteodosis maxima por paciente
 			
 		}
 		else if ((tumor)->GET_TIPO_CANCER() == tiroides || (tumor)->GET_TIPO_CANCER() == prostatanariz)
 		{
-			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(sist);	
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(*sist);	
 			ficha->SET_DOSIS_MAX(60);
 		}
 		else
 		{	
-			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(radio);
+			(ficha->GET_PAC()->GET_TUMORES()[i])->SET_TRATAMIENTO(*radio);
 			ficha->SET_DOSIS_MAX(60);
 		}
 	
 	}
+	return;
+	delete braqui;
 	delete radio;
 	delete sist;
-	delete braqui;
-	return;
 }
 void cDosimetrista::atenderPaciente(cFicha* ficha)
 {

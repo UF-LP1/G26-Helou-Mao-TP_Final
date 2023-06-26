@@ -10,13 +10,15 @@ class cTumor {
 private:
 	eTipoCancer aTipoCancer;
 	eTamanio aTamanio;
-	cTratamiento *aTipoTratamiento;
+
 	float aRadAcum;
 	float aDosisMax;
 	float aDosisXSesion;
 	unsigned int aFrecuencia;
 	unsigned int aSesionesRealizadas;
+	cTratamiento* aTipoTratamiento;
 public:
+	
 	cTumor(eTipoCancer, eTamanio, cTratamiento*, float, float, float, unsigned int, unsigned int=0);
 	cTumor();
 	~cTumor();
@@ -26,7 +28,7 @@ public:
 	friend ostream& operator<<(ostream& out, cTumor& tumor);
 	float calcularDosisSemanal();
 	cTratamiento* GET_TRATAMIENTO();
-	void SET_TRATAMIENTO(cTratamiento *tratamiento);
+	void SET_TRATAMIENTO(cTratamiento &tratamiento);
 	void SET_TIPO_CANCER(eTipoCancer auxTipoCancer);
 	void SET_TAMANIO(eTamanio tam);
 	unsigned int GET_FRECUENCIA();

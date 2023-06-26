@@ -56,7 +56,7 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 	cFicha* ficha=new cFicha;//creo variable para guardar
 	ficha = buscarFicha(paciente);//busco paciente en mi lista de fichas
 	if (ficha == nullptr)//el paciente aun no tiene ficha
-	{
+	{ 
 		ficha = crearFicha(paciente);//creo una ficha para el paciente
 		pasarFichaOncologo(ficha);
 		pasarFichaDosimetrista(ficha);
@@ -237,7 +237,7 @@ void cCentro::pasarFichaDosimetrista(cFicha* ficha)
 }
 cFicha* cCentro::buscarFicha(cPaciente* paciente)
 {
-	cFicha* retorno;
+	cFicha* retorno=nullptr;
 	retorno=aFichas[paciente];//busco en mi lista de fichas a mi paciente
 	return retorno;
 

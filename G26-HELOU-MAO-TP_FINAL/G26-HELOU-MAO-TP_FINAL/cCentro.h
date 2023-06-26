@@ -36,4 +36,15 @@ public:
 	void operator+(cMedico* medico);
 	cListaPacientes buscar_cincoporciento_terminar(eTipoCancer);
 	void imprimirPacientes();
+	/*cFicha* operator[](cPaciente*);*/
 };
+//cFicha* cCentro:: operator[](cPaciente* pac)
+//{
+//	cFicha* paux = new cFicha;
+//	for (cFicha* ficha: this->aFichas)
+//	{
+//		if (pac == ficha->GET_PAC())
+//			paux = ficha;
+//	}
+//	return paux;
+//}

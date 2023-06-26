@@ -19,7 +19,7 @@ private:
 public:
 	cPaciente(string, string, string, string, string, char, string, float);
 	cPaciente(string, string, string, string, string, char, string, float, cListaTumores);
-	bool operator==(cPaciente&pac);
+	bool operator==(cPaciente*pac);
 	~cPaciente();
 	cPaciente();
 	void operator=(cPaciente* pac);
@@ -28,5 +28,4 @@ public:
 	friend ostream& operator<<(ostream& out, cPaciente&pac);
 	string to_string();
 };
-
 

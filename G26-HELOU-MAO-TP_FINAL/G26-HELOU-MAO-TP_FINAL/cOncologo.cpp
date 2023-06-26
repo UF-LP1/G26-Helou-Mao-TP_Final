@@ -69,7 +69,7 @@ void cOncologo::asignarDosisXSesion(cFicha* ficha) {
 
 	for (int i=0; i< ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
-		ficha->GET_PAC()->GET_TUMORES()[i]->aTipoTratamiento->DOSIS_X_TUMOR();//esta funcion, de acuerdo al tipo de tratamiento hace un random para designar canridad de rad
+		ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO()->DOSIS_X_TUMOR();//esta funcion, de acuerdo al tipo de tratamiento hace un random para designar canridad de rad
 		ficha->GET_PAC()->GET_TUMORES()[i]->SET_DOSISXSESION(ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO()->GET_DOSISXSESION());//seteo la radiacio 
 	}
 
@@ -92,6 +92,7 @@ void cOncologo::atenderPaciente(cFicha* ficha)
 			diagnosticarTumores(ficha);
 		else
 		{
+			cout << ficha->GET_PAC()->GET_TUMORES()[0];
 			asignarDosisXSesion(ficha);
 		}
 
