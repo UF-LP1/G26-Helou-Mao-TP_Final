@@ -19,7 +19,7 @@ public:
 	cCentro( string aNombre, string aDireccion, list <cMedico*> aMedicos);
 	cCentro(string miNombre, string miDireccion);
 	~cCentro();
-
+	cCentro(string miNombre, string miDireccion, cListaFichas fichas, list <cMedico*> medicos);
 	void atenderPaciente(cPaciente*);
 	cListaFichas pacientesaContactar();
 	cCentro(string miNombre, string miDireccion,  cListaFichas fichas);

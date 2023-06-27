@@ -66,7 +66,7 @@ list<cTratamiento*> cDosimetrista::asignarTratamiento(cFicha* ficha)
 		{
 			tratamientos.push_back(braqui);
 		}
-		else if ((tumor)->GET_TIPO_CANCER() == tiroides || (tumor)->GET_TIPO_CANCER() == prostatanariz)
+		else if ((tumor)->GET_TIPO_CANCER() == tiroides || (tumor)->GET_TIPO_CANCER() == prostata)
 		{
 			tratamientos.push_back(sist);
 		}

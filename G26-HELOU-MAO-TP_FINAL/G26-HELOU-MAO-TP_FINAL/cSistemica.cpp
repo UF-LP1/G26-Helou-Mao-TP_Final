@@ -14,8 +14,7 @@ cSistemica::cSistemica()
 {
 }
 void cSistemica::DOSIS_X_TUMOR() {
-	srand(time(NULL));
-	float dosis = rand() % 3 + 2;
+	float dosis =rand() % 3 + 2;
 	this->aDosisXSesion = dosis;
 }
 

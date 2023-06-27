@@ -4,3 +4,4 @@
 cListaPacientes crearPacs();
 cListaFichas crarFichas();
 cListaTumores crearTumores();
+list <cMedico*> crearMedicos();

@@ -11,6 +11,21 @@ cCentro::cCentro(string miNombre, string miDireccion, list <cMedico*> misMedicos
 	}
 
 }
+cCentro::cCentro(string miNombre, string miDireccion, cListaFichas fichas, list <cMedico*> medicos)
+{
+	this->aNombre = miNombre;
+	this->aDireccion = miDireccion;
+
+	for (int i = 0; i < fichas.size(); i++)
+	{
+		aFichas + fichas[i];
+	}
+	list <cMedico*>  ::iterator it = medicos.begin();
+	for (it; it != medicos.end(); it++)
+	{
+		aMedicos.push_back(*it);
+	}
+}
 cCentro::cCentro(string miNombre, string miDireccion,  cListaFichas fichas)
 {
 	this->aNombre = miNombre;
@@ -41,7 +56,7 @@ cListaFichas cCentro::pacientesaContactar()
 		time_t ahora;//creo varable
 		time(&ahora);//la inicializo con el tiempo de ahora
 
-		float segundos = difftime(aFichas[i]->aAsistencia->GET_TURNO(), ahora);
+		float segundos = (float)difftime(aFichas[i]->aAsistencia->GET_TURNO(), ahora);
 		if (aFichas[i]->aAsistencia->GET_ASISTENCIA() == false && segundos > 604800.0)
 		{
 			lista + (aFichas[i]);
@@ -141,13 +156,6 @@ cOncologo* cCentro::buscarOncologo(int id)
 	return oncologoR;
 }
 
-
-
-//list<cPaciente*> cCentro::buscar()
-//{
-//	return list<cPaciente*>();
-//}
-
 string cCentro::to_string()
 {
 	stringstream ss;
@@ -178,7 +186,7 @@ cListaPacientes cCentro::buscar_cincoporciento_terminar()
 			for (int i = 0; i < aFichas[j]->GET_PAC()->GET_TUMORES().size(); i++)//recorro los tumores de cada pac
 			{
 				tumorAux = aFichas[j]->GET_PAC()->GET_TUMORES()[i];
-				cincoPorciento = tumorAux->GET_DOSIS_MAX() * 0.95;
+				cincoPorciento = (float)tumorAux->GET_DOSIS_MAX() * 0.95;
 				if (aFichas[j]->aPaciente->GET_TUMORES()[i]->GET_RAD_ACUM()>cincoPorciento)
 				{
 					auxLista + (aFichas[j]->GET_PAC());

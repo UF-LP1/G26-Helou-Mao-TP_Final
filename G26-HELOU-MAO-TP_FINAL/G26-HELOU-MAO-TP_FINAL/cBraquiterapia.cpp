@@ -18,8 +18,7 @@ cBraquiterapia::cBraquiterapia() :cTratamiento()
 }
 
 void cBraquiterapia::DOSIS_X_TUMOR() {
-	srand(time(NULL));
-	float dosis = rand() % 3 + 6;
+	float dosis =rand() % 3 + 6;
 	this->aDosisXSesion = dosis;
 }
 

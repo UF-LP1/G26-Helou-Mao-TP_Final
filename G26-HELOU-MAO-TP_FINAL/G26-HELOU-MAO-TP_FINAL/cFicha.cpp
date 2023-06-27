@@ -16,24 +16,34 @@ cFicha::cFicha(bool miAlta, bool miListaEspera, float miRadiacion, int oncologo,
 	this->aAsistencia = asist;
 	this->aMotivo = motivo;
 }
-cFicha::cFicha(cPaciente *paciente, int oncologo, int dosimetrista, eMotivo motivo)
+cFicha::cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo motivo)
 {
-	this->aPaciente = paciente;
-	this->aID_OncologoCargo = oncologo;
 	this->aID_Dosimetrista = dosimetrista;
+	this->aID_OncologoCargo = oncologo;
+	this->aDosisMax = 0;
+	this->aAlta = false;
+	this->aListaEspera = 0;
+	this->aRadiacionAcum = 0;
+	this->aDosisXSesion = 0;
+	this->aAlcanzoMax = false;
+	this->aPaciente=paciente;
+	this->aTiempoEspera = 0;
+	this->aAsistencia=nullptr;
 	this->aMotivo = motivo;
 }
 cFicha::cFicha(eMotivo motivo)
 {
-	this->aTiempoEspera = 0;
-	this->aID_OncologoCargo = 0;
 	this->aID_Dosimetrista = 0;
+	this->aID_OncologoCargo = 0;
 	this->aDosisMax = 0;
 	this->aAlta = false;
-	this->aListaEspera = false;
-	this->aRadiacionAcum = 0.0;
-	this->aDosisXSesion = 0.0;
+	this->aListaEspera = 0;
+	this->aRadiacionAcum = 0;
+	this->aDosisXSesion = 0;
 	this->aAlcanzoMax = false;
+	this->aPaciente = nullptr;
+	this->aTiempoEspera = 0;
+	this->aAsistencia = nullptr;
 	this->aMotivo = motivo;
 }
 cFicha::~cFicha()
