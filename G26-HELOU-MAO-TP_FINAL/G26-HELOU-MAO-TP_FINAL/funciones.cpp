@@ -47,7 +47,7 @@ cListaFichas crarFichas()
 	lista6 + tumor7;
 
 	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0, lista1);
-	cPaciente* pac2 = new cPaciente("valen", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0, lista2);
+	cPaciente* pac2 = new cPaciente("valen", "Lezama", "776544", "8997657", "07/06/2004", 'M', "0+", 65.0, lista2);
 	cPaciente* pac3 = new cPaciente("lupe", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0, lista3);
 	cPaciente* pac4 = new cPaciente("pochi", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0, lista4);
 	cPaciente* pac5 = new cPaciente("martu", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0, lista5);

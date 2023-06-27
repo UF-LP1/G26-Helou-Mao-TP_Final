@@ -92,7 +92,7 @@ void cOncologo::atenderPaciente(cFicha* ficha)
 			diagnosticarTumores(ficha);
 		else
 		{
-			cout << ficha->GET_PAC()->GET_TUMORES()[0];
+			
 			asignarDosisXSesion(ficha);
 		}
 

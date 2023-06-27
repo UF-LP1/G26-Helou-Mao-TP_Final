@@ -171,16 +171,17 @@ cListaPacientes cCentro::buscar_cincoporciento_terminar()
 	cListaPacientes auxLista;
 	float cincoPorciento = 0.0;
 	cTumor* tumorAux = nullptr;
-	for (cFicha* ficha : this->aFichas)
+
+	for (int j=0; j<aFichas.size(); j++)
 	{
 		
-			for (int i = 0; i < ficha->GET_PAC()->GET_TUMORES().size(); i++)//recorro los tumores de cada pac
+			for (int i = 0; i < aFichas[j]->GET_PAC()->GET_TUMORES().size(); i++)//recorro los tumores de cada pac
 			{
-				tumorAux = ficha->GET_PAC()->GET_TUMORES()[i];
+				tumorAux = aFichas[j]->GET_PAC()->GET_TUMORES()[i];
 				cincoPorciento = tumorAux->GET_DOSIS_MAX() * 0.95;
-				if (ficha->aPaciente->GET_TUMORES()[i]->GET_RAD_ACUM()>cincoPorciento)
+				if (aFichas[j]->aPaciente->GET_TUMORES()[i]->GET_RAD_ACUM()>cincoPorciento)
 				{
-					auxLista + (ficha->GET_PAC());
+					auxLista + (aFichas[j]->GET_PAC());
 				}
 			}
 		

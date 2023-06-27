@@ -30,7 +30,7 @@ ostream& operator<<(ostream& out, cListaTumores& lista)
 	
 	for (cTumor* tumorcito : lista)
 	{
-		out << tumorcito;
+		out << *tumorcito;
 	}
 	return out;
 }

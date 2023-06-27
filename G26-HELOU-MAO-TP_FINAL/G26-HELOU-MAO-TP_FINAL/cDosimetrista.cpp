@@ -1,10 +1,10 @@
 #include "cDosimetrista.h"
 
-unsigned int cDosimetrista::cantDosimetrista = 1;
+unsigned int cDosimetrista::cantDosimetrista = 0;
 cDosimetrista::cDosimetrista(string miNombre, string miApellido)
 	:cMedico(miNombre, miApellido)
 {
-	this->numDosimetrista = cantDosimetrista++;
+	this->numDosimetrista = ++cantDosimetrista;
 }
 cDosimetrista::~cDosimetrista()
 {

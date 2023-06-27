@@ -20,7 +20,7 @@ cTumor::~cTumor()
 string cTumor::to_string()
 {
 	stringstream ss;
-	ss << "Tipo cancer: " << aTipoCancer << endl << "Tamanio: " << aTamanio << endl << "Tipo de terapia";
+	ss << "Tipo cancer: " << aTipoCancer << endl << "Tamanio: " << aTamanio << endl;
 
 	return ss.str();
 }
