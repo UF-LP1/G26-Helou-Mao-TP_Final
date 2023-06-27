@@ -29,9 +29,10 @@ cFicha* cListaFichas::operator[](unsigned int pos)
 	return *it;
 }
 
-void cListaFichas::operator+(cFicha* ficha)
+
+void cListaFichas::operator+(cFicha& ficha)
 {
-	this->push_back(ficha);
+	this->push_back(&ficha);
 }
 
 ostream& operator<<(ostream& out, cListaFichas lista)

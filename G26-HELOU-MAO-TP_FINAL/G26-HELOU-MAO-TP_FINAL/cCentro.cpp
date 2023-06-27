@@ -18,7 +18,7 @@ cCentro::cCentro(string miNombre, string miDireccion, cListaFichas fichas, list 
 
 	for (int i = 0; i < fichas.size(); i++)
 	{
-		aFichas + fichas[i];
+		this->aFichas + *fichas[i];
 	}
 	list <cMedico*>  ::iterator it = medicos.begin();
 	for (it; it != medicos.end(); it++)
@@ -33,7 +33,7 @@ cCentro::cCentro(string miNombre, string miDireccion,  cListaFichas fichas)
 
 	for (int i = 0; i < fichas.size(); i++)
 	{
-		aFichas + fichas[i];
+		this->aFichas + *fichas[i];
 	}
 
 
@@ -59,7 +59,7 @@ cListaFichas cCentro::pacientesaContactar()
 		float segundos = (float)difftime(aFichas[i]->aAsistencia->GET_TURNO(), ahora);
 		if (aFichas[i]->aAsistencia->GET_ASISTENCIA() == false && segundos > 604800.0)
 		{
-			lista + (aFichas[i]);
+			lista + *(this->aFichas[i]);
 		}
 	}
 	return lista;
@@ -246,10 +246,20 @@ void cCentro::pasarFichaDosimetrista(cFicha* ficha)
 }
 cFicha* cCentro::buscarFicha(cPaciente* paciente)
 {
-	cFicha* retorno=nullptr;
-	retorno=aFichas[paciente];//busco en mi lista de fichas a mi paciente
-	return retorno;
 
+	if (paciente == nullptr)
+		throw new exception ("paciente nullptr");
+	else
+	{
+		cFicha* retorno = nullptr;
+		retorno = aFichas[paciente];//busco en mi lista de fichas a mi paciente
+		return retorno;
+	}
+
+}
+cListaFichas cCentro::GET_FICHAS()
+{
+	return this->aFichas;
 }
 cListaPacientes cCentro::buscarTerapiaTumor(eTipoCancer cancer, eTratamiento trat)
 {
@@ -281,9 +291,9 @@ cListaPacientes cCentro::buscarTerapiaTumor(eTipoCancer cancer, eTratamiento tra
 	}
 	return auxLista;
 }
-void cCentro::agregarFicha(cFicha* ficha)
+void cCentro::agregarFicha(cFicha& ficha)
 {
-	aFichas + ficha;//agrego mi nueva ficha con la sobrecarga de lista de fichas
+	this->aFichas + ficha;//agrego mi nueva ficha con la sobrecarga de lista de fichas
 	return;
 }
 cFicha* cCentro::crearFicha(cPaciente* paciente)
@@ -294,6 +304,6 @@ cFicha* cCentro::crearFicha(cPaciente* paciente)
 	int numDosimetrista = rand() % totalDosimetristas + 1;
 	int numOncologo = rand() % totalOncologos + 1;
 	cFicha* nuevaFicha = new cFicha(paciente, numOncologo, numDosimetrista);//con randoms le asigne un oncologo y un dosimetrista
-	agregarFicha(nuevaFicha);//agrego la ficha a mi lista
+	agregarFicha(*nuevaFicha);//agrego la ficha a mi lista
 	return nuevaFicha;
 }

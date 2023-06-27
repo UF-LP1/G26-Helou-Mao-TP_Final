@@ -28,8 +28,9 @@ public:
 	void pasarFichaOncologo(cFicha*); 
 	void pasarFichaDosimetrista(cFicha*);
 	cFicha* buscarFicha(cPaciente*);
+	cListaFichas GET_FICHAS();
 	cListaPacientes buscarTerapiaTumor(eTipoCancer, eTratamiento);
-	void agregarFicha(cFicha*);
+	void agregarFicha(cFicha&);
 	cFicha* crearFicha(cPaciente*);
 	friend ostream& operator<<(ostream& out, const cCentro& centro);
 	string to_string();

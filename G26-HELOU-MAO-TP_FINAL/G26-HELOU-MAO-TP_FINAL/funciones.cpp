@@ -112,33 +112,33 @@ cListaFichas crarFichas()
 	lista6 + *tumor11;
 	lista6 + *tumor7;
 
-	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "1", "8997657", "07/06/2004", 'M', "0+", 65.0, lista1);
+	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "1", "8997657", "07/06/2004", 'M', "0+", 65.0);
 	cPaciente* pac2 = new cPaciente("valen", "Mao", "2", "8997657", "08/03/2004", 'F', "0-", 50.0, lista2);
 	cPaciente* pac3 = new cPaciente("lupe", "Helou", "3", "8997657", "09/04/2004", 'F', "A+", 45.0, lista3);
-	cPaciente* pac4 = new cPaciente("pochi", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.0, lista4);
+	cPaciente* pac4 = new cPaciente("pochi", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.);
 	cPaciente* pac5 = new cPaciente("martu", "Meyer", "5", "8997657", "30/03/2004", 'F', "B+", 85.0, lista5);
 	cPaciente* pac6 = new cPaciente("lolo", "Mazzante", "6", "8997657", "04/02/2004", 'M', "B+", 25.0, lista6);
 	cPaciente* pac7 = new cPaciente("agos", "Nobo", "7", "8997657", "09/11/2004", 'F', "0+", 75.0, lista3);
 	cPaciente* pac8 = new cPaciente("alma", "Marquez", "8", "8997657", "16/01/2004", 'F', "0-", 75.0, lista4);
-	cPaciente* pac9 = new cPaciente("nica", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0, lista6);
+	cPaciente* pac9 = new cPaciente("nica", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
 	cPaciente* pac10 = new cPaciente("cami", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
-	cPaciente* pac11 = new cPaciente("Martu", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0, lista2);
+	cPaciente* pac11 = new cPaciente("Martu", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
 	cAsistencia asistenciaAux;
 	cListaFichas listaFic;
 	cFicha *ficha2 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac2, &asistenciaAux, reevaluacion);
-	listaFic + ficha2;
+	listaFic + *ficha2;
 	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac3, &asistenciaAux, evaluacion);
-	listaFic + ficha3;
+	listaFic + *ficha3;
 	cFicha* ficha5 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac5, &asistenciaAux, finTratamiento);
-	listaFic + ficha5;
+	listaFic + *ficha5;
 	cFicha *ficha6 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac6, &asistenciaAux, reevaluacion);
-	listaFic + ficha6;
+	listaFic + *ficha6;
 	cFicha *ficha7 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac7, &asistenciaAux, finTratamiento);
-	listaFic + ficha7;
+	listaFic + *ficha7;
 	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac8, &asistenciaAux, evaluacion);
-	listaFic + ficha8;
+	listaFic + *ficha8;
 	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false,pac10, &asistenciaAux, evaluacion);
-	listaFic + ficha10;
+	listaFic + *ficha10;
 	return listaFic;
 	delete ficha2;
 	delete ficha3;
@@ -212,17 +212,22 @@ cListaPacientes crearPacs()
 
 	cListaPacientes listaPac;
 
-	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "1", "8997657", "07/06/2004", 'M', "0+", 65.0, lista1);
+	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "1", "8997657", "07/06/2004", 'M', "0+", 65.0);
 	cPaciente* pac2 = new cPaciente("Valen", "Mao", "2", "8997657", "08/03/2004", 'F', "0-", 50.0, lista2);
 	cPaciente* pac3 = new cPaciente("Lupe", "Helou", "3", "8997657", "09/04/2004", 'F', "A+", 45.0, lista3);
-	cPaciente* pac4 = new cPaciente("Pochi", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.0, lista4);
+	cPaciente* pac4 = new cPaciente("Pochi", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.0);
 	cPaciente* pac5 = new cPaciente("Martu", "Meyer", "5", "8997657", "30/03/2004", 'F', "B+", 85.0, lista5);
 	cPaciente* pac6 = new cPaciente("Lolo", "Mazzante", "6", "8997657", "04/02/2004", 'M', "B+", 25.0, lista6);
-	cPaciente* pac7 = new cPaciente("Nicolas", "Otamendi", "12", "8997657", "07/06/1989", 'M', "0+", 45.0);
-	cPaciente* pac8 = new cPaciente("Leandro", "Paredes", "13", "8997657", "07/06/1993", 'M', "0+", 75.0);
-	cPaciente* pac9 = new cPaciente("Enzo", "Fernandez", "14", "8997657", "17/01/2001", 'M', "0+", 85.0);
-	cPaciente* pac10 = new cPaciente("Cuti", "Romero", "15", "8997657", "07/06/1990", 'M', "0+", 65.0);
-	cPaciente* pac11 = new cPaciente("Lionel", "Messi", "16", "8997657", "24/06/1987", 'M', "0+", 95.0);
+	cPaciente* pac12 = new cPaciente("Nicolas", "Otamendi", "12", "8997657", "07/06/1989", 'M', "0+", 45.0);
+	cPaciente* pac13 = new cPaciente("Leandro", "Paredes", "13", "8997657", "07/06/1993", 'M', "0+", 75.0);
+	cPaciente* pac14 = new cPaciente("Enzo", "Fernandez", "14", "8997657", "17/01/2001", 'M', "0+", 85.0);
+	cPaciente* pac15 = new cPaciente("Cuti", "Romero", "15", "8997657", "07/06/1990", 'M', "0+", 65.0);
+	cPaciente* pac16 = new cPaciente("Lionel", "Messi", "16", "8997657", "24/06/1987", 'M', "0+", 95.0);
+	cPaciente* pac7 = new cPaciente("agos", "Nobo", "7", "8997657", "09/11/2004", 'F', "0+", 75.0, lista3);
+	cPaciente* pac8 = new cPaciente("alma", "Marquez", "8", "8997657", "16/01/2004", 'F', "0-", 75.0, lista4);
+	cPaciente* pac9 = new cPaciente("nica", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
+	cPaciente* pac10 = new cPaciente("cami", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
+	cPaciente* pac11 = new cPaciente("Martu", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
 
 
 	listaPac + pac1;
@@ -236,6 +241,13 @@ cListaPacientes crearPacs()
 	listaPac + pac9;
 	listaPac + pac10;
 	listaPac + pac11;
+	listaPac + pac12;
+	listaPac + pac13;
+	listaPac + pac14;
+	listaPac + pac15;
+	listaPac + pac16;
+
+
 	return listaPac;
 	delete pac1;
 	delete pac2;
@@ -248,6 +260,12 @@ cListaPacientes crearPacs()
 	delete pac9;
 	delete pac10;
 	delete pac11;
+	delete pac12;
+	delete pac13;
+	delete pac14;
+	delete pac15;
+	delete pac16;
+
 	delete braqui1;
 	delete braqui2;
 	delete braqui3;

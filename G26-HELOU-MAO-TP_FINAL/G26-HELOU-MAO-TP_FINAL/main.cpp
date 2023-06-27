@@ -10,11 +10,16 @@ int main()
 	cCentro miCentro("Mater Dei", "Salguero y Libertador", fichasAux, medicos);
 	/*try*/
 	//{
+
 		for (int i = 0; i < pacientesAux.size(); i++)
 		{
 			miCentro.atenderPaciente(pacientesAux[i]);
-			cout << *pacientesAux[i];
+			
 		}
+	/*	for (int i = 0; i < miCentro.GET_FICHAS().size(); i++)
+		{
+			cout << *miCentro.GET_FICHAS()[i];
+		}*/
 	//}
 	//catch (exception* e)
 	//{
