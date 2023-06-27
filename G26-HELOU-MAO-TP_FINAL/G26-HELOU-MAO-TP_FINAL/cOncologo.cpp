@@ -51,7 +51,7 @@ string cOncologo::to_string()
 	stringstream ss;
 	ss << "Nombre oncologo : " << this->aNombre << endl;
 	ss << "Apellido oncologo: " << this->aApellido << endl;
-	ss << "ID: " << this->aNroEmplpeado << endl;
+	ss << "ID Oncologo: " << this->aNroEmplpeado << endl;
 	return ss.str();
 }
 
@@ -118,21 +118,22 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	unsigned int frecuencia = 0;
 	cPaciente* pac=ficha->GET_PAC();
 	cListaTumores tumoresAux;
-	cTumor* tumor ;
-	cTumor auxtumor;
-	tumor = &auxtumor;
+	//cTumor* tumor ;
+	//cTumor auxtumor;
+	//tumor = &auxtumor;
 	for (int i = 0; i < cantTumores; i++)
 	{
-		auxTipoCancer = rand() % 11;
+
+		/*auxTipoCancer = rand() % 11;
 		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
 
 		auxTamanio = rand() % 3;
 		tumor->SET_TAMANIO(eTamanio(auxTamanio));
 
 		frecuencia =(int )rand() % 6+1;
-		tumor->SET_FRECUENCIA(frecuencia);
-
-		tumoresAux+tumor;
+		tumor->SET_FRECUENCIA(frecuencia);*/
+		cTumor* tumor = new cTumor(eTipoCancer(rand() % 11), eTamanio(rand() % 3), nullptr, 0.0, 0.0, 0.0, rand() % 6 + 1);
+		tumoresAux+*tumor;
 	}
 	pac->SET_TUMORES(tumoresAux);
 

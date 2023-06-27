@@ -28,7 +28,7 @@ public:
 	friend ostream& operator<<(ostream& out, cTumor& tumor);
 	float calcularDosisSemanal();
 	cTratamiento* GET_TRATAMIENTO();
-	void SET_TRATAMIENTO(cTratamiento &tratamiento);
+	void SET_TRATAMIENTO(cTratamiento *tratamiento);
 	void SET_TIPO_CANCER(eTipoCancer auxTipoCancer);
 	void SET_TAMANIO(eTamanio tam);
 	unsigned int GET_FRECUENCIA();

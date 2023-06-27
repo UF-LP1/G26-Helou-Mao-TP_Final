@@ -20,6 +20,14 @@ void cRadioterapia::DOSIS_X_TUMOR() {
 	this->aDosisXSesion = dosis;
 }
 
-void cRadioterapia::aumentar_dosis()
+
+cRadioterapia& cRadioterapia:: operator=(const cRadioterapia& trat)
 {
+	if (&trat != this)
+	{
+		aDosisXSesion = trat.aDosisXSesion;
+		aTipoHaz = trat.aTipoHaz;
+	}
+	return *this;
+
 }

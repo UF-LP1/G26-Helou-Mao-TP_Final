@@ -34,7 +34,7 @@ public:
 	friend ostream& operator<<(ostream& out, const cCentro& centro);
 	string to_string();
 	void operator+(cMedico* medico);
-	cListaPacientes buscar_cincoporciento_terminar(eTipoCancer);
+	cListaPacientes buscar_cincoporciento_terminar();
 	void imprimirPacientes();
 	/*cFicha* operator[](cPaciente*);*/
 };

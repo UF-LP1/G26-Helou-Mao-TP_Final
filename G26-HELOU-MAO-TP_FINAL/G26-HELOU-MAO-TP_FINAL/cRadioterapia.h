@@ -10,5 +10,6 @@ public:
 	~cRadioterapia();
 	cRadioterapia();
 	void DOSIS_X_TUMOR();
-	void aumentar_dosis();
+
+	cRadioterapia& operator=(const cRadioterapia& trat);
 };

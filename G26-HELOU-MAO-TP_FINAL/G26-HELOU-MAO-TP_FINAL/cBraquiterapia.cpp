@@ -16,11 +16,19 @@ cBraquiterapia::cBraquiterapia() :cTratamiento()
 {
 	this->aAtomoRadioactivo = yodoRadioactivo;
 }
-void cBraquiterapia::aumentar_dosis()
-{
-}
+
 void cBraquiterapia::DOSIS_X_TUMOR() {
 	srand(time(NULL));
 	float dosis = rand() % 3 + 6;
 	this->aDosisXSesion = dosis;
+}
+
+cBraquiterapia& cBraquiterapia::operator=(const cBraquiterapia& trat)
+{
+	if (&trat != this)
+	{
+		aDosisXSesion = trat.aDosisXSesion;
+		aAtomoRadioactivo = trat.aAtomoRadioactivo;
+	}
+	return *this;
 }

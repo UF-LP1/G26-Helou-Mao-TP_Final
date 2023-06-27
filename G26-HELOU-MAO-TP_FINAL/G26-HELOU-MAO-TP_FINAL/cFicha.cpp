@@ -135,7 +135,7 @@ void cFicha::SET_ALCANZO_MAX(bool nuevo)
 ostream& operator<<(ostream& out, cFicha& ficha)
 {
 	out << "FICHA: " << endl;
-	out << ficha.aPaciente;
+	out << *(ficha.aPaciente);
 	if (ficha.aListaEspera)
 		out << "Se encuentra en lista de espera" << endl;
 	else if (!(ficha.aAlta))

@@ -31,7 +31,12 @@ void cTratamiento::DOSIS_X_TUMOR()
 	this->aDosisXSesion = 1;
 }
 
-void cTratamiento::aumentar_dosis()
+
+cTratamiento& cTratamiento::operator=(const cTratamiento& trat)
 {
-	this->aDosisXSesion =aDosisXSesion+ 1;
+    if (&trat != this)
+    {
+		aDosisXSesion = trat.aDosisXSesion;
+    }
+    return *this;
 }

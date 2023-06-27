@@ -19,6 +19,14 @@ void cSistemica::DOSIS_X_TUMOR() {
 	this->aDosisXSesion = dosis;
 }
 
-void cSistemica::aumentar_dosis()
+cSistemica& cSistemica::operator=(const cSistemica& trat)
 {
+	if (&trat != this)
+	{
+		aDosisXSesion = trat.aDosisXSesion;
+	}
+	return *this;
+
 }
+
+

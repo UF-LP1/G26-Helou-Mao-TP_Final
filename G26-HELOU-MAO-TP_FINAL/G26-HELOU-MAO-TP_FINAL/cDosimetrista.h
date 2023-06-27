@@ -9,7 +9,7 @@ public:
 	~cDosimetrista();
 	int GET_ID_DOS();
 	void calcularDosisTotal(cFicha*);
-	void asignarTratamiento(cFicha*);
+	list<cTratamiento*> asignarTratamiento(cFicha*);
 	void atenderPaciente(cFicha*);
 	string to_string();
 	friend ostream& operator<<(ostream& out, cDosimetrista& imprimir);

@@ -7,5 +7,5 @@ public:
 	~cSistemica();
 	cSistemica();
 	void DOSIS_X_TUMOR();
-	void aumentar_dosis();
+	cSistemica& operator=(const cSistemica& trat);
 };

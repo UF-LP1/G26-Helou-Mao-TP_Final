@@ -11,5 +11,5 @@ public:
 	cTratamiento();
 	float GET_DOSISXSESION();
 	virtual void DOSIS_X_TUMOR()=0;
-	virtual void aumentar_dosis()=0;
+	cTratamiento& operator=(const cTratamiento& trat);
 };

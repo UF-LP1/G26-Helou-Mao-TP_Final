@@ -25,7 +25,7 @@ cPaciente::cPaciente(string miNombre, string miApellido, string miDni, string mi
 
 	for (int i = 0; i < listaTumores.size(); i++)
 	{
-		aTumores + listaTumores[i];
+		aTumores + *listaTumores[i];
 	}
 }
 cPaciente::~cPaciente()
@@ -82,7 +82,7 @@ string cPaciente::to_string()
 {
 	stringstream ss;
 	ss << "Nombre paciente: " << aNombre << endl << "Apellido paciente: " << aApellido << endl;
-	return string();
+	return ss.str();
 }
 
 

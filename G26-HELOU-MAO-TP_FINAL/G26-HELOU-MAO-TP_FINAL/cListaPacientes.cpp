@@ -4,12 +4,12 @@ ostream& operator<<(ostream& out, cListaPacientes lista)
 {
     for (cPaciente* pac : lista)
     {
-        out << pac;
+        out << *pac;
     }
     return out;
 }
 
-void cListaPacientes::operator+(cPaciente* pac)
+void cListaPacientes::operator+(cPaciente *pac)
 {
     this->push_back(pac);
 }

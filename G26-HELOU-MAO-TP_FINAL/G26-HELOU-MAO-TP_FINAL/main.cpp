@@ -4,31 +4,31 @@
 int main()
 {
 	srand(time(NULL));
-	cCentro miCentro("Mater Dei", "Salguero y Libertador");
-	cMedico* ptrMed = new cOncologo("Valentina", "mao");
-	miCentro + ptrMed;
-	cDosimetrista dos("Guadalupe", "Helou");
-	ptrMed = &dos;
-	miCentro + ptrMed;
-	
-	cPaciente* pac = new cPaciente("Saul", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0);
-	miCentro.atenderPaciente(pac);
-
-	/*cListaPacientes pacientesAux = crearPacs();
+	cListaPacientes pacientesAux = crearPacs();
 	cListaFichas fichasAux = crarFichas();
-	cCentro miCentro2 ("Mater Dei", "Salguero y Libertador", fichasAux);
-	miCentro2 + ptrMed;
+	cCentro miCentro("Mater Dei", "Salguero y Libertador", fichasAux);
+	 cOncologo onc("Valentina", "mao");
+	miCentro +&onc;
+	cDosimetrista dos("Guadalupe", "Helou");
+	cDosimetrista dos1("Mailen", "Zino");
 
-
-	cListaPacientes pacsImprimir=miCentro2.buscarTerapiaTumor(cabezayCuello, braquiterapia);
+	miCentro + &dos;
+	miCentro + &dos1;
+	
+	cPaciente* pac = new cPaciente("Saul", "Lezama", "45783437", "8997657", "07/06/2004", 'M', "0+", 65.0);
+	miCentro.atenderPaciente(pac);
+	cPaciente* pacAux = new cPaciente("valen", "Lezama", "879765", "8997657", "07/06/2004", 'M', "0+", 65.0);
+	miCentro.atenderPaciente(pacAux);
+	cout << pacAux->GET_TUMORES()[0]->GET_SESIONES_REALIZADAS();
+	cout << pacAux->GET_TUMORES()[1]->GET_SESIONES_REALIZADAS();
+	cout << pacAux->GET_TUMORES()[2]->GET_SESIONES_REALIZADAS();
+	cListaPacientes pacsImprimir = miCentro.buscar_cincoporciento_terminar();
 	cout << pacsImprimir;
-	pacsImprimir = miCentro2.buscar_cincoporciento_terminar(ojo);
-	cout << pacsImprimir;
-	 miCentro2.imprimirPacientes();
+	miCentro.imprimirPacientes();
 
-	 fichasAux= miCentro.pacientesaContactar();
-	 cout << fichasAux;*/
-	delete ptrMed;
+	// fichasAux= miCentro.pacientesaContactar();
+	// cout << fichasAux;
+
 	delete pac;
 	return 0;
 }

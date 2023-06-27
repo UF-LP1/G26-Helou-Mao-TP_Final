@@ -9,6 +9,7 @@ public:
 	~cBraquiterapia();
 	eAtomo GET_ATOMO();
 	cBraquiterapia();
-	void aumentar_dosis();
+
 	void DOSIS_X_TUMOR();
+	cBraquiterapia& operator=(const cBraquiterapia& trat);
 };

@@ -20,9 +20,9 @@ void cListaTumores::operator-(cTumor* tumor)
 	this->remove(tumor);
 }
 
-void cListaTumores::operator+(cTumor* tumor)
+void cListaTumores::operator+(cTumor &tumor)
 {
-	this->push_back(tumor);
+	this->push_back(&tumor);
 }
 
 ostream& operator<<(ostream& out, cListaTumores& lista)

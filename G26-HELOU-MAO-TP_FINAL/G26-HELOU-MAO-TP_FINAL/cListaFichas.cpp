@@ -1,11 +1,11 @@
 #include "cListaFichas.h"
 
-cFicha* cListaFichas::operator[](cPaciente* pac)
+cFicha* cListaFichas::operator[](cPaciente *pac)
 {
 	cFicha* retorno = nullptr;
 	for (cFicha *ficha : *this)
 	{
-		if (ficha->GET_PAC() == pac)
+		if (*(ficha->GET_PAC())==pac)
 		{
 			retorno = ficha;
 		}
@@ -38,7 +38,7 @@ ostream& operator<<(ostream& out, cListaFichas lista)
 {
 	for (cFicha* ficha : lista)
 	{
-		out << ficha;
+		out << *ficha;
 	}
 	return out;
 }
