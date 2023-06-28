@@ -5,6 +5,7 @@
 #include <list>
 #include <fstream>
 #include <ctime>
+#include <time.h>
 #include <exception>
 #include <random>
 #include "eTratamiento.h"

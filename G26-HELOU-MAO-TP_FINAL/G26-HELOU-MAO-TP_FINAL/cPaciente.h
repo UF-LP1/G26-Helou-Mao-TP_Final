@@ -27,7 +27,8 @@ public:
 	cListaTumores GET_TUMORES();
 	friend ostream& operator<<(ostream& out, cPaciente&pac);
 	string to_string();
-
+	string GET_NOMBRE();
+	string GET_APELLIDO();
 
 };
 

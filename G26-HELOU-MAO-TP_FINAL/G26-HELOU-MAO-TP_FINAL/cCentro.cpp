@@ -87,10 +87,11 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		time(&ahora);//la inicializo con el tiempo de ahora
 		ficha->aAsistencia = ahora;
 	}
-	else if (ficha->aListaEspera == true)	//podriamos chequear si esta dado de alta que se haga una reevaluacion
+	else if (ficha->aListaEspera == true)	//que se haga una reevaluacion
 	{
-		//habria que chequear que termino su tiempo de espera
-		ficha->aMotivo=(diagnostico);	//de rediagnostica y te evalua
+		ficha->SET_ESPERADO(false);
+		//si lista de espera es true significa que ya umplio su tiempo y vuelve para reevaluarses
+		ficha->aMotivo=(diagnostico);	//te rediagnostica y te evalua
 		ficha->aRadiacionAcum=(0);
 		pasarFichaOncologo(ficha);
 		pasarFichaDosimetrista(ficha);
@@ -169,16 +170,34 @@ cOncologo* cCentro::buscarOncologo(int id)
 string cCentro::to_string()
 {
 	stringstream ss;
-	ss <<"Nombre centro: "<< this->aNombre << endl <<"Direccion centro: " << this->aDireccion << endl;
+	ss << "Nombre centro: " << this->aNombre << endl << "Direccion centro: " << this->aDireccion << endl;
+	ss<<endl;
 	for (cFicha *it : this->aFichas)
 	{
-		ss << it->to_string() << endl;
+		ss << it->to_string();
 	}
 	for (cMedico* it : this->aMedicos)
 	{
 		ss << it->to_string() << endl;
 	}
 	return ss.str();
+}
+void cCentro::contactar(cListaFichas fichas)
+{
+	int aux = rand() % 2;	//segun esto el paciente continua o no
+	for (cFicha* f : fichas)
+	{
+		if (aux)	//no va a volver
+		{
+			f->SET_ALTA(true);	//lo doy de alta porue no se va a volver a atender
+		}
+		else
+		{
+			//lo mando a evaluarse para ver como sigue
+			f->SET_MOTIVO(evaluacion);
+		}
+		
+	}
 }
 void cCentro::operator+(cMedico* medico)
 {
@@ -205,6 +224,10 @@ cListaPacientes cCentro::buscar_cincoporciento_terminar()
 		
 
 	}
+	if (auxLista.size() == 0)
+	{
+		throw exception("No hay ningun paciente que este al 5% de alcanzar su dosis maxima");
+	}
 	return auxLista;
 }
 void cCentro::imprimirPacientes()
@@ -226,7 +249,9 @@ ostream& operator<<(ostream& out,cCentro& centro)
 }
 void cCentro::imprimir()
 {
-	cout << this;
+	if (this == nullptr)
+		throw new exception("El centro no existe");
+	cout<< *this;
 }
 void cCentro::pasarFichaOncologo(cFicha* ficha)
 {
@@ -297,7 +322,12 @@ cListaPacientes cCentro::buscarTerapiaTumor(eTipoCancer cancer, eTratamiento tra
 			{
 				auxLista +(ficha->GET_PAC());
 			}
+			
 		}
+	}
+	if (auxLista.size() == 0)
+	{
+		throw new exception("No hay ningun paciente cuyo tratamiento coincida con ese tipo de cancer");
 	}
 	return auxLista;
 }

@@ -86,8 +86,10 @@ void cOncologo::asignarTiempoEspera(cFicha* ficha) {
 
 void cOncologo::atenderPaciente(cFicha* ficha)
 {
+
 	if (ficha->GET_MOTIVO() == diagnostico)	//la primera vez
 	{
+		
 		if (ficha->GET_PAC()->GET_TUMORES().size() == 0)
 			diagnosticarTumores(ficha);
 		else

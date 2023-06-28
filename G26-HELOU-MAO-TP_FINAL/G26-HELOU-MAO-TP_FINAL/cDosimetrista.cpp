@@ -97,9 +97,9 @@ void cDosimetrista::atenderPaciente(cFicha* ficha)
 string cDosimetrista::to_string()
 {
 	stringstream ss;
-	ss << "Nombre oncologo : " << this->aNombre << endl;
-	ss << "Apellido oncologo: " << this->aApellido << endl;
-	ss << "ID: " << this->aNroEmplpeado << endl;
+	ss << "Nombre dosimetrista : " << this->aNombre << endl;
+	ss << "Apellido dosimetrista: " << this->aApellido << endl;
+	ss << "ID dosimetrista: " << this->aNroEmplpeado << endl;
 	return ss.str();
 }
 

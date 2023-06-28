@@ -31,7 +31,6 @@ cFicha::cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo moti
 	time_t ahora;//creo varable
 	time(&ahora);//la inicializo con el tiempo de ahora
 	this->aAsistencia = ahora;
-
 	this->aMotivo = motivo;
 }
 cFicha::cFicha(eMotivo motivo)
@@ -49,7 +48,6 @@ cFicha::cFicha(eMotivo motivo)
 	time_t ahora;//creo varable
 	time(&ahora);//la inicializo con el tiempo de ahora
 	this->aAsistencia = ahora;
-
 	this->aMotivo = motivo;
 }
 cFicha::~cFicha()
@@ -73,7 +71,6 @@ string cFicha::to_string()
 {
 	stringstream ss;
 	ss << aPaciente->to_string() << endl;
-	
 	return ss.str();
 }
 
@@ -154,7 +151,7 @@ ostream& operator<<(ostream& out, cFicha& ficha)
 	out << *(ficha.aPaciente);
 	if (ficha.aListaEspera)
 		out << "Se encuentra en lista de espera" << endl;
-	else if (!(ficha.aAlta))
+	else if (ficha.aAlta)
 		out << "El paciente fue dado de alta" << endl;
 	else
 		out << "El paciente continua en tratamiento" << endl;

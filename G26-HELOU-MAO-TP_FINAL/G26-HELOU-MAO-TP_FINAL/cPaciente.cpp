@@ -77,7 +77,14 @@ cListaTumores cPaciente::GET_TUMORES()
 {
 	return aTumores;
 }
-
+string cPaciente::GET_NOMBRE()
+{
+	return this->aNombre;
+}
+string cPaciente::GET_APELLIDO()
+{
+	return this->aApellido;
+}
 string cPaciente::to_string()
 {
 	stringstream ss;

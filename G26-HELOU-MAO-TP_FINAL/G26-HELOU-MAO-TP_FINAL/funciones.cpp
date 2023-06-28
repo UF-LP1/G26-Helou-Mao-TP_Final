@@ -76,12 +76,12 @@ cListaFichas crarFichas()
 	cRadioterapia* radio2 = new cRadioterapia(1, electrones);
 	cRadioterapia* radio3 = new cRadioterapia(6, fotones);
 
-	cTumor* tumor1 = new cTumor(cabezayCuello, pequenio,  80.0, 150.0, 5.0, 3, braqui1, 1);
-	cTumor* tumor2 = new cTumor(prostata, mediano,  15.0, 60.0, 4.0, 3, sist1, 1);
+	cTumor* tumor1 = new cTumor(cabezayCuello, pequenio,  80.0, 150.0, 5.0, 3, braqui1, 3);
+	cTumor* tumor2 = new cTumor(prostata, mediano,  15.0, 60.0, 4.0, 3, sist1, 3);
 	cTumor* tumor3 = new cTumor(cuelloUtero, pequenio,  80.0, 150.0, 7.0, 3, braqui1, 2);
 	cTumor* tumor4 = new cTumor(mama, pequenio,  145.0, 150.0, 8.0, 5, braqui3, 3);
-	cTumor* tumor5 = new cTumor(ojo, pequenio,  20.0, 150.0, 6.0, 3, braqui2, 1);
-	cTumor* tumor6 = new cTumor(vejiga, mediano,  20.0, 60.0, 2, 2, radio1, 1);
+	cTumor* tumor5 = new cTumor(ojo, pequenio,  20.0, 150.0, 6.0, 3, braqui2, 3);
+	cTumor* tumor6 = new cTumor(vejiga, mediano,  20.0, 60.0, 2, 2, radio1, 2);
 	cTumor* tumor7 = new cTumor(tiroides, pequenio,  10.0, 60.0, 3.0, 2, sist2,1);
 	cTumor* tumor8 = new cTumor(pancreas, mediano,  10.0, 60.0, 1.0, 6, radio2, 3);
 	cTumor* tumor9 = new cTumor(pulmon, pequenio,  20.0, 60.0, 2.0, 3, radio1, 1);
@@ -113,34 +113,54 @@ cListaFichas crarFichas()
 	lista6 + *tumor7;
 
 	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "1", "8997657", "07/06/2004", 'M', "0+", 65.0);
-	cPaciente* pac2 = new cPaciente("valen", "Mao", "2", "8997657", "08/03/2004", 'F', "0-", 50.0, lista2);
-	cPaciente* pac3 = new cPaciente("lupe", "Helou", "3", "8997657", "09/04/2004", 'F', "A+", 45.0, lista3);
-	cPaciente* pac4 = new cPaciente("pochi", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.);
-	cPaciente* pac5 = new cPaciente("martu", "Meyer", "5", "8997657", "30/03/2004", 'F', "B+", 85.0, lista5);
-	cPaciente* pac6 = new cPaciente("lolo", "Mazzante", "6", "8997657", "04/02/2004", 'M', "B+", 25.0, lista6);
-	cPaciente* pac7 = new cPaciente("agos", "Nobo", "7", "8997657", "09/11/2004", 'F', "0+", 75.0, lista3);
-	cPaciente* pac8 = new cPaciente("alma", "Marquez", "8", "8997657", "16/01/2004", 'F', "0-", 75.0, lista4);
-	cPaciente* pac9 = new cPaciente("nica", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
-	cPaciente* pac10 = new cPaciente("cami", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
-	cPaciente* pac11 = new cPaciente("Martu", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
-	time_t ahora;//creo varable
-	time(&ahora);//la inicializo con el tiempo de ahora
+	cPaciente* pac2 = new cPaciente("Valentina", "Mao", "2", "8997657", "08/03/2004", 'F', "0-", 50.0, lista2);
+	cPaciente* pac3 = new cPaciente("Guadalupe", "Helou", "3", "8997657", "09/04/2004", 'F', "A+", 45.0, lista3);
+	cPaciente* pac4 = new cPaciente("Paula", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.);
+	cPaciente* pac5 = new cPaciente("Martina", "Meyer", "5", "8997657", "30/03/2004", 'F', "B+", 85.0, lista5);
+	cPaciente* pac6 = new cPaciente("Lorenzo", "Mazzante", "6", "8997657", "04/02/2004", 'M', "B+", 25.0, lista6);
+	cPaciente* pac7 = new cPaciente("Agostina", "Nobo", "7", "8997657", "09/11/2004", 'F', "0+", 75.0, lista3);
+	cPaciente* pac8 = new cPaciente("Alma", "Marquez", "8", "8997657", "16/01/2004", 'F', "0-", 75.0, lista4);
+	cPaciente* pac9 = new cPaciente("Nicanor", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
+	cPaciente* pac10 = new cPaciente("Camila", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
+	cPaciente* pac11 = new cPaciente("Martina", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
+	
+	time_t ahora=time(0);//creo varable y la inicializo en el tiempo actual
 
+	//struct tm* timeinfo;//lo deberia contactar
+	//timeinfo = localtime(&ahora);
+	//timeinfo->tm_year = 2023-1900;
+	//timeinfo->tm_mon = 06;
+	//timeinfo->tm_mday = 07;
+	//mktime(timeinfo);
+
+	//struct tm* timeinfo2;	//lo deberia contactar
+	//timeinfo2 = localtime(&ahora);
+	//timeinfo2->tm_year = 2023 - 1900;
+	//timeinfo2->tm_mon = 03;
+	//timeinfo2->tm_mday =21;
+	//mktime(timeinfo2);
+
+	//struct tm* timeinfo3;	//a este no lo deberia contactar
+	//timeinfo3 = localtime(&ahora);
+	//timeinfo3->tm_year = 2023 - 1900;
+	//timeinfo3->tm_mon = 06;
+	//timeinfo3->tm_mday = 28;
+	//mktime(timeinfo3);
 
 	cListaFichas listaFic;
-	cFicha *ficha2 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac2, ahora, reevaluacion);
+	cFicha *ficha2 = new cFicha(false, false, 150, 1, 1, 150.0, 0, false, pac2, ahora, reevaluacion);
 	listaFic + *ficha2;
-	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac3,ahora, evaluacion);
+	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 0, false, pac3, ahora, evaluacion);
 	listaFic + *ficha3;
-	cFicha* ficha5 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac5,ahora, finTratamiento);
+	cFicha* ficha5 = new cFicha(false, false, 30.0, 1, 1, 150.0, 20, false, pac5, ahora, finTratamiento);
 	listaFic + *ficha5;
-	cFicha *ficha6 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac6, ahora, reevaluacion);
+	cFicha *ficha6 = new cFicha(true, false, 30.0, 1, 1, 150.0, 0, false, pac6,ahora, reevaluacion);
 	listaFic + *ficha6;
-	cFicha *ficha7 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac7, ahora, finTratamiento);
+	cFicha *ficha7 = new cFicha(true, false, 30.0, 1, 1, 150.0, 0, false, pac7, ahora, finTratamiento);
 	listaFic + *ficha7;
-	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac8, ahora, evaluacion);
+	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 15, false, pac8,ahora, evaluacion);
 	listaFic + *ficha8;
-	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false,pac10, ahora, evaluacion);
+	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 10, false,pac10, ahora, evaluacion);
 	listaFic + *ficha10;
 	return listaFic;
 	delete ficha2;
@@ -177,12 +197,12 @@ cListaPacientes crearPacs()
 	cRadioterapia* radio1 = new cRadioterapia(2, protones);
 	cRadioterapia* radio2 = new cRadioterapia(1, electrones);
 	cRadioterapia* radio3 = new cRadioterapia(6, fotones);
-	cTumor* tumor1 = new cTumor(cabezayCuello, pequenio, 80.0, 150.0, 5.0, 3, braqui1, 1);
-	cTumor* tumor2 = new cTumor(prostata, mediano, 15.0, 60.0, 4.0, 3, sist1, 1);
+	cTumor* tumor1 = new cTumor(cabezayCuello, pequenio, 80.0, 150.0, 5.0, 3, braqui1, 3);
+	cTumor* tumor2 = new cTumor(prostata, mediano, 15.0, 60.0, 4.0, 3, sist1, 3);
 	cTumor* tumor3 = new cTumor(cuelloUtero, pequenio, 80.0, 150.0, 7.0, 3, braqui1, 2);
 	cTumor* tumor4 = new cTumor(mama, pequenio, 145.0, 150.0, 8.0, 5, braqui3, 3);
-	cTumor* tumor5 = new cTumor(ojo, pequenio, 20.0, 150.0, 6.0, 3, braqui2, 1);
-	cTumor* tumor6 = new cTumor(vejiga, mediano, 20.0, 60.0, 2, 2, radio1, 1);
+	cTumor* tumor5 = new cTumor(ojo, pequenio, 20.0, 150.0, 6.0, 3, braqui2, 3);
+	cTumor* tumor6 = new cTumor(vejiga, mediano, 20.0, 60.0, 2, 2, radio1, 2);
 	cTumor* tumor7 = new cTumor(tiroides, pequenio, 10.0, 60.0, 3.0, 2, sist2, 1);
 	cTumor* tumor8 = new cTumor(pancreas, mediano, 10.0, 60.0, 1.0, 6, radio2, 3);
 	cTumor* tumor9 = new cTumor(pulmon, pequenio, 20.0, 60.0, 2.0, 3, radio1, 1);
@@ -215,21 +235,21 @@ cListaPacientes crearPacs()
 	cListaPacientes listaPac;
 
 	cPaciente* pac1 = new cPaciente("Saul", "Lezama", "1", "8997657", "07/06/2004", 'M', "0+", 65.0);
-	cPaciente* pac2 = new cPaciente("Valen", "Mao", "2", "8997657", "08/03/2004", 'F', "0-", 50.0, lista2);
-	cPaciente* pac3 = new cPaciente("Lupe", "Helou", "3", "8997657", "09/04/2004", 'F', "A+", 45.0, lista3);
-	cPaciente* pac4 = new cPaciente("Pochi", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.0);
-	cPaciente* pac5 = new cPaciente("Martu", "Meyer", "5", "8997657", "30/03/2004", 'F', "B+", 85.0, lista5);
-	cPaciente* pac6 = new cPaciente("Lolo", "Mazzante", "6", "8997657", "04/02/2004", 'M', "B+", 25.0, lista6);
+	cPaciente* pac2 = new cPaciente("Valentina", "Mao", "2", "8997657", "08/03/2004", 'F', "0-", 50.0, lista2);
+	cPaciente* pac3 = new cPaciente("Guadalupe", "Helou", "3", "8997657", "09/04/2004", 'F', "A+", 45.0, lista3);
+	cPaciente* pac4 = new cPaciente("Paula", "Pecker", "4", "8997657", "21/10/2004", 'F', "A-", 35.0);
+	cPaciente* pac5 = new cPaciente("Martina", "Meyer", "5", "8997657", "30/03/2004", 'F', "B+", 85.0, lista5);
+	cPaciente* pac6 = new cPaciente("Lorenzo", "Mazzante", "6", "8997657", "04/02/2004", 'M', "B+", 25.0, lista6);
 	cPaciente* pac12 = new cPaciente("Nicolas", "Otamendi", "12", "8997657", "07/06/1989", 'M', "0+", 45.0);
 	cPaciente* pac13 = new cPaciente("Leandro", "Paredes", "13", "8997657", "07/06/1993", 'M', "0+", 75.0);
 	cPaciente* pac14 = new cPaciente("Enzo", "Fernandez", "14", "8997657", "17/01/2001", 'M', "0+", 85.0);
 	cPaciente* pac15 = new cPaciente("Cuti", "Romero", "15", "8997657", "07/06/1990", 'M', "0+", 65.0);
 	cPaciente* pac16 = new cPaciente("Lionel", "Messi", "16", "8997657", "24/06/1987", 'M', "0+", 95.0);
-	cPaciente* pac7 = new cPaciente("agos", "Nobo", "7", "8997657", "09/11/2004", 'F', "0+", 75.0, lista3);
-	cPaciente* pac8 = new cPaciente("alma", "Marquez", "8", "8997657", "16/01/2004", 'F', "0-", 75.0, lista4);
-	cPaciente* pac9 = new cPaciente("nica", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
-	cPaciente* pac10 = new cPaciente("cami", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
-	cPaciente* pac11 = new cPaciente("Martu", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
+	cPaciente* pac7 = new cPaciente("Agostina", "Nobo", "7", "8997657", "09/11/2004", 'F', "0+", 75.0, lista3);
+	cPaciente* pac8 = new cPaciente("Alma", "Marquez", "8", "8997657", "16/01/2004", 'F', "0-", 75.0, lista4);
+	cPaciente* pac9 = new cPaciente("Nicanor", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
+	cPaciente* pac10 = new cPaciente("Camila", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
+	cPaciente* pac11 = new cPaciente("Martina", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
 
 
 	listaPac + pac1;
@@ -303,12 +323,12 @@ cListaTumores crearTumores()
 	cRadioterapia* radio2 = new cRadioterapia(1, protones);
 	cRadioterapia* radio3 = new cRadioterapia(6, protones);
 
-	cTumor* tumor1 = new cTumor(cabezayCuello, pequenio, 80.0, 150.0, 5.0, 3, braqui1, 1);
-	cTumor* tumor2 = new cTumor(prostata, mediano, 15.0, 60.0, 4.0, 3, sist1, 1);
+	cTumor* tumor1 = new cTumor(cabezayCuello, pequenio, 80.0, 150.0, 5.0, 3, braqui1, 3);
+	cTumor* tumor2 = new cTumor(prostata, mediano, 15.0, 60.0, 4.0, 3, sist1, 3);
 	cTumor* tumor3 = new cTumor(cuelloUtero, pequenio, 80.0, 150.0, 7.0, 3, braqui1, 2);
 	cTumor* tumor4 = new cTumor(mama, pequenio, 145.0, 150.0, 8.0, 5, braqui3, 3);
-	cTumor* tumor5 = new cTumor(ojo, pequenio, 20.0, 150.0, 6.0, 3, braqui2, 1);
-	cTumor* tumor6 = new cTumor(vejiga, mediano, 20.0, 60.0, 2, 2, radio1, 1);
+	cTumor* tumor5 = new cTumor(ojo, pequenio, 20.0, 150.0, 6.0, 3, braqui2, 3);
+	cTumor* tumor6 = new cTumor(vejiga, mediano, 20.0, 60.0, 2, 2, radio1, 2);
 	cTumor* tumor7 = new cTumor(tiroides, pequenio, 10.0, 60.0, 3.0, 2, sist2, 1);
 	cTumor* tumor8 = new cTumor(pancreas, mediano, 10.0, 60.0, 1.0, 6, radio2, 3);
 	cTumor* tumor9 = new cTumor(pulmon, pequenio, 20.0, 60.0, 2.0, 3, radio1, 1);

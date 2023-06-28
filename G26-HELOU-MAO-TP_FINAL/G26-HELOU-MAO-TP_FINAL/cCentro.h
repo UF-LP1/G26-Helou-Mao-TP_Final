@@ -37,5 +37,6 @@ public:
 	void operator+(cMedico* medico);
 	cListaPacientes buscar_cincoporciento_terminar();
 	void imprimirPacientes();
+	void contactar(cListaFichas f);
 
 };
