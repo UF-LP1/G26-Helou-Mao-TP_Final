@@ -124,15 +124,7 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 	for (int i = 0; i < cantTumores; i++)
 	{
 
-		/*auxTipoCancer = rand() % 11;
-		tumor->SET_TIPO_CANCER(eTipoCancer(auxTipoCancer));
-
-		auxTamanio = rand() % 3;
-		tumor->SET_TAMANIO(eTamanio(auxTamanio));
-
-		frecuencia =(int )rand() % 6+1;
 		
-		tumor->SET_FRECUENCIA(frecuencia);*/
 		cTumor* tumor = new cTumor(eTipoCancer(rand() % 11), eTamanio(rand() % 3), 0.0, 0.0, 0.0, rand() % 6 + 1);
 		tumoresAux+*tumor;
 	}
@@ -149,4 +141,11 @@ ostream& operator<<(ostream& out, cOncologo& oncologo)
 	out << oncologo.to_string();
 	return out;
 	
+}
+
+bool cOncologo::operator==(int id)
+{
+	if (this->numeroOncologo == id)
+		return true;
+	return false;
 }

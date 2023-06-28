@@ -123,21 +123,24 @@ cListaFichas crarFichas()
 	cPaciente* pac9 = new cPaciente("nica", "Garcia Saavedra", "9", "8997657", "07/02/2004", 'M', "A+", 95.0);
 	cPaciente* pac10 = new cPaciente("cami", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
 	cPaciente* pac11 = new cPaciente("Martu", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
-	cAsistencia asistenciaAux;
+	time_t ahora;//creo varable
+	time(&ahora);//la inicializo con el tiempo de ahora
+
+
 	cListaFichas listaFic;
-	cFicha *ficha2 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac2, &asistenciaAux, reevaluacion);
+	cFicha *ficha2 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac2, ahora, reevaluacion);
 	listaFic + *ficha2;
-	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac3, &asistenciaAux, evaluacion);
+	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac3,ahora, evaluacion);
 	listaFic + *ficha3;
-	cFicha* ficha5 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac5, &asistenciaAux, finTratamiento);
+	cFicha* ficha5 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac5,ahora, finTratamiento);
 	listaFic + *ficha5;
-	cFicha *ficha6 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac6, &asistenciaAux, reevaluacion);
+	cFicha *ficha6 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac6, ahora, reevaluacion);
 	listaFic + *ficha6;
-	cFicha *ficha7 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac7, &asistenciaAux, finTratamiento);
+	cFicha *ficha7 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac7, ahora, finTratamiento);
 	listaFic + *ficha7;
-	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac8, &asistenciaAux, evaluacion);
+	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false, pac8, ahora, evaluacion);
 	listaFic + *ficha8;
-	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false,pac10, &asistenciaAux, evaluacion);
+	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 230.0, false,pac10, ahora, evaluacion);
 	listaFic + *ficha10;
 	return listaFic;
 	delete ficha2;

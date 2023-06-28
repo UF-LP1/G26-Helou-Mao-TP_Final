@@ -1,7 +1,7 @@
 #include "cFicha.h"
 
 cFicha::cFicha(bool miAlta, bool miListaEspera, float miRadiacion, int oncologo, int dosimetrista,float  miDosisMax,
-	float miDosisPorSesion, bool miAlcanzoMax,  cPaciente* miPaciente, cAsistencia* asist, eMotivo motivo)
+	float miDosisPorSesion, bool miAlcanzoMax,  cPaciente* miPaciente, time_t asist, eMotivo motivo)
 {
 	this->aID_Dosimetrista = dosimetrista;
 	this->aID_OncologoCargo = oncologo;
@@ -28,7 +28,10 @@ cFicha::cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo moti
 	this->aAlcanzoMax = false;
 	this->aPaciente=paciente;
 	this->aTiempoEspera = 0;
-	this->aAsistencia=nullptr;
+	time_t ahora;//creo varable
+	time(&ahora);//la inicializo con el tiempo de ahora
+	this->aAsistencia = ahora;
+
 	this->aMotivo = motivo;
 }
 cFicha::cFicha(eMotivo motivo)
@@ -43,7 +46,10 @@ cFicha::cFicha(eMotivo motivo)
 	this->aAlcanzoMax = false;
 	this->aPaciente = nullptr;
 	this->aTiempoEspera = 0;
-	this->aAsistencia = nullptr;
+	time_t ahora;//creo varable
+	time(&ahora);//la inicializo con el tiempo de ahora
+	this->aAsistencia = ahora;
+
 	this->aMotivo = motivo;
 }
 cFicha::~cFicha()
@@ -108,11 +114,11 @@ void cFicha::SET_ESPERADO(bool enEspera)
 {
 	this->aListaEspera = enEspera;
 }
-cAsistencia* cFicha::GET_ASISTENCIA()
+time_t cFicha::GET_ASISTENCIA()
 {
 	return this->aAsistencia;
 }
-void cFicha::SET_ASISTENCIA(cAsistencia *asist)
+void cFicha::SET_ASISTENCIA(time_t asist)
 {
 	this->aAsistencia = asist;
 }

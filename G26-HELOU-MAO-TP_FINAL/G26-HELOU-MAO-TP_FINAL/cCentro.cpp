@@ -56,8 +56,8 @@ cListaFichas cCentro::pacientesaContactar()
 		time_t ahora;//creo varable
 		time(&ahora);//la inicializo con el tiempo de ahora
 
-		float segundos = (float)difftime(aFichas[i]->aAsistencia->GET_TURNO(), ahora);
-		if (aFichas[i]->aAsistencia->GET_ASISTENCIA() == false && segundos > 604800.0)
+		float segundos = (float)difftime(aFichas[i]->aAsistencia, ahora);
+		if ( segundos > segundosPorSemana)
 		{
 			lista + *(this->aFichas[i]);
 		}
@@ -83,6 +83,9 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		ficha->aAlcanzoMax=true;
 		ficha->aMotivo=(finTratamiento);
 		pasarFichaOncologo(ficha);
+		time_t ahora;//creo varable
+		time(&ahora);//la inicializo con el tiempo de ahora
+		ficha->aAsistencia = ahora;
 	}
 	else if (ficha->aListaEspera == true)	//podriamos chequear si esta dado de alta que se haga una reevaluacion
 	{
@@ -92,6 +95,9 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		pasarFichaOncologo(ficha);
 		pasarFichaDosimetrista(ficha);
 		pasarFichaOncologo(ficha);
+		time_t ahora;//creo varable
+		time(&ahora);//la inicializo con el tiempo de ahora
+		ficha->aAsistencia = ahora;
 	}
 	else //chequeo si a algun tumor le faltan sesiones
 	{
@@ -135,6 +141,9 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 				pasarFichaOncologo(ficha);
 			}
 		}
+		time_t ahora;//creo varable
+		time(&ahora);//la inicializo con el tiempo de ahora
+		ficha->aAsistencia = ahora;
 
 	}
 	*paciente = ficha->aPaciente;
@@ -149,7 +158,7 @@ cOncologo* cCentro::buscarOncologo(int id)
 	for (cMedico* med : this->aMedicos)	//recorro el listado de medicos que tiene el centro
 	{
 		cOncologo* oncologo = dynamic_cast<cOncologo*>(med);//busco en mi lista de medicos a los oncologos
-		if (oncologo != nullptr && oncologo->GET_ID_ONC() == id)
+		if (oncologo != nullptr && (*oncologo == id))
 		{
 			oncologoR=oncologo;//guardo el oncologo que necesito
 		}

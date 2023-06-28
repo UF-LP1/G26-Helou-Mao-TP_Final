@@ -32,7 +32,6 @@
     <ClCompile Include="cSistemica.cpp" />
     <ClCompile Include="cTumor.cpp" />
     <ClCompile Include="cTratamiento.cpp" />
-    <ClCompile Include="cAsistencia.cpp" />
     <ClCompile Include="cBraquiterapia.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="funciones.cpp" />
@@ -51,7 +50,6 @@
     <ClInclude Include="cSistemica.h" />
     <ClInclude Include="cTumor.h" />
     <ClInclude Include="cTratamiento.h" />
-    <ClInclude Include="cAsistencia.h" />
     <ClInclude Include="cBraquiterapia.h" />
     <ClInclude Include="eMotivo.h" />
     <ClInclude Include="eTipoCancer.h" />

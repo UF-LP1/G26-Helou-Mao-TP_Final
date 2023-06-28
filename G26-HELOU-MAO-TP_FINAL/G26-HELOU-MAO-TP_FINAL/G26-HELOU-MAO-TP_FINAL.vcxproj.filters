@@ -39,9 +39,6 @@
     <ClCompile Include="cTratamiento.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="cAsistencia.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="cBraquiterapia.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="cTratamiento.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="cAsistencia.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="cBraquiterapia.h">

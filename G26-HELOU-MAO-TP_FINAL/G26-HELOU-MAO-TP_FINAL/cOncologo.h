@@ -16,5 +16,5 @@ public:
 	void asignarTiempoEspera(cFicha*);
 	void atenderPaciente(cFicha*);
 	void diagnosticarTumores(cFicha*);
-
+	bool operator==(int id);
 };
