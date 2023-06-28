@@ -24,11 +24,7 @@ string cTumor::to_string()
 
 	return ss.str();
 }
-float cTumor:: calcularDosisSemanal()
-{
 
-	return 0.0;
-}
 cTratamiento* cTumor:: GET_TRATAMIENTO()
 {
 	if (this->aTipoTratamiento == nullptr)
