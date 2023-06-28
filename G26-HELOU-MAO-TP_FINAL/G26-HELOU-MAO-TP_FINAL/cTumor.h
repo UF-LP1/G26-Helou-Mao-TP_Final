@@ -19,7 +19,7 @@ private:
 	cTratamiento* aTipoTratamiento;
 public:
 	
-	cTumor(eTipoCancer, eTamanio, cTratamiento*, float, float, float, unsigned int, unsigned int=0);
+	cTumor(eTipoCancer, eTamanio,  float, float, float, unsigned int, cTratamiento *miTratamiento = nullptr, unsigned int=0);
 	cTumor();
 	~cTumor();
 	friend class cOncologo;

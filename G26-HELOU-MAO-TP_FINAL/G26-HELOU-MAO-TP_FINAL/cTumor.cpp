@@ -1,8 +1,8 @@
 #include "cTumor.h"
 
-cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio, cTratamiento* miTratamiento, float miRadAcum, float miDosisMax, float miDosisXsesion, unsigned int miFrec, unsigned int sesiones)
+cTumor::cTumor(eTipoCancer miCancer, eTamanio miTamanio,  float miRadAcum, float miDosisMax, float miDosisXsesion, unsigned int miFrec, cTratamiento* miTratamiento, unsigned int sesiones)
 {
-	this->aTipoTratamiento = nullptr;
+	this->aTipoTratamiento = miTratamiento;
 	this->aSesionesRealizadas = 0;
 	this->aTipoCancer = miCancer;
 	this->aTamanio = miTamanio;
@@ -32,7 +32,7 @@ float cTumor:: calcularDosisSemanal()
 cTratamiento* cTumor:: GET_TRATAMIENTO()
 {
 	if (this->aTipoTratamiento == nullptr)
-		throw new exception("nulo");
+		throw new exception("Tratamiento nulo");
 	return (this->aTipoTratamiento);
 }
 

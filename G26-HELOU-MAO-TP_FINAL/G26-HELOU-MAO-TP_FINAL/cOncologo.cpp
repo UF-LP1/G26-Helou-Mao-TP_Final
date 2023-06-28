@@ -131,8 +131,9 @@ void cOncologo::diagnosticarTumores(cFicha* ficha)
 		tumor->SET_TAMANIO(eTamanio(auxTamanio));
 
 		frecuencia =(int )rand() % 6+1;
+		
 		tumor->SET_FRECUENCIA(frecuencia);*/
-		cTumor* tumor = new cTumor(eTipoCancer(rand() % 11), eTamanio(rand() % 3), nullptr, 0.0, 0.0, 0.0, rand() % 6 + 1);
+		cTumor* tumor = new cTumor(eTipoCancer(rand() % 11), eTamanio(rand() % 3), 0.0, 0.0, 0.0, rand() % 6 + 1);
 		tumoresAux+*tumor;
 	}
 	pac->SET_TUMORES(tumoresAux);

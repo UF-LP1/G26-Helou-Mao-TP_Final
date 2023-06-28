@@ -138,6 +138,7 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 
 	}
 	*paciente = ficha->aPaciente;
+	return;
 	delete ficha;
 
 }
@@ -306,4 +307,5 @@ cFicha* cCentro::crearFicha(cPaciente* paciente)
 	cFicha* nuevaFicha = new cFicha(paciente, numOncologo, numDosimetrista);//con randoms le asigne un oncologo y un dosimetrista
 	agregarFicha(*nuevaFicha);//agrego la ficha a mi lista
 	return nuevaFicha;
+	delete nuevaFicha;
 }
