@@ -19,27 +19,27 @@ int main()
 	}
 
 
-	//try
-	//{
-	//	cout << "Los pacientes a contactar son: " << endl;
-	//	cListaFichas f=miCentro.pacientesaContactar();
-	//	for (int i = 0; i < f.size(); i++)
-	//	{
-	//		cout << i + 1 << ") " << f[i]->GET_PAC()->GET_NOMBRE()<<" "<< f[i]->GET_PAC()->GET_APELLIDO() << endl;
-	//	}
+	try
+	{
+		cout << "Los pacientes a contactar son: " << endl;
+		cListaFichas f=miCentro.pacientesaContactar();
+		for (int i = 0; i < f.size(); i++)
+		{
+			cout << i + 1 << ") " << f[i]->GET_PAC()->GET_NOMBRE()<<" "<< f[i]->GET_PAC()->GET_APELLIDO() << endl;
+		}
 
-	//	miCentro.contactar(f);
-	//	cout << "Se ha contcatado ha: " << endl;
-	//	for (int i = 0; i < f.size(); i++)
-	//	{
-	//		cout << i + 1 << ") " << f[i]->GET_PAC()->GET_NOMBRE() << " " << f[i]->GET_PAC()->GET_APELLIDO() << endl;
-	//	}
+		miCentro.contactar(f);
+		cout << "Se ha contcatado ha: " << endl;
+		for (int i = 0; i < f.size(); i++)
+		{
+			cout << i + 1 << ") " << f[i]->GET_PAC()->GET_NOMBRE() << " " << f[i]->GET_PAC()->GET_APELLIDO() << endl;
+		}
 
-	//}
-	//catch (exception* e)
-	//{
-	//	cout << "Excepcion: " << e->what() << endl;
-	//}
+	}
+	catch (exception* e)
+	{
+		cout << "Excepcion: " << e->what() << endl;
+	}
 
 	try
 	{

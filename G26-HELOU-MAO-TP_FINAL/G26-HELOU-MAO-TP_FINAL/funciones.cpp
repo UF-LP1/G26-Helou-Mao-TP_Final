@@ -124,33 +124,15 @@ cListaFichas crarFichas()
 	cPaciente* pac10 = new cPaciente("Camila", "Zavidowski", "10", "8997657", "01/03/2004", 'F', "0+", 65.0, lista1);
 	cPaciente* pac11 = new cPaciente("Martina", "Hanselmann", "11", "8997657", "07/12/2004", 'F', "0+", 45.0);
 	
-	time_t ahora=time(0);//creo varable y la inicializo en el tiempo actual
-
-	//struct tm* timeinfo;//lo deberia contactar
-	//timeinfo = localtime(&ahora);
-	//timeinfo->tm_year = 2023-1900;
-	//timeinfo->tm_mon = 06;
-	//timeinfo->tm_mday = 07;
-	//mktime(timeinfo);
-
-	//struct tm* timeinfo2;	//lo deberia contactar
-	//timeinfo2 = localtime(&ahora);
-	//timeinfo2->tm_year = 2023 - 1900;
-	//timeinfo2->tm_mon = 03;
-	//timeinfo2->tm_mday =21;
-	//mktime(timeinfo2);
-
-	//struct tm* timeinfo3;	//a este no lo deberia contactar
-	//timeinfo3 = localtime(&ahora);
-	//timeinfo3->tm_year = 2023 - 1900;
-	//timeinfo3->tm_mon = 06;
-	//timeinfo3->tm_mday = 28;
-	//mktime(timeinfo3);
-
+	int segundosxdia = 86400;
+	time_t ahora = time(NULL);//creo varable y la inicializo en el tiempo actual
+	time_t haceUnMes = ahora - (30 * segundosxdia);
+	time_t haceDosSemanas = ahora - (14 * segundosxdia);
+	
 	cListaFichas listaFic;
-	cFicha *ficha2 = new cFicha(false, false, 150, 1, 1, 150.0, 0, false, pac2, ahora, reevaluacion);
+	cFicha *ficha2 = new cFicha(false, false, 150, 1, 1, 150.0, 0, false, pac2, haceUnMes, reevaluacion);
 	listaFic + *ficha2;
-	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 0, false, pac3, ahora, evaluacion);
+	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 0, false, pac3, haceUnMes, evaluacion);
 	listaFic + *ficha3;
 	cFicha* ficha5 = new cFicha(false, false, 30.0, 1, 1, 150.0, 20, false, pac5, ahora, finTratamiento);
 	listaFic + *ficha5;
@@ -158,9 +140,9 @@ cListaFichas crarFichas()
 	listaFic + *ficha6;
 	cFicha *ficha7 = new cFicha(true, false, 30.0, 1, 1, 150.0, 0, false, pac7, ahora, finTratamiento);
 	listaFic + *ficha7;
-	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 15, false, pac8,ahora, evaluacion);
+	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 15, false, pac8, haceDosSemanas, evaluacion);
 	listaFic + *ficha8;
-	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 10, false,pac10, ahora, evaluacion);
+	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 10, false,pac10, haceDosSemanas, evaluacion);
 	listaFic + *ficha10;
 	return listaFic;
 	delete ficha2;
