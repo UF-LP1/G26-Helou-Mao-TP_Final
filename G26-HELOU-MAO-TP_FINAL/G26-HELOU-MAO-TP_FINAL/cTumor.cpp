@@ -19,8 +19,41 @@ cTumor::~cTumor()
 }
 string cTumor::to_string()
 {
+
 	stringstream ss;
-	ss << "Tipo cancer: " << aTipoCancer << endl << "Tamanio: " << aTamanio << endl;
+	ss << "Tipo cancer: ";
+	if (aTipoCancer == cabezayCuello)
+		ss << "Cabeza y cuello" << endl;
+	else if(aTipoCancer == cuelloUtero)
+		ss << "Cuello del Utero" << endl;
+	else if (aTipoCancer == mama)
+		ss << "Mama" << endl;
+	else if (aTipoCancer == ojo)
+		ss << "Ojo" << endl;
+	else if (aTipoCancer == tiroides)
+		ss << "Tiroides" << endl;
+	else if (aTipoCancer == prostata)
+		ss << "Prostata" << endl;
+	else if (aTipoCancer == nariz)
+		ss << "Nariz" << endl;
+	else if (aTipoCancer == pulmon)
+		ss << "Pulmon" << endl;
+	else if (aTipoCancer == higado)
+		ss << "Higado" << endl;
+	else if (aTipoCancer == riñon)
+		ss << "Riñon" << endl;
+	else if (aTipoCancer == vejiga)
+		ss << "Vejiga" << endl;
+	else 
+		ss << "Pancreas" << endl;
+
+	ss << "Tamanio: ";
+	if (aTamanio == pequenio)
+		ss << "Pequenio" << endl;
+	else if (aTamanio == mediano)
+		ss << "Mediano" << endl;
+	else
+		ss << "Grande" << endl;
 
 	return ss.str();
 }
@@ -82,10 +115,7 @@ void cTumor::SET_SESIONES_REALIZADAS(unsigned int sesiones)
 {
 	this->aSesionesRealizadas = sesiones;
 }
-eTipoCancer cTumor::SET_TIPO_CANCER()
-{
-	return this->aTipoCancer;
-}
+
 eTipoCancer cTumor::GET_TIPO_CANCER()
 {
 	return this->aTipoCancer;

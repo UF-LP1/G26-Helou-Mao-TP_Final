@@ -36,10 +36,15 @@ void cListaFichas::operator+(cFicha& ficha)
 }
 
 ostream& operator<<(ostream& out, cListaFichas lista)
-{
+{ 
+	int i = 1;
+
 	for (cFicha* ficha : lista)
 	{
+		out << i << ") ";
 		out << *ficha;
+		out << endl;
+		i++;
 	}
 	return out;
 }

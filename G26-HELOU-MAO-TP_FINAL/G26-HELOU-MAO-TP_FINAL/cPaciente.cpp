@@ -97,6 +97,9 @@ string cPaciente::to_string()
 ostream& operator<<(ostream& out, cPaciente& pac)
 {
 	out << pac.to_string();
-	out<<pac.aTumores;
+	if (pac.aTumores.size() == 0)
+		out << "El paciente no tiene mas tumores" << endl;
+	else
+		out<<pac.aTumores;
 	return out;
 }

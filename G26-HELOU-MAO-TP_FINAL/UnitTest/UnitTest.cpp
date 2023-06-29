@@ -5,6 +5,8 @@
 using namespace std;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 //
+//		NO ANDUVO :(
+// 
 //namespace UnitTest
 //{
 //	TEST_CLASS(centro)

@@ -56,7 +56,7 @@ cListaFichas cCentro::pacientesaContactar()
 		time_t ahora;//creo varable
 		time(&ahora);//la inicializo con el tiempo de ahora
 
-		float segundos = (float)difftime(aFichas[i]->aAsistencia, ahora);
+		float segundos = (float)difftime(ahora, aFichas[i]->aAsistencia);
 		if ( segundos > segundosPorSemana)
 		{
 			lista + *(this->aFichas[i]);
@@ -100,6 +100,8 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 		time(&ahora);//la inicializo con el tiempo de ahora
 		ficha->aAsistencia = ahora;
 	}
+	else if(ficha->aMotivo==finTratamiento)//el paciente ya termino su tratamiento, no tiene por que ser atendido
+		return;
 	else //chequeo si a algun tumor le faltan sesiones
 	{
 		
@@ -142,8 +144,7 @@ void cCentro::atenderPaciente(cPaciente* paciente)
 				pasarFichaOncologo(ficha);
 			}
 		}
-		time_t ahora;//creo varable
-		time(&ahora);//la inicializo con el tiempo de ahora
+		time_t ahora = time(NULL);//la inicializo con el tiempo de ahora
 		ficha->aAsistencia = ahora;
 
 	}
@@ -184,12 +185,14 @@ string cCentro::to_string()
 }
 void cCentro::contactar(cListaFichas fichas)
 {
-	int aux = rand() % 2;	//segun esto el paciente continua o no
+
 	for (cFicha* f : fichas)
 	{
+		int aux = rand() % 2;	//segun esto el paciente continua o no
 		if (aux)	//no va a volver
 		{
 			f->SET_ALTA(true);	//lo doy de alta porue no se va a volver a atender
+			f->SET_MOTIVO(finTratamiento);
 		}
 		else
 		{

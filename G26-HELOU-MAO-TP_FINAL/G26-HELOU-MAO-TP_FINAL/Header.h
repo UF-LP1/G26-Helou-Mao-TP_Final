@@ -6,6 +6,7 @@
 #include <fstream>
 #include <ctime>
 #include <time.h>
+#include "time.h"
 #include <exception>
 #include <random>
 #include "eTratamiento.h"
