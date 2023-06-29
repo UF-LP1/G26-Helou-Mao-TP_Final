@@ -1,7 +1,7 @@
 #include "cFicha.h"
 
 cFicha::cFicha(bool miAlta, bool miListaEspera, float miRadiacion, int oncologo, int dosimetrista,float  miDosisMax,
-	float miDosisPorSesion, bool miAlcanzoMax,  cPaciente* miPaciente, time_t asist, eMotivo motivo)
+	 bool miAlcanzoMax,  cPaciente* miPaciente, time_t asist, eMotivo motivo)
 {
 	this->aID_Dosimetrista = dosimetrista;
 	this->aID_OncologoCargo = oncologo;
@@ -9,7 +9,6 @@ cFicha::cFicha(bool miAlta, bool miListaEspera, float miRadiacion, int oncologo,
 	this->aAlta = miAlta;
 	this->aListaEspera = miListaEspera;
 	this->aRadiacionAcum = miRadiacion;
-	this->aDosisXSesion = miDosisPorSesion;
 	this->aAlcanzoMax = miAlcanzoMax;
 	this->aPaciente = miPaciente;
 	this->aTiempoEspera = 0;
@@ -24,7 +23,6 @@ cFicha::cFicha(cPaciente* paciente, int oncologo, int dosimetrista, eMotivo moti
 	this->aAlta = false;
 	this->aListaEspera = 0;
 	this->aRadiacionAcum = 0;
-	this->aDosisXSesion = 0;
 	this->aAlcanzoMax = false;
 	this->aPaciente=paciente;
 	this->aTiempoEspera = 0;
@@ -41,7 +39,6 @@ cFicha::cFicha(eMotivo motivo)
 	this->aAlta = false;
 	this->aListaEspera = 0;
 	this->aRadiacionAcum = 0;
-	this->aDosisXSesion = 0;
 	this->aAlcanzoMax = false;
 	this->aPaciente = nullptr;
 	this->aTiempoEspera = 0;

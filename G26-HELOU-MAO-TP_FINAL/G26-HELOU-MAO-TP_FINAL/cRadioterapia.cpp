@@ -15,6 +15,7 @@ cRadioterapia::cRadioterapia() :
 	this->aTipoHaz = fotones;
 }
 void cRadioterapia::DOSIS_X_TUMOR() {
+	//por ser radio terapia tiene esos limites caracteristicos de este tipo de trat
 	float dosis = rand() % 2 + 1;
 	this->aDosisXSesion = dosis;
 }

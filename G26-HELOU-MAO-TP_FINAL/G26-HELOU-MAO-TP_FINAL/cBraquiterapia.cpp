@@ -18,6 +18,7 @@ cBraquiterapia::cBraquiterapia() :cTratamiento()
 }
 
 void cBraquiterapia::DOSIS_X_TUMOR() {
+	//por ser braquiterapia tiene esos limites caracteristicos de este tipo de trat
 	float dosis =rand() % 3 + 6;
 	this->aDosisXSesion = dosis;
 }

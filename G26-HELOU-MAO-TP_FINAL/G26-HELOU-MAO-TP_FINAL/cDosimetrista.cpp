@@ -35,7 +35,6 @@ void cDosimetrista::calcularDosisTotal(cFicha* ficha)
 		}
 		else
 			ficha->GET_PAC()->GET_TUMORES()[i]->SET_DOSIS_MAX(150);
-		//list + tumorcito;
 	}
 	if (dosisMin)
 	{
@@ -53,14 +52,15 @@ list<cTratamiento*> cDosimetrista::asignarTratamiento(cFicha* ficha)
 {
 	cTumor* tumor = nullptr;
 	cPaciente* pac = ficha->GET_PAC();
-	//cTratamiento * trata= nullptr;
+
 	cSistemica* sist = new cSistemica(60);
 	cBraquiterapia* braqui = new cBraquiterapia(150,paladio);
 	cRadioterapia* radio = new cRadioterapia(60, fotones);
 	list<cTratamiento*> tratamientos;
+
+	//de acuerdo al tipo de cancer asignamos un tratamiento al tumor
 	for (int i=0; i< ficha->GET_PAC()->GET_TUMORES().size(); i++)
 	{
-		//trata = ficha->GET_PAC()->GET_TUMORES()[i]->GET_TRATAMIENTO();
 		tumor = ficha->GET_PAC()->GET_TUMORES()[i];
 		if ((tumor)->GET_TIPO_CANCER() == cabezayCuello || (tumor)->GET_TIPO_CANCER() == cuelloUtero || (tumor)->GET_TIPO_CANCER() == mama || (tumor)->GET_TIPO_CANCER() == ojo)
 		{
@@ -84,6 +84,8 @@ list<cTratamiento*> cDosimetrista::asignarTratamiento(cFicha* ficha)
 void cDosimetrista::atenderPaciente(cFicha* ficha)
 {
 	list<cTratamiento*> trats=asignarTratamiento(ficha);
+
+	//le setea a cada tumor su tratamiento correspondiente
 	list<cTratamiento*> ::iterator it = trats.begin();
 	int i = 0;
 	for (it; it != trats.end(); it++)
@@ -91,6 +93,7 @@ void cDosimetrista::atenderPaciente(cFicha* ficha)
 		ficha->GET_PAC()->GET_TUMORES()[i]->SET_TRATAMIENTO(*it);
 		i++;
 	}
+	//calcula las dosis maxima de cada tumor y del paciente de acuerdo a su trat
 	calcularDosisTotal(ficha);
 }
 

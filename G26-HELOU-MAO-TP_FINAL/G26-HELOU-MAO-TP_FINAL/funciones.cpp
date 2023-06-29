@@ -130,19 +130,19 @@ cListaFichas crarFichas()
 	time_t haceDosSemanas = ahora - (14 * segundosxdia);
 	
 	cListaFichas listaFic;
-	cFicha *ficha2 = new cFicha(false, true, 150, 1, 1, 150.0, 0, false, pac2, haceUnMes, reevaluacion);//esta en lista de espera, se reevalua cuando vuelve. Igual hace un mes que falto a su turno, se lo va a contactar
+	cFicha *ficha2 = new cFicha(false, true, 150, 1, 1, 150.0, false, pac2, haceUnMes, reevaluacion);//esta en lista de espera, se reevalua cuando vuelve. Igual hace un mes que falto a su turno, se lo va a contactar
 	listaFic + *ficha2;
-	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0, 0, false, pac3, haceUnMes, evaluacion);
+	cFicha* ficha3 = new cFicha(false, false, 30.0, 1, 1, 150.0,  false, pac3, haceUnMes, evaluacion);
 	listaFic + *ficha3;
-	cFicha* ficha5 = new cFicha(false, false, 150.0, 1, 1, 150.0, 20, false, pac5, ahora, evaluacion);
+	cFicha* ficha5 = new cFicha(false, false, 150.0, 1, 1, 150.0,  false, pac5, ahora, evaluacion);
 	listaFic + *ficha5;
-	cFicha *ficha6 = new cFicha(false, true, 30.0, 1, 1, 150.0, 0, false, pac6,ahora, reevaluacion);//esta en lista de espera, se reevalua cuando vuelve
+	cFicha *ficha6 = new cFicha(false, true, 30.0, 1, 1, 150.0, false, pac6,ahora, reevaluacion);//esta en lista de espera, se reevalua cuando vuelve
 	listaFic + *ficha6;
-	cFicha *ficha7 = new cFicha(true, false, 30.0, 1, 1, 150.0, 0, false, pac7, ahora, finTratamiento);//fue dado de alta
+	cFicha *ficha7 = new cFicha(true, false, 30.0, 1, 1, 150.0, false, pac7, ahora, finTratamiento);//fue dado de alta
 	listaFic + *ficha7;
-	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0, 15, false, pac8, haceDosSemanas, evaluacion);//no va hace dos semanas, puede que deje de ir porloque sera dado de alta
+	cFicha *ficha8 = new cFicha(false, false, 30.0, 1, 1, 150.0,  false, pac8, haceDosSemanas, evaluacion);//no va hace dos semanas, puede que deje de ir porloque sera dado de alta
 	listaFic + *ficha8;
-	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0, 10, false,pac10, haceDosSemanas, evaluacion);
+	cFicha* ficha10 = new cFicha(false, false, 30.0, 1, 1, 150.0,  false,pac10, haceDosSemanas, evaluacion);
 	listaFic + *ficha10;
 	return listaFic;
 	delete ficha2;

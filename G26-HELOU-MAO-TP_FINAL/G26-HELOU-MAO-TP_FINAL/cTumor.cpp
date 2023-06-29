@@ -21,6 +21,8 @@ string cTumor::to_string()
 {
 
 	stringstream ss;
+
+	//determino que imprimir de acuerdo al enum
 	ss << "Tipo cancer: ";
 	if (aTipoCancer == cabezayCuello)
 		ss << "Cabeza y cuello" << endl;
@@ -47,6 +49,7 @@ string cTumor::to_string()
 	else 
 		ss << "Pancreas" << endl;
 
+	//determino que imprimir de acuerdo al enum
 	ss << "Tamanio: ";
 	if (aTamanio == pequenio)
 		ss << "Pequenio" << endl;

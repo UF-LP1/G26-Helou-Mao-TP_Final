@@ -3,9 +3,11 @@
 
 int main()
 {
+	//creamo pacientes y fichas
 	cListaPacientes pacientesAux = crearPacs();
 	cListaFichas fichasAux = crarFichas();
 
+	//creamos medicos
 	list <cMedico*> medicos = crearMedicos();
 	cCentro miCentro("Mater Dei", "Salguero y Libertador", fichasAux, medicos);
 	try

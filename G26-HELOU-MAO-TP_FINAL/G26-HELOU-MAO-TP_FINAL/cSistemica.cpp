@@ -14,6 +14,7 @@ cSistemica::cSistemica()
 {
 }
 void cSistemica::DOSIS_X_TUMOR() {
+	//por ser sistemica tiene esos limites caracteristicos de este tipo de trat
 	float dosis =rand() % 3 + 2;
 	this->aDosisXSesion = dosis;
 }
