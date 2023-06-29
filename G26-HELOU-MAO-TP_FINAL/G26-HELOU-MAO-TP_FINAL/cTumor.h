@@ -26,7 +26,7 @@ public:
 	string to_string();
 	friend class cDosimetrista;
 	friend ostream& operator<<(ostream& out, cTumor& tumor);
-	float calcularDosisSemanal();
+
 	cTratamiento* GET_TRATAMIENTO();
 	void SET_TRATAMIENTO(cTratamiento *tratamiento);
 	void SET_TIPO_CANCER(eTipoCancer auxTipoCancer);
@@ -37,7 +37,6 @@ public:
 	void SET_RAD_ACUM(float radAcum);
 	unsigned int GET_SESIONES_REALIZADAS();
 	void SET_SESIONES_REALIZADAS(unsigned int sesiones);
-	eTipoCancer SET_TIPO_CANCER();
 	eTipoCancer GET_TIPO_CANCER();
 	float GET_DOSIS_MAX();
 	void SET_DOSIS_MAX(float);
