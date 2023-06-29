@@ -182,10 +182,12 @@ string cCentro::to_string()
 	stringstream ss;
 	ss << "Nombre centro: " << this->aNombre << endl << "Direccion centro: " << this->aDireccion << endl;
 	ss<<endl;
+	ss << "\tPACIENTES: " << endl;
 	for (cFicha *it : this->aFichas)
 	{
 		ss << it->to_string();
 	}
+	ss << "\tMEDICOS: " << endl;
 	for (cMedico* it : this->aMedicos)
 	{
 		ss << it->to_string() << endl;

@@ -12,7 +12,7 @@ int main()
 	cCentro miCentro("Mater Dei", "Salguero y Libertador", fichasAux, medicos);
 	try
 	{
-		cout << "CENTRO:" << endl;
+		cout << "\tCENTRO:" << endl;
 		miCentro.imprimir();//imprimimos todos los datos del centro, sus medicos y pacientes actuales
 	}
 	catch (exception* e)
@@ -49,7 +49,7 @@ int main()
 			
 		}
 		
-		cout << "FICHAS: " << endl;///ahora imprimo las fichas de todos los pacs
+		cout << "\tFICHAS: " << endl;///ahora imprimo las fichas de todos los pacs
 		cout << miCentro.GET_FICHAS();
 	}
 	catch (exception* e)
